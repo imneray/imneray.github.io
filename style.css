@@ -1,12 +1,13 @@
-/* Palette de couleurs définie */
+* --- VARIABLES DE COULEURS --- */
 :root {
---fond-creme: #fffaf0; /* Fond de page */
---rose-poudre: #fce1e4; /* Éléments secondaires et boutons */
---vert-trefle: #b7e4c7; /* Accents et surbrillance */
---marron-texte: #5e4433; /* Couleur de l'écriture */
+--fond-creme: #fffaf0; /* Fond doux */
+--rose-poudre: #fce1e4; /* Bordures et accents */
+--vert-trefle: #b7e4c7; /* Hover et boutons */
+--marron-texte: #5e4433; /* Écriture douce */
 --blanc-pur: #ffffff;
 }
 
+/* --- STYLE GÉNÉRAL --- */
 * {
 box-sizing: border-box;
 }
@@ -16,19 +17,18 @@ body {
   color: var(--marron-texte);
   font-family: 'Quicksand', sans-serif;
   margin: 0;
-  line-height: 1.6;
+  padding: 0;
   scroll-behavior: smooth;
 }
 
-/* Navigation avec effet "Trèfle" au survol */
+/* --- NAVIGATION (ONGLETS) --- */
 nav {
   background-color: var(--blanc-pur);
-  padding: 15px;
+  padding: 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   border-bottom: 3px dashed var(--rose-poudre);
-  text-align: center;
 }
 
 nav ul {
@@ -37,11 +37,8 @@ nav ul {
   padding: 0;
   display: flex;
   justify-content: center;
+  gap: 20px;
   flex-wrap: wrap;
-}
-
-nav li {
-  margin: 0 15px;
 }
 
 nav a {
@@ -49,103 +46,136 @@ nav a {
   color: var(--marron-texte);
   font-weight: 600;
   font-size: 1.1em;
+  padding: 8px 15px;
   transition: all 0.3s ease;
+  border-radius: 20px;
 }
 
 nav a:hover {
-  color: #2d6a4f; /* Un vert plus foncé pour la lisibilité */
   background-color: var(--vert-trefle);
-  padding: 5px 10px;
-  border-radius: 15px;
+  color: #2d6a4f;
 }
 
-/* Sections */
+/* --- SECTION ACCUEIL (AVATAR + TITRE) --- */
 .page {
   min-height: 100vh;
-  padding: 80px 20px;
+  padding: 60px 20px;
+}
+
+/* Le bloc qui contient l'image et le titre alignés */
+.header-main-block {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 30px; /* Espace entre l'image et le titre */
+  max-width: 900px;
+  margin: 0 auto; /* Centre le bloc sur la page */
+  flex-wrap: wrap; /* Pour le mobile */
 }
 
-h1, h2 {
-  font-family: 'Pacifico', cursive;
-  color: var(--marron-texte);
-}
-
-h1 { font-size: 3.5em; margin-top: 10px; }
-h2 { font-size: 2.5em; border-bottom: 2px solid var(--rose-poudre); padding-bottom: 10px; }
-
-/* Avatar avec bordure Rose Poudré */
-.profile-img {
-  width: 250px;
-  height: 250px;
+.profil-img {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   border: 8px solid var(--rose-poudre);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   object-fit: cover;
 }
 
-/* Tableau BTS SIO aux couleurs Vert Trèfle */
+.titre-principal {
+  font-family: 'Pacifico', cursive;
+  font-size: 3.2em;
+  color: var(--marron-texte);
+  margin: 0;
+}
+
+/* Le bloc du sous-titre centré en dessous */
+.subtitle-block {
+  width: 100%;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.sous-titre {
+  font-size: 1.3em;
+  font-weight: 400;
+  margin: 0;
+  display: inline-block;
+  padding: 5px 20px;
+  border-top: 1px solid var(--rose-poudre);
+}
+
+/* --- TABLEAU BTS SIO --- */
 table {
-  width: 80%;
-  max-width: 800px;
+  width: 90%;
+  max-width: 700px;
+  margin: 40px auto;
   border-collapse: separate;
   border-spacing: 0;
-  background: white;
   border-radius: 20px;
   overflow: hidden;
-  margin-top: 20px;
   border: 2px solid var(--vert-trefle);
+  background: white;
 }
 
 th {
   background-color: var(--vert-trefle);
-  color: var(--marron-texte);
   padding: 20px;
-  font-size: 1.2em;
+  font-family: 'Pacifico', cursive;
 }
 
 td {
   padding: 20px;
+  text-align: center;
   border-top: 1px solid var(--vert-trefle);
 }
 
-/* Cartes Projets et Stage */
+/* --- CARTES PROJETS / STAGES --- */
 .doc-thumb {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   border-radius: 20px;
   border: 6px solid var(--rose-poudre);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
   cursor: pointer;
 }
 
 .doc-thumb:hover {
-  transform: rotate(2deg) scale(1.03);
+  transform: scale(1.05) rotate(2deg);
 }
 
-/* Boutons et flèches */
+/* --- BOUTONS / FLÈCHES --- */
 .arrow {
-  background: var(--vert-trefle);
-  border: 2px solid var(--marron-texte);
+  background: var(--rose-poudre);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50%;
   font-size: 1.5em;
   color: var(--marron-texte);
   cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 50%;
   margin: 10px;
-  transition: 0.3s;
 }
 
 .arrow:hover {
-  background: var(--rose-poudre);
+  background: var(--vert-trefle);
+}
+
+/* --- MOBILE --- */
+  @media (max-width: 768px) {
+  .header-main-block {
+  flex-direction: column;
+  text-align: center;
+}
+
+.titre-principal {
+  font-size: 2.2em;
+  }
 }
 
 footer {
-  padding: 30px;
-  background: var(--rose-poudre);
-  color: var(--marron-texte);
   text-align: center;
-  font-weight: bold;
+  padding: 40px;
+  font-size: 0.9em;
+  color: var(--marron-texte);
 }
 
