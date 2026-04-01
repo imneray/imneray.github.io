@@ -132,20 +132,6 @@ td {
   border-top: 1px solid var(--vert-trefle);
 }
 
-/* --- MOBILE (Adaptation écran téléphone) --- */
-@media (max-width: 768px) {
-.header-main-block {
-  flex-direction: column; /* L'image passe au-dessus sur mobile */
-  gap: 15px; 
-  text-align: center;
-}
-.profil-img {
-  margin-bottom: 15px;
-}
-.titre-principal {
-  font-size: 2.2em;
-}
-}
 
 footer {
   text-align: center;
@@ -155,8 +141,3 @@ footer {
   color: var(--marron-texte);
   margin-top: 50px;
 }
-
-
-
-
-
