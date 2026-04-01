@@ -1,0 +1,151 @@
+/* Palette de couleurs définie */
+:root {
+--fond-creme: #fffaf0; /* Fond de page */
+--rose-poudre: #fce1e4; /* Éléments secondaires et boutons */
+--vert-trefle: #b7e4c7; /* Accents et surbrillance */
+--marron-texte: #5e4433; /* Couleur de l'écriture */
+--blanc-pur: #ffffff;
+}
+
+* {
+box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fond-creme);
+  color: var(--marron-texte);
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Navigation avec effet "Trèfle" au survol */
+nav {
+  background-color: var(--blanc-pur);
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px dashed var(--rose-poudre);
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--marron-texte);
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #2d6a4f; /* Un vert plus foncé pour la lisibilité */
+  background-color: var(--vert-trefle);
+  padding: 5px 10px;
+  border-radius: 15px;
+}
+
+/* Sections */
+.page {
+  min-height: 100vh;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2 {
+  font-family: 'Pacifico', cursive;
+  color: var(--marron-texte);
+}
+
+h1 { font-size: 3.5em; margin-top: 10px; }
+h2 { font-size: 2.5em; border-bottom: 2px solid var(--rose-poudre); padding-bottom: 10px; }
+
+/* Avatar avec bordure Rose Poudré */
+.profile-img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 8px solid var(--rose-poudre);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  object-fit: cover;
+}
+
+/* Tableau BTS SIO aux couleurs Vert Trèfle */
+table {
+  width: 80%;
+  max-width: 800px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 20px;
+  border: 2px solid var(--vert-trefle);
+}
+
+th {
+  background-color: var(--vert-trefle);
+  color: var(--marron-texte);
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+td {
+  padding: 20px;
+  border-top: 1px solid var(--vert-trefle);
+}
+
+/* Cartes Projets et Stage */
+.doc-thumb {
+  width: 300px;
+  border-radius: 20px;
+  border: 6px solid var(--rose-poudre);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.doc-thumb:hover {
+  transform: rotate(2deg) scale(1.03);
+}
+
+/* Boutons et flèches */
+.arrow {
+  background: var(--vert-trefle);
+  border: 2px solid var(--marron-texte);
+  font-size: 1.5em;
+  color: var(--marron-texte);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 50%;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.arrow:hover {
+  background: var(--rose-poudre);
+}
+
+footer {
+  padding: 30px;
+  background: var(--rose-poudre);
+  color: var(--marron-texte);
+  text-align: center;
+  font-weight: bold;
+}
+
