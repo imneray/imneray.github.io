@@ -6,49 +6,32 @@
     --vert-trefle: #b7e4c7;
 }
 
-* {
-    box-sizing: border-box;
-}
-
 body {
     background-color: var(--fond-creme);
     color: var(--marron-texte);
     font-family: 'Quicksand', sans-serif;
     margin: 0;
-    padding: 0;
 }
 
-/* --- NAVIGATION (ONGLETS BIEN EN HAUT) --- */
+/* --- NAVIGATION (ONGLETS) --- */
 nav {
     background-color: white;
     padding: 15px 0;
     border-bottom: 2px dashed var(--rose-poudre);
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 nav ul {
     list-style: none;
     margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 nav a {
     text-decoration: none;
     color: var(--marron-texte);
     font-weight: 600;
-    padding: 8px 15px;
-    border-radius: 20px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    background-color: var(--vert-trefle);
 }
 
 /* --- SECTION ACCUEIL --- */
@@ -58,57 +41,42 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    padding: 20px;
-}
-
-/* Le bloc qui force l'image et le titre à être l'un à côté de l'autre */
-.header-main-block {
-    display: flex;
-    flex-direction: row;    /* Force l'alignement horizontal */
-    align-items: center;    /* Centre l'image verticalement par rapport au titre */
-    justify-content: center;
-    gap: 25px;              /* Espace entre l'image et le texte */
     width: 100%;
 }
 
-/* --- LE PETIT CERCLE (MODIFICATION MAJEURE) --- */
-.profil-img {
-    width: 120px !important;  /* Taille du cercle imposée */
-    height: 120px !important; /* Taille du cercle imposée */
-    border-radius: 50% !important; /* Force la forme ronde */
-    border: 5px solid var(--rose-poudre) !important;
-    object-fit: cover !important; /* Évite que l'image soit déformée */
-    display: block !important;
-    flex-shrink: 0; /* Empêche l'image de s'écraser */
+/* BLOC IMAGE A GAUCHE DU TITRE */
+.header-main-block {
+    display: flex !important;
+    flex-direction: row !important; /* Force l'alignement horizontal */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    width: 100%;
 }
 
-/* Le texte à côté de l'image */
-.text-block {
-    text-align: left;
+/* FORCE LA PETITE TAILLE DU CERCLE */
+.profil-img {
+    width: 130px !important;  
+    height: 130px !important;
+    border-radius: 50% !important; 
+    border: 5px solid var(--rose-poudre) !important;
+    object-fit: cover !important;
+    display: block !important;
 }
 
 .titre-principal {
-    font-family: 'Pacifico', cursive;
-    font-size: 3em;
+    font-family: 'Pacifico', cursive; /* Ton écriture manuscrite */
+    font-size: 3.5em;
     margin: 0;
 }
 
-.sous-titre {
-    font-size: 1.2em;
-    margin-top: 5px;
-    opacity: 0.9;
+/* SOUS-TITRE CENTRÉ DESSOUS */
+.subtitle-block {
+    text-align: center;
+    width: 100%;
+    margin-top: 15px;
 }
 
-/* --- MOBILE --- */
-@media (max-width: 768px) {
-    .header-main-block {
-        flex-direction: column;
-        text-align: center;
-    }
-    .text-block {
-        text-align: center;
-    }
-    .titre-principal {
-        font-size: 2.2em;
-    }
+.sous-titre {
+    font-size: 1.3em;
 }
