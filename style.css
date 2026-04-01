@@ -1,9 +1,8 @@
-/* --- CONFIGURATION GÉNÉRALE --- */
+/* --- CONFIGURATION --- */
 :root {
     --fond-creme: #fffaf0;
     --rose-poudre: #fce1e4;
     --marron-texte: #5e4433;
-    --vert-trefle: #b7e4c7;
 }
 
 body {
@@ -11,9 +10,10 @@ body {
     color: var(--marron-texte);
     font-family: 'Quicksand', sans-serif;
     margin: 0;
+    padding: 0;
 }
 
-/* --- NAVIGATION (ONGLETS) --- */
+/* --- NAVIGATION (LES ONGLETS) --- */
 nav {
     background-color: white;
     padding: 15px 0;
@@ -25,7 +25,7 @@ nav ul {
     margin: 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 nav a {
@@ -41,36 +41,35 @@ nav a {
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    width: 100%;
 }
 
 /* BLOC IMAGE A GAUCHE DU TITRE */
 .header-main-block {
     display: flex !important;
-    flex-direction: row !important; /* Force l'alignement horizontal */
+    flex-direction: row !important; /* Aligne l'image et le titre */
     align-items: center !important;
     justify-content: center !important;
     gap: 30px !important;
     width: 100%;
 }
 
-/* FORCE LA PETITE TAILLE DU CERCLE */
+/* TAILLE DU CERCLE FORCÉE */
 .profil-img {
     width: 130px !important;  
     height: 130px !important;
     border-radius: 50% !important; 
     border: 5px solid var(--rose-poudre) !important;
     object-fit: cover !important;
-    display: block !important;
 }
 
+/* TON ÉCRITURE CURSIVE REVENUE */
 .titre-principal {
-    font-family: 'Pacifico', cursive; /* Ton écriture manuscrite */
+    font-family: 'Pacifico', cursive !important; 
     font-size: 3.5em;
     margin: 0;
 }
 
-/* SOUS-TITRE CENTRÉ DESSOUS */
+/* TEXTE BTS CENTRÉ DESSOUS */
 .subtitle-block {
     text-align: center;
     width: 100%;
