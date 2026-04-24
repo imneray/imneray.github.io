@@ -2,11 +2,13 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Veille Informatique - Imane</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veille Technologique - Imane</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header class="header-top">
         <div class="logo-signature">I.M</div>
         <span class="signature-texte">PORTFOLIO D'IMANE</span>
@@ -26,39 +28,83 @@
     </nav>
 
     <main class="page-content-bts">
-        <h1 class="titre-principal-accueil">Ma Veille Technologique</h1>
-        
-        <div class="bts-option-block" style="border: 2px solid var(--rose-fonce);">
-            <h3 style="font-family: 'Pacifico', cursive;">📧 Alertes Automatisées</h3>
-            <p>Veille active envoyée quotidiennement sur <strong>detpimane@gmail.com</strong> via Google Alerts.</p>
+        <h1 class="titre-principal-accueil">Veille Technologique</h1>
+
+        <div class="problematique-box">
+            <h2 style="font-family: 'Pacifico', cursive; margin-top: 0;">Ma Problématique</h2>
+            <p style="font-size: 1.4rem; font-weight: 600; line-height: 1.4;">
+                « Comment les tensions géopolitiques autour des Data Centers influencent-elles les stratégies, les risques et les obligations des entreprises ? »
+            </p>
         </div>
 
-        <div class="bts-option-block">
-            <h3 style="font-family: 'Pacifico', cursive;">🔎 Recherche Ciblée</h3>
-            <div class="search-container">
-                <input type="text" id="veille-search" placeholder="Rechercher un sujet de veille...">
-                <button onclick="searchVeille()" class="btn-mini btn-doc">Go</button>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%;">
+            
+            <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0;">
+                <h3 style="margin-top:0;">📧 Automatisation</h3>
+                <p>Alertes configurées sur <strong>detpimane@gmail.com</strong> pour une réception en temps réel des flux mondiaux.</p>
+                <div class="btn-mini btn-doc" style="display:inline-block;">Google Alerts Actif</div>
+            </div>
+
+            <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0;">
+                <h3 style="margin-top:0;">🔎 Recherche Ciblée</h3>
+                <div class="search-container" style="margin: 0;">
+                    <input type="text" id="veille-search" placeholder="Cloud Act, Souveraineté...">
+                    <button onclick="searchVeille()" class="btn-mini btn-doc">Go</button>
+                </div>
             </div>
         </div>
 
         <div class="bts-option-block">
-            <h3 style="font-family: 'Pacifico', cursive;">📅 Calendrier d'Archives</h3>
+            <h3>📅 Archives de Veille Dynamiques</h3>
+            <p>Sélectionnez une date pour consulter l'état des tensions et les publications à ce moment précis.</p>
             <div class="calendar-wrapper">
-                <div class="calendar-header"><button onclick="changeMonth(-1)">❮</button><h4 id="monthDisplay"></h4><button onclick="changeMonth(1)">❯</button></div>
-                <div class="calendar-days"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
+                <div class="calendar-header">
+                    <button onclick="changeMonth(-1)">❮</button>
+                    <h4 id="monthDisplay"></h4>
+                    <button onclick="changeMonth(1)">❯</button>
+                </div>
+                <div class="calendar-days">
+                    <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+                </div>
                 <div id="calendarGrid" class="calendar-grid"></div>
             </div>
         </div>
+
+        <div class="bts-option-block">
+            <h3>⚖️ Axe Juridique : Souveraineté des données</h3>
+            <p>Conflit de lois (Cloud Act vs RGPD). Exemple : L'affaire <i>Microsoft Ireland</i>.</p>
+            <p><strong>Impact :</strong> Obligation pour les entreprises de choisir des hébergeurs souverains.</p>
+        </div>
+
+        <div class="bts-option-block">
+            <h3>🌱 Axe Environnemental : Ressources & Énergie</h3>
+            <p>Tensions sur l'eau et l'électricité. Exemple : Amazon en Oregon.</p>
+            <p><strong>Impact :</strong> Risques de rupture de service et dégradation de l'image de marque.</p>
+        </div>
+
+        <div class="bts-option-block">
+            <h3>🛡️ Axe Infrastructure : Sécurité Physique</h3>
+            <p>Sabotage de câbles sous-marins et vulnérabilité des hubs. Exemple : Mer Baltique 2026.</p>
+            <p><strong>Impact :</strong> Nécessité de plans de continuité (PCA) et de diversification des routes.</p>
+        </div>
+
     </main>
 
-    <script src="script-nuit.js"></script>
     <script>
-        // Scripts Spécifiques Veille
+        // Mode Nuit
+        const btn = document.getElementById('theme-toggle');
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+
+        // Recherche
         function searchVeille() {
             const query = document.getElementById('veille-search').value;
-            window.open(`https://www.google.com/search?q=${query}+site:lemondeinformatique.fr+OR+site:zdnet.fr`, '_blank');
+            if(query) window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}+datacenter+geopolitics`, '_blank');
         }
 
+        // Calendrier
         const grid = document.getElementById('calendarGrid');
         const monthDisplay = document.getElementById('monthDisplay');
         let currentTopDate = new Date();
@@ -66,15 +112,28 @@
         function renderCalendar() {
             grid.innerHTML = '';
             monthDisplay.innerText = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(currentTopDate);
-            const daysInMonth = new Date(currentTopDate.getFullYear(), currentTopDate.getMonth() + 1, 0).getDate();
+            const year = currentTopDate.getFullYear();
+            const month = currentTopDate.getMonth();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 1; i < (firstDay === 0 ? 7 : firstDay); i++) {
+                const empty = document.createElement('div');
+                empty.classList.add('empty');
+                grid.appendChild(empty);
+            }
+
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayEl = document.createElement('div');
                 dayEl.innerText = day;
-                dayEl.onclick = () => window.open(`https://www.google.com/search?q=datacenter+souveraineté&tbs=cdr:1,cd_min:${currentTopDate.getMonth()+1}/${day}/${currentTopDate.getFullYear()}&tbm=nws`);
+                dayEl.onclick = () => {
+                    const dateQuery = `tbs=cdr:1,cd_min:${month+1}/${day}/${year},cd_max:${month+1}/${day}/${year}`;
+                    window.open(`https://www.google.com/search?q=datacenter+souveraineté+geopolitique&${dateQuery}&tbm=nws`, '_blank');
+                };
                 grid.appendChild(dayEl);
             }
         }
-        function changeMonth(d) { currentTopDate.setMonth(currentTopDate.getMonth() + d); renderCalendar(); }
+        function changeMonth(diff) { currentTopDate.setMonth(currentTopDate.getMonth() + diff); renderCalendar(); }
         renderCalendar();
     </script>
 </body>
