@@ -77,76 +77,92 @@ nav a:hover {
     color: var(--blanc);
 }
 
-/* --- GRILLE DE PROJETS COMPACTE (VIGNETTES) --- */
-.projets-mini-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    padding: 30px;
-}
+/* --- COMPETENCES --- */
 
-.projet-mini-card {
-    background: var(--blanc);
+/* Conteneur global du projet (la "carte") */
+.mini-projet-card {
+    background: white;
+    padding: 15px; /* Moins de padding pour gagner de la place */
     border-radius: 20px;
     border: 2px solid var(--rose-clair);
+    text-align: center;
+    width: 250px; /* Force une largeur carte beaucoup plus petite */
+    margin: 20px auto; /* Centre la carte avec de l'espace */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Le titre du projet (Serveur AD 2022) */
+.mini-projet-title {
+    font-size: 1.1rem; /* Plus petit */
+    font-weight: 600;
+    color: var(--marron-texte);
+    margin: 10px 0;
+}
+
+/* L'aperçu du PDF (la vignette) */
+.mini-projet-preview {
+    width: 100px; /* VRAIMENT PETIT (vignette) */
+    height: 140px; /* Proportions vignette portrait */
     overflow: hidden;
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin: 10px auto;
 }
 
-.projet-mini-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
-
-.mini-viewer {
-    height: 180px; /* Taille de la vignette */
-    background: #fdfdfd;
-    overflow: hidden;
-    border-bottom: 1px solid var(--rose-clair);
-    position: relative;
-}
-
-.mini-viewer iframe {
+/* Si tu utilises une balise <iframe> ou <embed> pour l'aperçu */
+.mini-projet-preview iframe,
+.mini-projet-preview embed {
     width: 100%;
     height: 100%;
     border: none;
-    pointer-events: none; /* Désactive le scroll interne sur la vignette */
+    pointer-events: none; /* Désactive les interactions pour éviter le défilement */
 }
 
-.mini-info {
-    padding: 15px;
-    text-align: center;
+/* Si tu utilises une simple image pour la vignette (plus performant) */
+.mini-projet-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Remplit sans déformer */
 }
 
-.mini-info h3 {
-    font-size: 1rem;
-    margin: 0 0 12px 0;
-}
-
-.mini-actions {
+/* Conteneur pour les boutons d'action */
+.mini-actions-container {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 15px;
 }
 
-.btn-mini {
-    text-decoration: none;
-    font-size: 0.85rem;
-    background: var(--rose-clair);
-    color: var(--marron-texte);
-    padding: 8px 15px;
+/* Les petits boutons Voir/Doc (basés sur ton image) */
+.mini-btn-action {
+    padding: 6px 12px;
     border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
-    transition: 0.3s;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.btn-mini:hover {
-    background: var(--rose-fonce);
-    color: var(--blanc);
+/* Bouton Voir (Gris clair) */
+.mini-btn-voir {
+    background-color: #f1f1f1;
+    color: #555;
+    border: 1px solid #ddd;
+}
+.mini-btn-voir:hover {
+    background-color: #e5e5e5;
 }
 
+/* Bouton Doc (Rose comme le survol) */
+.mini-btn-doc {
+    background-color: var(--rose-clair);
+    color: var(--marron-texte);
+    border: 1px solid transparent;
+}
+.mini-btn-doc:hover {
+    background-color: var(--rose-fonce);
+    color: white;
+}
 /* --- TABLEAUX BTS --- */
 .bts-table {
     width: 100%;
