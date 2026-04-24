@@ -47,7 +47,7 @@
             <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0; position: relative;">
                 <h3>🔎 Recherche Ciblée</h3>
                 <div class="search-container">
-                    <input type="text" id="veille-search" placeholder="Tapez un mot ou cherchez..." oninput="showSuggestions(this.value)">
+                    <input type="text" id="veille-search" placeholder="Cloud, Linux, Souveraineté..." oninput="maVeilleAuto(this.value)" autocomplete="off">
                     <button onclick="searchWithAnimation()" class="btn-mini btn-doc">Go</button>
                 </div>
                 <div id="suggestions-box" class="suggestions-list"></div>
@@ -72,7 +72,7 @@
     </main>
 
     <script>
-        // --- GESTION THÈME ---
+        // --- MODE NUIT ---
         const btn = document.getElementById('theme-toggle');
         btn.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
@@ -80,34 +80,34 @@
         });
 
         // --- MOTEUR DE SUGGESTIONS ---
-        const sitesVeille = [
+        const mesSitesDeVeille = [
             { name: "Le Monde Informatique - Cloud", url: "https://www.lemondeinformatique.fr/actualites/cloud-computing-128.html" },
-            { name: "ZDNet - Infrastructure & Data Centers", url: "https://www.zdnet.fr/actualites/infrastructure-et-data-center-3900000003.htm" },
-            { name: "ANSSI - Sécurité & Souveraineté", url: "https://www.ssi.gouv.fr/" },
-            { name: "L'Usine Digitale - Souveraineté numérique", url: "https://www.usine-digitale.fr/souverainete-numerique/" },
-            { name: "Data Center Magazine", url: "https://datacentermagazine.fr/" }
+            { name: "ZDNet - Infrastructures", url: "https://www.zdnet.fr/actualites/infrastructure-3900000003.htm" },
+            { name: "Linux France - Open Source", url: "https://www.linuxfrance.org/" },
+            { name: "ANSSI - Cyber et Souveraineté", url: "https://www.ssi.gouv.fr/" },
+            { name: "DataCenter Mag - Géopolitique", url: "https://datacentermagazine.fr/" }
         ];
 
-        function showSuggestions(val) {
-            const res = document.getElementById('suggestions-box');
-            res.innerHTML = '';
-            if (val.length < 2) { res.style.display = 'none'; return; }
+        function maVeilleAuto(texte) {
+            const box = document.getElementById('suggestions-box');
+            box.innerHTML = '';
+            if (texte.length < 2) { box.style.display = 'none'; return; }
 
-            let suggestions = sitesVeille.filter(site => site.name.toLowerCase().includes(val.toLowerCase()));
+            let resultats = mesSitesDeVeille.filter(site => site.name.toLowerCase().includes(texte.toLowerCase()));
 
-            if (suggestions.length > 0) {
-                res.style.display = 'block';
-                suggestions.forEach(site => {
-                    let div = document.createElement('div');
-                    div.innerHTML = site.name;
-                    div.classList.add('suggestion-item');
-                    div.onclick = () => {
+            if (resultats.length > 0) {
+                box.style.display = 'block';
+                resultats.forEach(site => {
+                    let item = document.createElement('div');
+                    item.className = 'suggestion-item';
+                    item.innerHTML = site.name;
+                    item.onclick = function() {
                         window.open(site.url, '_blank');
-                        res.style.display = 'none';
+                        box.style.display = 'none';
                     };
-                    res.appendChild(div);
+                    box.appendChild(item);
                 });
-            } else { res.style.display = 'none'; }
+            } else { box.style.display = 'none'; }
         }
 
         // --- BOUTON GO (RECHERCHE GLOBALE) ---
@@ -115,10 +115,8 @@
             const status = document.getElementById('search-status');
             const query = document.getElementById('veille-search').value;
             if(!query) return;
-            
             document.getElementById('suggestions-box').style.display = 'none';
-            status.innerHTML = '<div class="loading-bar"></div><p style="font-size:0.8rem;">Recherche globale en cours...</p>';
-            
+            status.innerHTML = '<div class="loading-bar"></div><p style="font-size:0.8rem;">Recherche globale...</p>';
             setTimeout(() => {
                 status.innerHTML = '';
                 window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}+datacenter+geopolitics`, '_blank');
@@ -146,9 +144,7 @@
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
             for (let i = 0; i < firstDay; i++) {
-                const empty = document.createElement('div');
-                empty.className = 'calendar-day-empty';
-                grid.appendChild(empty);
+                grid.appendChild(document.createElement('div')).className = 'calendar-day-empty';
             }
 
             for (let day = 1; day <= daysInMonth; day++) {
