@@ -159,12 +159,65 @@ nav a:hover {
 
 .bts-table th { background: var(--rose-clair); padding: 15px; }
 .bts-table td { padding: 20px; text-align: left; line-height: 1.5; }
+/* --- SECTION COMPÉTENCES --- */
+.flip-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
 
-/* --- COMPÉTENCES (FLIP CARDS) --- */
-.flip-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-.flip-card { width: 260px; height: 180px; perspective: 1000px; }
-.flip-card-inner { position: relative; width: 100%; height: 100%; transition: 0.6s; transform-style: preserve-3d; }
-.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--rose-clair); }
-.flip-card-front { background: var(--blanc); }
-.flip-card-back { background: var(--rose-clair); transform: rotateY(180deg); padding: 15px; text-align: center; font-size: 0.9rem; }
+.flip-card {
+    width: 250px;
+    height: 180px;
+    perspective: 1000px; /* Effet 3D */
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Le retournement au survol */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Cache le dos quand on voit l'avant */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 15px;
+    border: 2px solid var(--rose-clair);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Style de l'avant de la carte */
+.flip-card-front {
+    background-color: white;
+    color: var(--marron-texte);
+}
+
+/* Style du dos de la carte (Contenu détaillé) */
+.flip-card-back {
+    background-color: var(--rose-clair);
+    color: var(--marron-texte);
+    transform: rotateY(180deg);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.flip-card-back p {
+    margin: 0;
+}
