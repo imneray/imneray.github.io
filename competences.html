@@ -29,42 +29,77 @@
 
     <main class="page-content-bts">
         <h1 class="titre-principal-accueil">Mes Compétences</h1>
-        <p class="sous-titre-accueil">Passez la souris sur une carte pour voir les détails techniques.</p>
+        <p class="sous-titre-accueil">Survolez les cartes pour découvrir mon expertise technique.</p>
 
         <div class="flip-container">
             
             <div class="flip-card">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front">💻 Systèmes</div>
-                    <div class="flip-card-back">Windows Server 2022, Linux (Debian/Ubuntu), Active Directory</div>
+                    <div class="flip-card-front">🖥️ Systèmes</div>
+                    <div class="flip-card-back">Windows Server, Linux, AD, GPO, DNS, DHCP</div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">🌐 Réseaux</div>
-                    <div class="flip-card-back">Configuration Switch, VLAN, Routage, Services DNS/DHCP</div>
+                    <div class="flip-card-back">STP, VLAN, Routage, HSRP, NAT/PAT, QoS, VPN, Pare-feux</div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">☁️ Virtualisation</div>
-                    <div class="flip-card-back">VMware Workstation, Proxmox, VirtualBox</div>
+                    <div class="flip-card-back">Hyper-V, Proxmox, Gestion VM, Templates, Snapshots</div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front">💾 Sauvegarde</div>
-                    <div class="flip-card-back">Veeam Backup, Stratégies de réplication</div>
+                    <div class="flip-card-front">💾 Sauvegarde & PRA</div>
+                    <div class="flip-card-back">Stratégies 3-2-1, Politiques de sauvegarde, Plan de Reprise d'Activité</div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">📊 Supervision</div>
+                    <div class="flip-card-back">Prometheus, Grafana, Zabbix</div>
                 </div>
             </div>
 
             <div class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">🛡️ Sécurité</div>
-                    <div class="flip-card-back">Gestion des pare-feu, Protocoles sécurisés, GLPI</div>
+                    <div class="flip-card-back">Durcissement, MFA, Droits, Vulnérabilités, Logs, RGPD</div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">🤖 Automatisation</div>
+                    <div class="flip-card-back">Scripts PowerShell et Bash (Maintenance, Déploiement), Ansible, fog </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">☁️ Cloud & Outils</div>
+                    <div class="flip-card-back">Microsoft 365, Azure AD, Outils collaboratifs</div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">📝 Documentation</div>
+                    <div class="flip-card-back">Rédaction de procédures, Schémas Visio/Draw.io</div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">🎧 Support & ITIL</div>
+                    <div class="flip-card-back">GLPI, Ticketing N1/N2/N3, Proximité, Gestion incidents</div>
                 </div>
             </div>
 
@@ -73,13 +108,10 @@
 
     <script>
         const btn = document.getElementById('theme-toggle');
-        const body = document.body;
-
         btn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            btn.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            document.body.classList.toggle('dark-mode');
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         });
     </script>
-
 </body>
 </html>
