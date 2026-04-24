@@ -1,4 +1,4 @@
-/* --- CONFIGURATION --- */
+/* --- CONFIGURATION DES COULEURS --- */
 :root {
     --fond-creme: #fffaf0;
     --rose-clair: #fce1e4;
@@ -12,44 +12,99 @@ body {
     color: var(--marron-texte);
     font-family: 'Quicksand', sans-serif;
     margin: 0;
+    padding: 0;
 }
 
-/* --- TITRES ET SOUS-TITRES --- */
-.titre-principal {
+/* --- HEADER SIGNATURE --- */
+.header-top {
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+    background-color: var(--blanc);
+}
+
+.logo-signature {
     font-family: 'Pacifico', cursive;
-    font-size: 3.5rem;
-    text-align: center;
-    margin: 0; /* On enlève les marges par défaut */
-}
-
-.sous-titre {
-    text-align: center;
     font-size: 1.2rem;
-    color: #666;
-    margin-top: 10px; /* Colle le sous-titre juste sous le titre */
+    border: 2px solid var(--rose-clair);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
 }
 
-/* --- MISE EN PAGE ACCUEIL (CENTRE COMPLET) --- */
-.page-accueil {
+.signature-texte {
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- NAVIGATION (ONGLETS EN HAUT) --- */
+nav {
+    background: var(--blanc);
+    padding: 10px 0;
+    border-bottom: 2px dashed var(--rose-clair);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--marron-texte);
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--rose-fonce);
+    color: white;
+}
+
+/* --- ACCUEIL (STRUCTURE CENTRÉE) --- */
+.page-content-accueil {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 80vh; /* Centre le bloc titre/sous-titre au milieu de l'image */
+    min-height: 75vh; /* Centre verticalement par rapport à l'écran */
     text-align: center;
 }
 
-/* --- MISE EN PAGE AUTRES PAGES (TITRE EN HAUT) --- */
-.page-content {
-    padding-top: 50px; /* Donne de l'espace en haut de page */
+.titre-principal-accueil {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
 }
 
-/* --- GRILLE PROJETS --- */
+.sous-titre-accueil {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 0;
+}
+
+/* --- PAGE PROJETS (ALIGNEMENT EN LIGNE) --- */
 .projets-mini-grid {
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    gap: 25px;
     flex-wrap: wrap;
+    gap: 25px;
     padding: 40px 20px;
 }
 
@@ -60,21 +115,22 @@ body {
     border-radius: 15px;
     border: 1.5px solid var(--rose-clair);
     text-align: center;
+    transition: 0.3s ease;
 }
 
 .mini-preview {
     width: 100%;
     height: 150px;
+    background: #f9f9f9;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 12px;
-    border: 1px solid #eee;
 }
 
-.mini-preview embed { width: 100%; height: 100%; }
-
-/* --- BOUTONS (ROSE AU SURVOL) --- */
-.mini-actions { display: flex; justify-content: center; gap: 10px; }
+.mini-preview embed {
+    width: 100%;
+    height: 100%;
+}
 
 .btn-mini {
     padding: 7px 15px;
@@ -83,6 +139,8 @@ body {
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+    border: none;
+    display: inline-block;
 }
 
 .btn-voir { background: #eeeeee; color: #666; }
@@ -93,50 +151,32 @@ body {
     color: white !important;
 }
 
-/* --- RESTE DU CSS (BTS / COMPÉTENCES) --- */
-/* Garde tes styles précédents pour les tableaux et flip-cards ici */
-
-/* --- SECTION BTS (TABLEAUX) --- */
-.tables-container {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 20px;
-}
-
+/* --- TABLEAUX BTS --- */
 .bts-table {
-    width: 100%;
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
     background: var(--blanc);
     border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 25px;
     border-collapse: collapse;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
-.bts-table th {
-    background-color: var(--rose-clair);
-    padding: 15px;
-    font-size: 1.1rem;
-    color: var(--marron-texte);
-}
+.bts-table th { background-color: var(--rose-clair); padding: 15px; }
+.bts-table td { padding: 20px; line-height: 1.6; }
 
-.bts-table td {
-    padding: 20px;
-    line-height: 1.6;
-}
-
-/* --- SECTION COMPÉTENCES (FLIP CARDS) --- */
+/* --- COMPÉTENCES (FLIP CARDS) --- */
 .flip-container {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    padding: 40px;
+    padding: 20px;
 }
 
 .flip-card {
-    width: 240px;
-    height: 180px;
+    width: 200px;
+    height: 150px;
     perspective: 1000px;
 }
 
@@ -148,27 +188,19 @@ body {
     transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
-    border: 2px solid var(--rose-clair);
-    padding: 15px;
+    border: 1px solid var(--rose-clair);
 }
 
-.flip-card-front { background: var(--blanc); font-weight: bold; }
-.flip-card-back {
-    background: var(--rose-clair);
-    transform: rotateY(180deg);
-    text-align: center;
-    font-size: 0.85rem;
-}
+.flip-card-front { background: white; font-weight: bold; }
+.flip-card-back { background: var(--rose-clair); transform: rotateY(180deg); text-align: center; font-size: 0.9rem; }
