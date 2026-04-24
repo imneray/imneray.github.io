@@ -12,6 +12,7 @@
     <header class="header-top">
         <div class="logo-signature">I.M</div>
         <span class="signature-texte">PORTFOLIO D'IMANE</span>
+        <button id="theme-toggle" class="theme-btn">🌙</button>
     </header>
 
     <nav>
@@ -67,6 +68,19 @@
         </div> <p class="sous-titre-accueil">Aperçu de mes travaux techniques</p>
 
     </main>
+    <script>
+        const btn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️';
+            } else {
+                btn.textContent = '🌙';
+            }
+        });
+    </script>
 
 </body>
 </html>
