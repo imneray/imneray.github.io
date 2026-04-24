@@ -1,11 +1,13 @@
-/* --- CONFIGURATION GÉNÉRALE --- */
+/* --- CONFIGURATION DES COULEURS & POLICES --- */
 :root {
     --fond-creme: #fffaf0;
     --rose-clair: #fce1e4;
-    --rose-fonce: #f8c2c7;
+    --rose-fonce: #f8c2c7; /* Ton rose pour le survol */
     --marron-texte: #5e4433;
+    --blanc: #ffffff;
 }
 
+/* --- BASE --- */
 body {
     background-color: var(--fond-creme);
     color: var(--marron-texte);
@@ -14,36 +16,38 @@ body {
     padding: 0;
 }
 
-/* --- SIGNATURE I.M (HAUT DE PAGE) --- */
+/* --- SIGNATURE I.M (HAUT DE CHAQUE PAGE) --- */
 .header-top {
     display: flex;
     align-items: center;
-    padding: 10px 30px;
-    background-color: white;
+    padding: 10px 25px;
+    background-color: var(--blanc);
 }
 
 .logo-signature {
     font-family: 'Pacifico', cursive;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+    color: var(--marron-texte);
     border: 2px solid var(--rose-clair);
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
+    margin-right: 12px;
 }
 
 .signature-texte {
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* --- NAVIGATION (ONGLETS) --- */
 nav {
-    background: white;
+    background: var(--blanc);
     padding: 10px 0;
     border-bottom: 2px dashed var(--rose-clair);
     position: sticky;
@@ -64,50 +68,55 @@ nav a {
     text-decoration: none;
     color: var(--marron-texte);
     font-weight: 600;
-    padding: 10px 18px;
+    padding: 8px 16px;
     border-radius: 20px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
+/* Effet rose foncé sur les onglets du haut */
 nav a:hover {
     background-color: var(--rose-fonce);
-    color: white;
+    color: var(--blanc);
 }
 
 /* --- TITRES --- */
 .titre-principal {
     font-family: 'Pacifico', cursive;
-    font-size: 3rem;
+    font-size: 2.8rem;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .sous-titre {
     text-align: center;
-    margin-bottom: 40px;
     font-size: 1.1rem;
+    margin-bottom: 30px;
 }
 
-/* --- COMPOSANT : MINI CARTES PROJETS (EN LIGNE) --- */
-.projets-mini-grid {
+/* --- PAGE PROJETS : ALIGNEMENT EN LIGNE --- */
+.projets-container {
     display: flex;
+    flex-direction: row; /* Aligne les projets sur une ligne */
     justify-content: center;
+    flex-wrap: wrap; /* Passe à la ligne si l'écran est petit */
     gap: 20px;
-    flex-wrap: wrap;
     padding: 20px;
 }
 
 .mini-card {
-    background: white;
-    width: 200px;
+    background: var(--blanc);
+    width: 200px; /* Taille miniature */
     padding: 15px;
-    border-radius: 20px;
+    border-radius: 15px;
     border: 1.5px solid var(--rose-clair);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     text-align: center;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
 }
 
-.mini-card:hover { transform: translateY(-5px); }
+.mini-card:hover {
+    transform: translateY(-5px);
+}
 
 .mini-preview {
     width: 100%;
@@ -116,30 +125,56 @@ nav a:hover {
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 10px;
+    border: 1px solid #eee;
 }
 
-.mini-preview embed { width: 100%; height: 100%; pointer-events: none; }
+.mini-preview embed {
+    width: 100%;
+    height: 100%;
+}
+
+.mini-title {
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+/* --- BOUTONS VOIR ET DOC (EFFET ROSE FONCÉ) --- */
+.mini-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
 
 .btn-mini {
     padding: 6px 12px;
     font-size: 0.75rem;
-    text-decoration: none;
     border-radius: 15px;
-    transition: 0.3s;
-    display: inline-block;
-    margin: 2px;
+    text-decoration: none;
     font-weight: bold;
+    transition: 0.3s ease;
+    border: none;
+    display: inline-block;
 }
 
-.btn-voir { background: #f1f1f1; color: #666; }
-.btn-doc { background: var(--rose-clair); color: var(--marron-texte); }
+.btn-voir {
+    background-color: #eeeeee;
+    color: #666;
+}
 
+.btn-doc {
+    background-color: var(--rose-clair);
+    color: var(--marron-texte);
+}
+
+/* Quand on passe sur n'importe quel bouton de projet */
 .btn-mini:hover {
     background-color: var(--rose-fonce) !important;
-    color: white !important;
+    color: var(--blanc) !important;
+    cursor: pointer;
 }
 
-/* --- COMPOSANT : TABLEAUX BTS --- */
+/* --- TABLEAUX BTS (SLAM / SISR) --- */
 .tables-container {
     max-width: 800px;
     margin: 0 auto;
@@ -148,21 +183,68 @@ nav a:hover {
 
 .bts-table {
     width: 100%;
-    background: white;
+    background: var(--blanc);
     border-radius: 15px;
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     border-collapse: collapse;
 }
 
-.bts-table th { background: var(--rose-clair); padding: 15px; font-size: 1.2rem; }
-.bts-table td { padding: 20px; text-align: left; line-height: 1.5; }
+.bts-table th {
+    background-color: var(--rose-clair);
+    padding: 15px;
+    font-size: 1.1rem;
+}
 
-/* --- COMPOSANT : FLIP CARDS COMPÉTENCES --- */
-.flip-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 40px; }
-.flip-card { width: 250px; height: 180px; perspective: 1000px; }
-.flip-card-inner { position: relative; width: 100%; height: 100%; transition: 0.6s; transform-style: preserve-3d; }
-.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border-radius: 20px; border: 2px solid var(--rose-clair); padding: 20px; }
-.flip-card-front { background: white; font-weight: bold; }
-.flip-card-back { background: var(--rose-clair); transform: rotateY(180deg); text-align: center; font-size: 0.9rem; }
+.bts-table td {
+    padding: 20px;
+    line-height: 1.5;
+}
+
+/* --- COMPÉTENCES (FLIP CARDS) --- */
+.flip-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+
+.flip-card {
+    width: 240px;
+    height: 180px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px solid var(--rose-clair);
+    padding: 15px;
+}
+
+.flip-card-front { background: var(--blanc); font-weight: bold; }
+.flip-card-back {
+    background: var(--rose-clair);
+    transform: rotateY(180deg);
+    text-align: center;
+    font-size: 0.85rem;
+}
