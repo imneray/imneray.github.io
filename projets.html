@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mes Projets - Imane</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets - Portfolio Imane</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -21,33 +22,32 @@
             <li><a href="competences.html">Compétences</a></li>
             <li><a href="cv.html">Mon CV</a></li>
             <li><a href="stage.html">Stage</a></li>
+            <li><a href="veille.html">Veille</a></li>
         </ul>
     </nav>
 
     <main class="page-content">
         <h1 class="titre-principal">Mes Projets</h1>
-        
+        <p class="sous-titre">Découvrez mes réalisations et documentations techniques</p>
+
         <div class="projets-grid">
             
-            <div class="projet-card">
-                <h3>Documentation sur un serveur Active Directory Windows 2022</h3>
-                <p>Ce projet porte sur la configuration d'un serveur local.</p>
+            <div class="projet-card viewer-card">
+                <h3>Documentation : Serveur Active Directory 2022</h3>
+                <p>Installation, configuration du domaine et gestion des utilisateurs.</p>
                 
-                <a href="serveur_ad.pdf" target="_blank" download="Documentation_serveur_active_directory" class="btn-download">
-                    📄 Télécharger & Voir le Doc
-                </a>
+                <div class="pdf-viewer">
+                    <iframe src="serveur_ad.pdf" width="100%" height="600px"></iframe>
+                </div>
+
+                <div class="projet-actions">
+                    <a href="serveur_ad.pdf" download="Documentation_AD_Imane.pdf" class="btn-download">
+                        📥 Télécharger la documentation (PDF)
+                    </a>
+                </div>
             </div>
 
-            <div class="projet-card">
-                <h3>Documentation Technique 2</h3>
-                <p>Développement d'une base de données SQL.</p>
-                
-                <a href="votre_fichier_2.pdf" target="_blank" download="Documentation_Projet2" class="btn-download">
-                    📄 Télécharger & Voir le Doc
-                </a>
             </div>
-
-        </div>
     </main>
 
 </body>
