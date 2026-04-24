@@ -1,8 +1,8 @@
-/* --- 1. CONFIGURATION GÉNÉRALE --- */
+/* --- CONFIGURATION DES COULEURS & POLICES --- */
 :root {
     --fond-creme: #fffaf0;
     --rose-clair: #fce1e4;
-    --rose-fonce: #f8c2c7; /* Rose pour le survol */
+    --rose-fonce: #f8c2c7;
     --marron-texte: #5e4433;
     --blanc: #ffffff;
 }
@@ -15,7 +15,7 @@ body {
     padding: 0;
 }
 
-/* --- 2. SIGNATURE I.M (HAUT DE PAGE) --- */
+/* --- SIGNATURE I.M (HAUT DE PAGE) --- */
 .header-top {
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@ body {
     text-transform: uppercase;
 }
 
-/* --- 3. NAVIGATION (ONGLETS) --- */
+/* --- NAVIGATION (ONGLETS) --- */
 nav {
     background: var(--blanc);
     padding: 10px 0;
@@ -77,7 +77,7 @@ nav a:hover {
     color: var(--blanc);
 }
 
-/* --- 4. TITRES & TEXTES --- */
+/* --- TITRES --- */
 .titre-principal {
     font-family: 'Pacifico', cursive;
     font-size: 2.8rem;
@@ -85,13 +85,7 @@ nav a:hover {
     margin-top: 30px;
 }
 
-.sous-titre {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-}
-
-/* --- 5. PAGE PROJETS : ALIGNEMENT EN LIGNE (PARFAIT) --- */
+/* --- SECTION PROJETS (VERROUILLÉE) --- */
 .projets-mini-grid {
     display: flex;
     flex-direction: row;
@@ -108,7 +102,6 @@ nav a:hover {
     border-radius: 15px;
     border: 1.5px solid var(--rose-clair);
     text-align: center;
-    transition: 0.3s;
 }
 
 .mini-preview {
@@ -121,22 +114,9 @@ nav a:hover {
     border: 1px solid #eee;
 }
 
-.mini-preview embed {
-    width: 100%;
-    height: 100%;
-}
+.mini-preview embed { width: 100%; height: 100%; }
 
-.mini-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-.mini-actions {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
+.mini-actions { display: flex; justify-content: center; gap: 10px; }
 
 .btn-mini {
     padding: 7px 15px;
@@ -145,23 +125,20 @@ nav a:hover {
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s ease;
-    border: none;
 }
 
 .btn-voir { background: #eeeeee; color: #666; }
 .btn-doc { background: var(--rose-clair); color: var(--marron-texte); }
 
-/* Effet Rose Foncé au survol des boutons projets */
 .btn-mini:hover {
     background-color: var(--rose-fonce) !important;
     color: var(--blanc) !important;
-    cursor: pointer;
 }
 
-/* --- 6. TABLEAUX BTS (SLAM / SISR) --- */
+/* --- SECTION BTS (TABLEAUX) --- */
 .tables-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 30px auto;
     padding: 20px;
 }
 
@@ -179,7 +156,7 @@ nav a:hover {
     background-color: var(--rose-clair);
     padding: 15px;
     font-size: 1.1rem;
-    font-weight: 600;
+    color: var(--marron-texte);
 }
 
 .bts-table td {
@@ -187,7 +164,7 @@ nav a:hover {
     line-height: 1.6;
 }
 
-/* --- 7. COMPÉTENCES (FLIP CARDS) --- */
+/* --- SECTION COMPÉTENCES (FLIP CARDS) --- */
 .flip-container {
     display: flex;
     justify-content: center;
@@ -227,12 +204,7 @@ nav a:hover {
     padding: 15px;
 }
 
-.flip-card-front { 
-    background: var(--blanc); 
-    font-weight: bold; 
-    font-size: 1.1rem;
-}
-
+.flip-card-front { background: var(--blanc); font-weight: bold; }
 .flip-card-back {
     background: var(--rose-clair);
     transform: rotateY(180deg);
