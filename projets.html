@@ -2,13 +2,11 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Projets - Imane</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header class="header-top">
         <div class="logo-signature">I.M</div>
         <span class="signature-texte">PORTFOLIO D'IMANE</span>
@@ -25,40 +23,18 @@
         </ul>
     </nav>
 
-    <main style="padding: 40px 20px; text-align: center;">
-        <h1 style="font-family: 'Pacifico', cursive; font-size: 3rem;">Mes Projets</h1>
-        <p>Aperçu de mes travaux techniques</p>
-
+    <main>
+        <h1 class="titre-principal">Mes Projets</h1>
         <div class="projets-mini-grid">
-            
-            <div class="projet-mini-card">
-                <div class="mini-viewer">
-                    <iframe src="serveur_ad.pdf#toolbar=0"></iframe>
-                </div>
-                <div class="mini-info">
-                    <h3>Serveur AD 2022</h3>
-                    <div class="mini-actions">
-                        <a href="serveur_ad.pdf" target="_blank" class="btn-mini">👁️ Voir</a>
-                        <a href="serveur_ad.pdf" download class="btn-mini">📥 Doc</a>
-                    </div>
+            <div class="mini-card">
+                <div class="mini-preview"><embed src="doc1.pdf"></div>
+                <p>Serveur AD 2022</p>
+                <div class="mini-actions">
+                    <a href="doc1.pdf" target="_blank" class="btn-mini btn-voir">👁️ Voir</a>
+                    <a href="doc1.pdf" download class="btn-mini btn-doc">📄 Doc</a>
                 </div>
             </div>
-
-            <div class="projet-mini-card">
-                <div class="mini-viewer">
-                    <iframe src="nom_du_fichier_2.pdf#toolbar=0"></iframe>
-                </div>
-                <div class="mini-info">
-                    <h3>Installation GLPI</h3>
-                    <div class="mini-actions">
-                        <a href="nom_du_fichier_2.pdf" target="_blank" class="btn-mini">👁️ Voir</a>
-                        <a href="nom_du_fichier_2.pdf" download class="btn-mini">📥 Doc</a>
-                    </div>
-                </div>
-            </div>
-
             </div>
     </main>
-
 </body>
 </html>
