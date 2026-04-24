@@ -1,1 +1,81 @@
-body
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Veille Informatique - Imane</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header-top">
+        <div class="logo-signature">I.M</div>
+        <span class="signature-texte">PORTFOLIO D'IMANE</span>
+        <button id="theme-toggle" class="theme-btn">🌙</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="projets.html">Projets</a></li>
+            <li><a href="competences.html">Compétences</a></li>
+            <li><a href="cv.html">Mon CV</a></li>
+            <li><a href="stage.html">Stage</a></li>
+            <li><a href="veille.html">Veille informatique</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-content-bts">
+        <h1 class="titre-principal-accueil">Ma Veille Technologique</h1>
+        
+        <div class="bts-option-block" style="border: 2px solid var(--rose-fonce);">
+            <h3 style="font-family: 'Pacifico', cursive;">📧 Alertes Automatisées</h3>
+            <p>Veille active envoyée quotidiennement sur <strong>detpimane@gmail.com</strong> via Google Alerts.</p>
+        </div>
+
+        <div class="bts-option-block">
+            <h3 style="font-family: 'Pacifico', cursive;">🔎 Recherche Ciblée</h3>
+            <div class="search-container">
+                <input type="text" id="veille-search" placeholder="Rechercher un sujet de veille...">
+                <button onclick="searchVeille()" class="btn-mini btn-doc">Go</button>
+            </div>
+        </div>
+
+        <div class="bts-option-block">
+            <h3 style="font-family: 'Pacifico', cursive;">📅 Calendrier d'Archives</h3>
+            <div class="calendar-wrapper">
+                <div class="calendar-header"><button onclick="changeMonth(-1)">❮</button><h4 id="monthDisplay"></h4><button onclick="changeMonth(1)">❯</button></div>
+                <div class="calendar-days"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
+                <div id="calendarGrid" class="calendar-grid"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script-nuit.js"></script>
+    <script>
+        // Scripts Spécifiques Veille
+        function searchVeille() {
+            const query = document.getElementById('veille-search').value;
+            window.open(`https://www.google.com/search?q=${query}+site:lemondeinformatique.fr+OR+site:zdnet.fr`, '_blank');
+        }
+
+        const grid = document.getElementById('calendarGrid');
+        const monthDisplay = document.getElementById('monthDisplay');
+        let currentTopDate = new Date();
+
+        function renderCalendar() {
+            grid.innerHTML = '';
+            monthDisplay.innerText = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(currentTopDate);
+            const daysInMonth = new Date(currentTopDate.getFullYear(), currentTopDate.getMonth() + 1, 0).getDate();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayEl = document.createElement('div');
+                dayEl.innerText = day;
+                dayEl.onclick = () => window.open(`https://www.google.com/search?q=datacenter+souveraineté&tbs=cdr:1,cd_min:${currentTopDate.getMonth()+1}/${day}/${currentTopDate.getFullYear()}&tbm=nws`);
+                grid.appendChild(dayEl);
+            }
+        }
+        function changeMonth(d) { currentTopDate.setMonth(currentTopDate.getMonth() + d); renderCalendar(); }
+        renderCalendar();
+    </script>
+</body>
+</html>
