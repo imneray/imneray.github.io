@@ -209,33 +209,31 @@ nav a:hover {
    STYLE SPÉCIFIQUE À LA PAGE VEILLE
    ============================================================ */
 
-/* --- BLOC PROBLÉMATIQUE --- */
+/* --- Boîte de la problématique --- */
 .problematique-box {
     background: var(--rose-clair);
     border-radius: 20px;
     padding: 25px;
     margin-bottom: 30px;
     border-left: 8px solid var(--rose-fonce);
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 body.dark-mode .problematique-box {
     background: #4a3537;
     border-left-color: var(--rose-clair);
-    color: white;
 }
 
-/* --- RECHERCHE ET ANIMATION DE DÉFILEMENT --- */
+/* --- Système de recherche et suggestions --- */
 .search-container {
     display: flex;
     gap: 10px;
     justify-content: center;
-    margin-top: 15px;
+    position: relative;
 }
 
 #veille-search {
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 25px;
     border: 2px solid var(--rose-clair);
     width: 70%;
@@ -245,20 +243,49 @@ body.dark-mode .problematique-box {
     transition: 0.3s;
 }
 
-body.dark-mode #veille-search {
-    background: #3d3d3d;
-    color: white;
-    border-color: #555;
+/* Liste qui apparaît quand on tape un mot */
+.suggestions-list {
+    position: absolute;
+    top: 55px; /* Juste sous la barre */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: none; /* Caché par défaut */
+    border: 1px solid var(--rose-clair);
+    overflow: hidden;
 }
 
-/* Barre de chargement animée (effet défilement) */
+body.dark-mode .suggestions-list {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+.suggestion-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.suggestion-item:hover {
+    background: var(--rose-clair);
+    color: var(--marron-texte);
+}
+
+/* --- Animation de défilement (Loading) --- */
 .loading-bar {
     width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, var(--fond-creme) 25%, var(--rose-fonce) 50%, var(--fond-creme) 75%);
+    height: 4px;
+    background: linear-gradient(90deg, transparent 25%, var(--rose-fonce) 50%, transparent 75%);
     background-size: 200% 100%;
-    animation: loading 1.2s infinite linear;
-    border-radius: 10px;
+    animation: loading 1s infinite linear;
+    border-radius: 2px;
     margin-top: 15px;
 }
 
@@ -275,12 +302,10 @@ body.dark-mode #veille-search {
     border-radius: 20px;
     padding: 20px;
     border: 2px solid var(--rose-clair);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 body.dark-mode .calendar-wrapper {
     background: #2d2d2d;
-    border-color: #444;
 }
 
 .calendar-header {
@@ -290,61 +315,6 @@ body.dark-mode .calendar-wrapper {
     margin-bottom: 15px;
 }
 
-.calendar-header h4 {
-    margin: 0;
-    text-transform: capitalize;
-    font-family: 'Quicksand', sans-serif;
-    color: var(--marron-texte);
-}
-
-body.dark-mode .calendar-header h4 { color: white; }
-
-/* En-tête des jours (Lun, Mar...) */
-.calendar-days-header {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    font-weight: bold;
-    font-size: 0.75rem;
-    color: var(--rose-fonce);
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-/* Grille des numéros */
-.calendar-grid {
-    display: grid !important;
-    grid-template-columns: repeat(7, 1fr); /* 7 colonnes pour faire le carré */
-    gap: 8px;
-}
-
-/* Chaque case du jour */
-.calendar-day-cell {
-    aspect-ratio: 1 / 1; /* Force le carré parfait */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background: rgba(252, 225, 228, 0.3); /* Rose très léger */
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.calendar-day-cell:hover {
-    background: var(--rose-fonce);
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-}
-
-/* Cases vides pour l'alignement */
-.calendar-day-empty {
-    background: transparent;
-    cursor: default;
-}
-
-/* Boutons de navigation calendrier */
 .btn-nav-cal {
     background: var(--rose-clair);
     border: none;
@@ -354,9 +324,6 @@ body.dark-mode .calendar-header h4 { color: white; }
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .btn-nav-cal:hover {
@@ -364,17 +331,40 @@ body.dark-mode .calendar-header h4 { color: white; }
     color: white;
 }
 
-/* --- BLOCS D'INFO (AXES DE VEILLE) --- */
-.bts-option-block h3 {
-    border-bottom: 2px dashed var(--rose-clair);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    color: var(--marron-texte);
+.calendar-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: var(--rose-fonce);
+    margin-bottom: 10px;
 }
 
-body.dark-mode .bts-option-block h3 { color: white; }
+.calendar-grid {
+    display: grid !important; /* Force la grille */
+    grid-template-columns: repeat(7, 1fr); /* 7 jours de la semaine */
+    gap: 8px;
+}
 
-.bts-option-block p {
-    line-height: 1.6;
-    font-size: 1rem;
+.calendar-day-cell {
+    aspect-ratio: 1 / 1; /* Force les cases à être carrées */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(252, 225, 228, 0.3);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.calendar-day-cell:hover {
+    background: var(--rose-fonce);
+    color: white;
+    transform: scale(1.15);
+    z-index: 10;
+}
+
+.calendar-day-empty {
+    background: transparent;
 }
