@@ -2,11 +2,20 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Le Portfolio d'Imane ★!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio d'Imane</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <header class="header-top">
+        <div class="logo-signature">I.M</div>
+        <span class="signature-texte">PORTFOLIO D'IMANE</span>
+        
+        <button id="theme-toggle" class="theme-btn">🌙</button>
+    </header>
+
     <nav>
         <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -15,12 +24,27 @@
             <li><a href="competences.html">Compétences</a></li>
             <li><a href="cv.html">Mon CV</a></li>
             <li><a href="stage.html">Stage</a></li>
-          <li><a href="stage.html">Veille informatique</a></li>
+            <li><a href="veille.html">Veille informatique</a></li>
         </ul>
     </nav>
-<main class="page-accueil">
-    <h1 class="titre-principal">Le Portfolio d'Imane ★!</h1>
-    <p class="sous-titre">Étudiante en BTS SIO | Promo 2024-2026</p>
-</main>
+
+    <main class="page-content-accueil">
+        <h1 class="titre-principal-accueil">Le Portfolio d'Imane ★!</h1>
+        <p class="sous-titre-accueil">Étudiante en BTS SIO | Promo 2024-2026</p>
+    </main>
+
+    <script>
+        const btn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                btn.textContent = '☀️';
+            } else {
+                btn.textContent = '🌙';
+            }
+        });
+    </script>
 </body>
 </html>
