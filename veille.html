@@ -32,62 +32,48 @@
 
         <div class="problematique-box">
             <h2 style="font-family: 'Pacifico', cursive; margin-top: 0;">Ma Problématique</h2>
-            <p style="font-size: 1.4rem; font-weight: 600; line-height: 1.4;">
+            <p style="font-size: 1.3rem; font-weight: 600;">
                 « Comment les tensions géopolitiques autour des Data Centers influencent-elles les stratégies, les risques et les obligations des entreprises ? »
             </p>
         </div>
 
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%;">
-            
             <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0;">
-                <h3 style="margin-top:0;">📧 Automatisation</h3>
-                <p>Alertes configurées sur <strong>detpimane@gmail.com</strong> pour une réception en temps réel des flux mondiaux.</p>
+                <h3>📧 Automatisation</h3>
+                <p>Alertes configurées sur <strong>detpimane@gmail.com</strong> pour une réception en temps réel.</p>
                 <div class="btn-mini btn-doc" style="display:inline-block;">Google Alerts Actif</div>
             </div>
 
             <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0;">
-                <h3 style="margin-top:0;">🔎 Recherche Ciblée</h3>
-                <div class="search-container" style="margin: 0;">
+                <h3>🔎 Recherche Ciblée</h3>
+                <div class="search-container">
                     <input type="text" id="veille-search" placeholder="Cloud Act, Souveraineté...">
-                    <button onclick="searchVeille()" class="btn-mini btn-doc">Go</button>
+                    <button onclick="searchWithAnimation()" class="btn-mini btn-doc">Go</button>
                 </div>
+                <div id="search-status"></div>
             </div>
         </div>
 
         <div class="bts-option-block">
             <h3>📅 Archives de Veille Dynamiques</h3>
-            <p>Sélectionnez une date pour consulter l'état des tensions et les publications à ce moment précis.</p>
+            <p>Sélectionnez une date pour consulter les publications mondiales à ce moment précis.</p>
             <div class="calendar-wrapper">
                 <div class="calendar-header">
-                    <button onclick="changeMonth(-1)">❮</button>
+                    <button onclick="changeMonth(-1)" class="btn-nav-cal">❮</button>
                     <h4 id="monthDisplay"></h4>
-                    <button onclick="changeMonth(1)">❯</button>
+                    <button onclick="changeMonth(1)" class="btn-nav-cal">❯</button>
                 </div>
-                <div class="calendar-days">
-                    <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+                <div class="calendar-days-header">
+                    <div>Lun</div><div>Mar</div><div>Mer</div><div>Jeu</div><div>Ven</div><div>Sam</div><div>Dim</div>
                 </div>
                 <div id="calendarGrid" class="calendar-grid"></div>
             </div>
         </div>
 
         <div class="bts-option-block">
-            <h3>⚖️ Axe Juridique : Souveraineté des données</h3>
-            <p>Conflit de lois (Cloud Act vs RGPD). Exemple : L'affaire <i>Microsoft Ireland</i>.</p>
-            <p><strong>Impact :</strong> Obligation pour les entreprises de choisir des hébergeurs souverains.</p>
+            <h3>⚖️ Juridique : Souveraineté des données</h3>
+            <p>Impact : Obligation pour les entreprises de choisir des hébergeurs souverains face au Cloud Act.</p>
         </div>
-
-        <div class="bts-option-block">
-            <h3>🌱 Axe Environnemental : Ressources & Énergie</h3>
-            <p>Tensions sur l'eau et l'électricité. Exemple : Amazon en Oregon.</p>
-            <p><strong>Impact :</strong> Risques de rupture de service et dégradation de l'image de marque.</p>
-        </div>
-
-        <div class="bts-option-block">
-            <h3>🛡️ Axe Infrastructure : Sécurité Physique</h3>
-            <p>Sabotage de câbles sous-marins et vulnérabilité des hubs. Exemple : Mer Baltique 2026.</p>
-            <p><strong>Impact :</strong> Nécessité de plans de continuité (PCA) et de diversification des routes.</p>
-        </div>
-
     </main>
 
     <script>
@@ -98,38 +84,44 @@
             btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         });
 
-        // Recherche
-        function searchVeille() {
+        // Animation Recherche
+        function searchWithAnimation() {
+            const status = document.getElementById('search-status');
             const query = document.getElementById('veille-search').value;
-            if(query) window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}+datacenter+geopolitics`, '_blank');
+            if(!query) return;
+            status.innerHTML = '<div class="loading-bar"></div><p style="font-size:0.8rem;">Analyse des sources...</p>';
+            setTimeout(() => {
+                status.innerHTML = '';
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}+datacenter+geopolitics`, '_blank');
+            }, 1000);
         }
 
-        // Calendrier
+        // Calendrier Dynamique
         const grid = document.getElementById('calendarGrid');
         const monthDisplay = document.getElementById('monthDisplay');
         let currentTopDate = new Date();
 
         function renderCalendar() {
             grid.innerHTML = '';
-            monthDisplay.innerText = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(currentTopDate);
             const year = currentTopDate.getFullYear();
             const month = currentTopDate.getMonth();
-            const firstDay = new Date(year, month, 1).getDay();
+            monthDisplay.innerText = new Intl.DateTimeFormat('fr-FR', { month: 'long', year: 'numeric' }).format(currentTopDate);
+
+            let firstDay = new Date(year, month, 1).getDay();
+            firstDay = (firstDay === 0) ? 6 : firstDay - 1; 
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            for (let i = 1; i < (firstDay === 0 ? 7 : firstDay); i++) {
+            for (let i = 0; i < firstDay; i++) {
                 const empty = document.createElement('div');
-                empty.classList.add('empty');
+                empty.className = 'calendar-day-empty';
                 grid.appendChild(empty);
             }
 
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayEl = document.createElement('div');
+                dayEl.className = 'calendar-day-cell';
                 dayEl.innerText = day;
-                dayEl.onclick = () => {
-                    const dateQuery = `tbs=cdr:1,cd_min:${month+1}/${day}/${year},cd_max:${month+1}/${day}/${year}`;
-                    window.open(`https://www.google.com/search?q=datacenter+souveraineté+geopolitique&${dateQuery}&tbm=nws`, '_blank');
-                };
+                dayEl.onclick = () => window.open(`https://www.google.com/search?q=datacenter+geopolitique&tbs=cdr:1,cd_min:${month+1}/${day}/${year}&tbm=nws`, '_blank');
                 grid.appendChild(dayEl);
             }
         }
