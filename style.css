@@ -1,10 +1,9 @@
-/* --- CONFIGURATION --- */
+/* --- CONFIGURATION GÉNÉRALE --- */
 :root {
     --fond-creme: #fffaf0;
     --rose-clair: #fce1e4;
     --rose-fonce: #f8c2c7;
     --marron-texte: #5e4433;
-    --blanc: #ffffff;
 }
 
 body {
@@ -15,38 +14,36 @@ body {
     padding: 0;
 }
 
-/* --- SIGNATURE LOGO I.M (Haut de page) --- */
+/* --- SIGNATURE I.M (HAUT DE PAGE) --- */
 .header-top {
     display: flex;
     align-items: center;
-    padding: 12px 25px;
-    background-color: var(--blanc);
+    padding: 10px 30px;
+    background-color: white;
 }
 
 .logo-signature {
     font-family: 'Pacifico', cursive;
-    font-size: 1.3rem;
-    color: var(--marron-texte);
+    font-size: 1.4rem;
     border: 2px solid var(--rose-clair);
     border-radius: 50%;
-    width: 42px;
-    height: 42px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 12px;
+    margin-right: 15px;
 }
 
 .signature-texte {
     font-weight: 600;
-    font-size: 0.8rem;
-    text-transform: uppercase;
+    font-size: 0.85rem;
     letter-spacing: 1px;
 }
 
 /* --- NAVIGATION (ONGLETS) --- */
 nav {
-    background: var(--blanc);
+    background: white;
     padding: 10px 0;
     border-bottom: 2px dashed var(--rose-clair);
     position: sticky;
@@ -57,7 +54,7 @@ nav {
 nav ul {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 15px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -67,173 +64,105 @@ nav a {
     text-decoration: none;
     color: var(--marron-texte);
     font-weight: 600;
-    padding: 10px 15px;
+    padding: 10px 18px;
     border-radius: 20px;
     transition: 0.3s;
 }
 
 nav a:hover {
     background-color: var(--rose-fonce);
-    color: var(--blanc);
-}
-
-/* --- COMPETENCES --- */
-
-/* Conteneur global du projet (la "carte") */
-.mini-projet-card {
-    background: white;
-    padding: 15px; /* Moins de padding pour gagner de la place */
-    border-radius: 20px;
-    border: 2px solid var(--rose-clair);
-    text-align: center;
-    width: 250px; /* Force une largeur carte beaucoup plus petite */
-    margin: 20px auto; /* Centre la carte avec de l'espace */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* Le titre du projet (Serveur AD 2022) */
-.mini-projet-title {
-    font-size: 1.1rem; /* Plus petit */
-    font-weight: 600;
-    color: var(--marron-texte);
-    margin: 10px 0;
-}
-
-/* L'aperçu du PDF (la vignette) */
-.mini-projet-preview {
-    width: 100px; /* VRAIMENT PETIT (vignette) */
-    height: 140px; /* Proportions vignette portrait */
-    overflow: hidden;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    margin: 10px auto;
-}
-
-/* Si tu utilises une balise <iframe> ou <embed> pour l'aperçu */
-.mini-projet-preview iframe,
-.mini-projet-preview embed {
-    width: 100%;
-    height: 100%;
-    border: none;
-    pointer-events: none; /* Désactive les interactions pour éviter le défilement */
-}
-
-/* Si tu utilises une simple image pour la vignette (plus performant) */
-.mini-projet-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Remplit sans déformer */
-}
-
-/* Conteneur pour les boutons d'action */
-.mini-actions-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-/* Les petits boutons Voir/Doc (basés sur ton image) */
-.mini-btn-action {
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-/* Bouton Voir (Gris clair) */
-.mini-btn-voir {
-    background-color: #f1f1f1;
-    color: #555;
-    border: 1px solid #ddd;
-}
-.mini-btn-voir:hover {
-    background-color: #e5e5e5;
-}
-
-/* Bouton Doc (Rose comme le survol) */
-.mini-btn-doc {
-    background-color: var(--rose-clair);
-    color: var(--marron-texte);
-    border: 1px solid transparent;
-}
-.mini-btn-doc:hover {
-    background-color: var(--rose-fonce);
     color: white;
 }
-/* --- TABLEAUX BTS --- */
+
+/* --- TITRES --- */
+.titre-principal {
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.sous-titre {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* --- COMPOSANT : MINI CARTES PROJETS (EN LIGNE) --- */
+.projets-mini-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.mini-card {
+    background: white;
+    width: 200px;
+    padding: 15px;
+    border-radius: 20px;
+    border: 1.5px solid var(--rose-clair);
+    text-align: center;
+    transition: 0.3s;
+}
+
+.mini-card:hover { transform: translateY(-5px); }
+
+.mini-preview {
+    width: 100%;
+    height: 120px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.mini-preview embed { width: 100%; height: 100%; pointer-events: none; }
+
+.btn-mini {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: 0.3s;
+    display: inline-block;
+    margin: 2px;
+    font-weight: bold;
+}
+
+.btn-voir { background: #f1f1f1; color: #666; }
+.btn-doc { background: var(--rose-clair); color: var(--marron-texte); }
+
+.btn-mini:hover {
+    background-color: var(--rose-fonce) !important;
+    color: white !important;
+}
+
+/* --- COMPOSANT : TABLEAUX BTS --- */
+.tables-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .bts-table {
     width: 100%;
-    background: var(--blanc);
-    border-radius: 20px;
+    background: white;
+    border-radius: 15px;
     overflow: hidden;
     margin-bottom: 30px;
     border-collapse: collapse;
 }
 
-.bts-table th { background: var(--rose-clair); padding: 15px; }
+.bts-table th { background: var(--rose-clair); padding: 15px; font-size: 1.2rem; }
 .bts-table td { padding: 20px; text-align: left; line-height: 1.5; }
-/* --- SECTION COMPÉTENCES --- */
-.flip-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px 0;
-}
 
-.flip-card {
-    width: 250px;
-    height: 180px;
-    perspective: 1000px; /* Effet 3D */
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-/* Le retournement au survol */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden; /* Cache le dos quand on voit l'avant */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20px;
-    padding: 15px;
-    border: 2px solid var(--rose-clair);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* Style de l'avant de la carte */
-.flip-card-front {
-    background-color: white;
-    color: var(--marron-texte);
-}
-
-/* Style du dos de la carte (Contenu détaillé) */
-.flip-card-back {
-    background-color: var(--rose-clair);
-    color: var(--marron-texte);
-    transform: rotateY(180deg);
-    font-size: 0.9rem;
-    line-height: 1.4;
-}
-
-.flip-card-back p {
-    margin: 0;
-}
+/* --- COMPOSANT : FLIP CARDS COMPÉTENCES --- */
+.flip-container { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; padding: 40px; }
+.flip-card { width: 250px; height: 180px; perspective: 1000px; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; transition: 0.6s; transform-style: preserve-3d; }
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border-radius: 20px; border: 2px solid var(--rose-clair); padding: 20px; }
+.flip-card-front { background: white; font-weight: bold; }
+.flip-card-back { background: var(--rose-clair); transform: rotateY(180deg); text-align: center; font-size: 0.9rem; }
