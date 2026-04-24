@@ -1,12 +1,13 @@
-/* --- CONFIGURATION DES COULEURS --- */
+/* --- VARIABLES ET COULEURS --- */
 :root {
-    --fond-creme: #fffaf0;
+    --fond-creme: #fffaf0; /* Ton fond de page actuel */
+    --beige-clair: #f5f5dc; /* Nouveau beige pour les cartes/menus */
     --rose-clair: #fce1e4;
     --rose-fonce: #f8c2c7;
     --marron-texte: #5e4433;
-    --blanc: #ffffff;
 }
 
+/* --- BASE --- */
 body {
     background-color: var(--fond-creme);
     color: var(--marron-texte);
@@ -15,12 +16,12 @@ body {
     padding: 0;
 }
 
-/* --- HEADER SIGNATURE --- */
+/* --- HEADER ET NAVIGATION (ONGLETS) --- */
 .header-top {
     display: flex;
     align-items: center;
     padding: 10px 25px;
-    background-color: var(--blanc);
+    background-color: var(--beige-clair); /* Beige au lieu de blanc */
 }
 
 .logo-signature {
@@ -28,71 +29,53 @@ body {
     font-size: 1.2rem;
     border: 2px solid var(--rose-clair);
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 35px; height: 35px;
+    display: flex; align-items: center; justify-content: center;
     margin-right: 12px;
 }
 
-.signature-texte {
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
-
-/* Barre de navigation */
-.navigation-onglets {
-    background-color: #ffffff; /* Fond blanc propre */
-    padding: 12px 0;
-    border-bottom: 2px dashed #fce1e4; /* Petite ligne rose en pointillés */
+nav {
+    background: var(--beige-clair); /* Beige au lieu de blanc */
+    padding: 15px 0;
+    border-bottom: 2px dashed var(--rose-clair);
     text-align: center;
-    position: sticky; /* Reste en haut quand on scrolle */
-    top: 0;
-    z-index: 1000;
 }
 
-/* Liste des onglets */
-.navigation-onglets ul {
+nav ul {
     display: flex;
     justify-content: center;
-    gap: 20px; /* Espace entre les onglets */
+    gap: 20px;
     list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
 }
 
-/* Style des liens (boutons) */
-.navigation-onglets a {
+nav a {
     text-decoration: none;
-    color: #5e4433; /* Marron foncé */
+    color: var(--marron-texte);
     font-weight: 600;
-    font-size: 0.95rem;
-    padding: 8px 18px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: 0.3s;
 }
 
-/* Effet au survol (devient rose foncé) */
-.navigation-onglets a:hover {
-    background-color: #f8c2c7; /* Rose foncé */
-    color: #ffffff; /* Texte blanc */
+nav a:hover {
+    background-color: var(--rose-fonce);
+    color: white;
 }
-/* --- ACCUEIL (STRUCTURE CENTRÉE) --- */
+
+/* --- STYLE ACCUEIL (CENTRAGE COMPLET) --- */
 .page-content-accueil {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 75vh; /* Centre verticalement par rapport à l'écran */
+    min-height: 75vh;
     text-align: center;
 }
 
 .titre-principal-accueil {
     font-family: 'Pacifico', cursive;
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 10px;
 }
 
@@ -102,52 +85,47 @@ body {
     margin-top: 0;
 }
 
-/* --- PAGE PROJETS (ALIGNEMENT EN LIGNE) --- */
+/* --- STYLE PROJETS (CÔTE À CÔTE) --- */
 .projets-mini-grid {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 25px;
+    gap: 30px;
     padding: 40px 20px;
 }
 
 .mini-card {
-    background: var(--blanc);
-    width: 220px;
-    padding: 15px;
-    border-radius: 15px;
-    border: 1.5px solid var(--rose-clair);
+    background: var(--beige-clair); /* Beige au lieu de blanc */
+    width: 250px;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid var(--rose-clair);
     text-align: center;
-    transition: 0.3s ease;
 }
 
 .mini-preview {
     width: 100%;
-    height: 150px;
-    background: #f9f9f9;
-    border-radius: 10px;
+    height: 180px;
+    background: #ecece0; /* Un beige un peu plus soutenu pour l'aperçu */
+    border-radius: 15px;
     overflow: hidden;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
-.mini-preview embed {
-    width: 100%;
-    height: 100%;
-}
+.mini-preview embed { width: 100%; height: 100%; }
 
+/* --- BOUTONS PROJETS --- */
 .btn-mini {
-    padding: 7px 15px;
-    font-size: 0.8rem;
+    padding: 8px 18px;
     border-radius: 20px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
     border: none;
-    display: inline-block;
 }
 
-.btn-voir { background: #eeeeee; color: #666; }
+.btn-voir { background: #e0e0d1; color: #666; }
 .btn-doc { background: var(--rose-clair); color: var(--marron-texte); }
 
 .btn-mini:hover {
@@ -155,56 +133,48 @@ body {
     color: white !important;
 }
 
-/* --- TABLEAUX BTS --- */
+/* --- STYLE TABLEAUX BTS --- */
 .bts-table {
     width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    background: var(--blanc);
-    border-radius: 15px;
-    border-collapse: collapse;
+    max-width: 900px;
+    margin: 40px auto;
+    background: var(--beige-clair); /* Beige au lieu de blanc */
+    border-radius: 20px;
     overflow: hidden;
+    border-collapse: collapse;
 }
 
-.bts-table th { background-color: var(--rose-clair); padding: 15px; }
-.bts-table td { padding: 20px; line-height: 1.6; }
+.bts-table th { background: var(--rose-clair); padding: 20px; font-size: 1.2rem; }
+.bts-table td { padding: 25px; line-height: 1.7; }
 
-/* --- COMPÉTENCES (FLIP CARDS) --- */
+/* --- COMPÉTENCES (CARTES FLIP) --- */
 .flip-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
     flex-wrap: wrap;
-    padding: 20px;
+    gap: 25px;
+    padding: 40px;
 }
 
-.flip-card {
-    width: 200px;
-    height: 150px;
-    perspective: 1000px;
-}
-
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
+.flip-card { width: 220px; height: 160px; perspective: 1000px; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; transition: 0.6s; transform-style: preserve-3d; }
 .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
 
 .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--rose-clair);
+    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+    border-radius: 20px; display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--rose-clair);
 }
 
-.flip-card-front { background: white; font-weight: bold; }
-.flip-card-back { background: var(--rose-clair); transform: rotateY(180deg); text-align: center; font-size: 0.9rem; }
+.flip-card-front { 
+    background: var(--beige-clair); /* Beige au lieu de blanc */
+    font-weight: bold; 
+    font-size: 1.1rem; 
+}
+
+.flip-card-back { 
+    background: var(--rose-clair); 
+    transform: rotateY(180deg); 
+    text-align: center; 
+    padding: 10px; 
+}
