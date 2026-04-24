@@ -205,3 +205,159 @@ nav a:hover {
     padding: 15px; 
     font-size: 0.9rem;
 }
+
+Voici le code CSS complet pour ta page Veille. J'ai inclus les styles pour la barre de recherche, le calendrier interactif, et les encadrés "Impact Entreprise" pour que tout soit propre en mode jour comme en mode nuit.
+
+Ajoute ce bloc à la fin de ton fichier style.css existant :
+CSS
+
+/* ============================================================
+   STYLE SPÉCIFIQUE À LA PAGE VEILLE
+   ============================================================ */
+
+/* --- Barre de recherche de veille --- */
+.search-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#veille-search {
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid var(--rose-clair);
+    width: 60%;
+    max-width: 400px;
+    outline: none;
+    background: var(--blanc);
+    color: var(--marron-texte);
+    font-family: 'Quicksand', sans-serif;
+}
+
+body.dark-mode #veille-search {
+    background: #3d3d3d;
+    color: white;
+    border-color: #555;
+}
+
+/* --- Calendrier de Veille --- */
+.calendar-wrapper {
+    max-width: 350px;
+    margin: 20px auto;
+    background: var(--blanc);
+    border-radius: 20px;
+    padding: 20px;
+    border: 2px solid var(--rose-clair);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+body.dark-mode .calendar-wrapper {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h4 {
+    margin: 0;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.calendar-header button {
+    background: var(--rose-clair);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.calendar-header button:hover {
+    background: var(--rose-fonce);
+    color: white;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: var(--rose-fonce);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    text-align: center;
+}
+
+.calendar-grid div {
+    padding: 10px 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+    background: rgba(252, 225, 228, 0.2); /* Léger rose */
+}
+
+.calendar-grid div:hover {
+    background: var(--rose-fonce);
+    color: white;
+    transform: scale(1.1);
+}
+
+.calendar-grid .empty {
+    background: transparent;
+    cursor: default;
+}
+
+/* --- Blocs d'impact et liens --- */
+.bts-option-block strong {
+    color: var(--rose-fonce);
+}
+
+body.dark-mode .bts-option-block strong {
+    color: #ffb1b8;
+}
+
+.news-link {
+    display: block;
+    padding: 10px;
+    margin: 5px 0;
+    color: var(--marron-texte);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.news-link:hover {
+    background: var(--rose-clair);
+    padding-left: 20px;
+}
+
+/* Encadré spécial pour la problématique */
+.problematique-box {
+    background: var(--rose-clair);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-left: 8px solid var(--rose-fonce);
+}
+
+body.dark-mode .problematique-box {
+    background: #4a3537;
+    border-left-color: var(--rose-clair);
+}
