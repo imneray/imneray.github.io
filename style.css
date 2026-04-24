@@ -4,27 +4,30 @@
     --rose-clair: #fce1e4;
     --rose-fonce: #f8c2c7; /* Rose plus prononcé pour le survol */
     --marron-texte: #5e4433;
+    --blanc: #ffffff;
 }
 
+/* --- STYLE GÉNÉRAL --- */
 body {
     background-color: var(--fond-creme);
     color: var(--marron-texte);
     font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
-/* --- SIGNATURE LOGO I.M (Pour le haut de chaque page) --- */
+/* --- SIGNATURE LOGO I.M (Haut de chaque page) --- */
 .header-top {
     display: flex;
     align-items: center;
     padding: 15px 30px;
-    background-color: white;
+    background-color: var(--blanc);
 }
 
 .logo-signature {
     font-family: 'Pacifico', cursive;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: var(--marron-texte);
     border: 2px solid var(--rose-clair);
     border-radius: 50%;
@@ -33,19 +36,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: var(--blanc);
     margin-right: 12px;
 }
 
 .signature-texte {
     font-weight: 600;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* --- NAVIGATION (ONGLETS) --- */
+/* --- NAVIGATION (ONGLETS INTERACTIFS) --- */
 nav {
-    background: white;
+    background: var(--blanc);
     padding: 10px 0;
     border-bottom: 2px dashed var(--rose-clair);
     position: sticky;
@@ -56,7 +60,7 @@ nav {
 nav ul {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -66,15 +70,15 @@ nav a {
     text-decoration: none;
     color: var(--marron-texte);
     font-weight: 600;
-    padding: 10px 18px;
+    padding: 10px 15px;
     border-radius: 20px;
     transition: all 0.3s ease;
 }
 
-/* EFFET ROSE FONCÉ AU TOUCHER/SURVOL */
+/* Effet rose foncé au survol des onglets */
 nav a:hover {
     background-color: var(--rose-fonce);
-    color: white;
+    color: var(--blanc);
     transform: translateY(-2px);
 }
 
@@ -84,11 +88,10 @@ nav a:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 70vh;
+    min-height: 75vh;
     text-align: center;
 }
 
-/* Logo central uniquement pour l'accueil */
 .logo-im-accueil {
     font-family: 'Pacifico', cursive;
     font-size: 3.5rem;
@@ -99,14 +102,28 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: white;
+    background: var(--blanc);
     margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .titre-principal {
     font-family: 'Pacifico', cursive;
-    font-size: 3.5rem;
-    margin: 0;
+    font-size: 3.2rem;
+    margin: 10px 0;
+}
+
+.sous-titre {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* --- PAGE CONTENU GLOBAL --- */
+.page-content {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* --- TABLEAUX BTS (SLAM & SISR) --- */
@@ -114,14 +131,12 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto;
+    margin-top: 30px;
 }
 
 .bts-table {
     width: 100%;
-    background: white;
+    background: var(--blanc);
     border-radius: 20px;
     overflow: hidden;
     border-collapse: collapse;
@@ -131,7 +146,7 @@ nav a:hover {
 .bts-table th {
     background-color: var(--rose-clair);
     padding: 18px;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     color: var(--marron-texte);
 }
 
@@ -147,12 +162,12 @@ nav a:hover {
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
-    padding: 50px 20px;
+    padding: 30px 0;
 }
 
 .flip-card {
     width: 280px;
-    height: 220px;
+    height: 200px;
     perspective: 1000px;
 }
 
@@ -175,6 +190,7 @@ nav a:hover {
     height: 100%;
     backface-visibility: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 25px;
@@ -182,28 +198,55 @@ nav a:hover {
     border: 2px solid var(--rose-clair);
 }
 
-.flip-card-front { background: white; font-weight: bold; font-size: 1.2rem; }
+.flip-card-front { background: var(--blanc); }
 .flip-card-back {
     background: var(--rose-clair);
     transform: rotateY(180deg);
     text-align: center;
-    font-size: 0.95rem;
+}
+
+/* --- VISIONNEUSE PDF ET PROJETS --- */
+.viewer-card {
+    background: var(--blanc);
+    padding: 25px;
+    border-radius: 20px;
+    border: 2px solid var(--rose-clair);
+    margin-bottom: 40px;
+}
+
+.pdf-viewer {
+    margin: 20px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.pdf-viewer iframe {
+    border: none;
+    display: block;
 }
 
 /* --- BOUTONS TÉLÉCHARGEMENT --- */
+.projet-actions {
+    margin-top: 20px;
+}
+
 .btn-download {
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
+    padding: 12px 30px;
     background-color: var(--rose-clair);
     color: var(--marron-texte);
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    border: none;
 }
 
 .btn-download:hover {
     background-color: var(--rose-fonce);
-    color: white;
+    color: var(--blanc);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(248, 194, 199, 0.4);
 }
