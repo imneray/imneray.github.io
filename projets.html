@@ -2,13 +2,17 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Imane - Mes Projets</title>
+    <title>Mes Projets - Imane</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-    <div class="logo-signature">I.M</div>
-    <span class="signature-texte">PORTFOLIO D'IMANE</span>
 </head>
 <body>
+
+    <header class="header-top">
+        <div class="logo-signature">I.M</div>
+        <span class="signature-texte">PORTFOLIO D'IMANE</span>
+    </header>
+
     <nav>
         <ul>
             <li><a href="index.html">Accueil</a></li>
@@ -19,20 +23,32 @@
             <li><a href="stage.html">Stage</a></li>
         </ul>
     </nav>
+
     <main class="page-content">
         <h1 class="titre-principal">Mes Projets</h1>
+        
         <div class="projets-grid">
+            
             <div class="projet-card">
-                <h3>Documentation Projet 1</h3>
-                <p>Description courte de ton projet ici.</p>
-                <a href="NOM_DE_TON_FICHIER_1.pdf" download class="btn-download">Télécharger la documentation</a>
+                <h3>Documentation sur un serveur Active Directory Windows 2022</h3>
+                <p>Ce projet porte sur la configuration d'un serveur local.</p>
+                
+                <a href="serveur_ad.pdf" target="_blank" download="Documentation_serveur_active_directory" class="btn-download">
+                    📄 Télécharger & Voir le Doc
+                </a>
             </div>
+
             <div class="projet-card">
-                <h3>Documentation Projet 2</h3>
-                <p>Description courte de ton projet ici.</p>
-                <a href="NOM_DE_TON_FICHIER_2.pdf" download class="btn-download">Télécharger la documentation</a>
+                <h3>Documentation Technique 2</h3>
+                <p>Développement d'une base de données SQL.</p>
+                
+                <a href="votre_fichier_2.pdf" target="_blank" download="Documentation_Projet2" class="btn-download">
+                    📄 Télécharger & Voir le Doc
+                </a>
             </div>
+
         </div>
     </main>
+
 </body>
 </html>
