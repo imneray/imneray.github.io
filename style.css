@@ -1,27 +1,35 @@
-/* --- VARIABLES ET COULEURS --- */
+/* --- VARIABLES --- */
 :root {
-    --fond-creme: #fffaf0; /* Ton fond de page actuel */
-    --beige-clair: #f5f5dc; /* Nouveau beige pour les cartes/menus */
+    --fond-creme: #fffaf0;
+    --beige-clair: #f5f5dc;
     --rose-clair: #fce1e4;
     --rose-fonce: #f8c2c7;
     --marron-texte: #5e4433;
 }
 
-/* --- BASE --- */
+/* --- MODE NUIT (Couleurs inversées) --- */
+body.dark-mode {
+    --fond-creme: #1a1a1a;
+    --beige-clair: #2d2d2d;
+    --marron-texte: #f5f5dc;
+    --rose-clair: #4a3537;
+    --rose-fonce: #ffb7c5;
+}
+
 body {
     background-color: var(--fond-creme);
     color: var(--marron-texte);
     font-family: 'Quicksand', sans-serif;
     margin: 0;
-    padding: 0;
+    transition: background 0.3s, color 0.3s;
 }
 
-/* --- HEADER ET NAVIGATION (ONGLETS) --- */
+/* --- HEADER & BOUTON NUIT --- */
 .header-top {
     display: flex;
     align-items: center;
     padding: 10px 25px;
-    background-color: var(--beige-clair); /* Beige au lieu de blanc */
+    background-color: var(--beige-clair);
 }
 
 .logo-signature {
@@ -34,36 +42,31 @@ body {
     margin-right: 12px;
 }
 
+.theme-btn {
+    margin-left: auto; /* Pousse le bouton tout à droite */
+    background: var(--rose-clair);
+    border: none;
+    border-radius: 50%;
+    width: 35px; height: 35px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+
+/* --- NAVIGATION --- */
 nav {
-    background: var(--beige-clair); /* Beige au lieu de blanc */
+    background: var(--beige-clair);
     padding: 15px 0;
     border-bottom: 2px dashed var(--rose-clair);
     text-align: center;
 }
 
-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    list-style: none;
-    margin: 0; padding: 0;
-}
+nav ul { display: flex; justify-content: center; gap: 15px; list-style: none; margin: 0; padding: 0; }
+nav a { text-decoration: none; color: var(--marron-texte); font-weight: 600; padding: 8px 16px; border-radius: 20px; transition: 0.3s; }
+nav a:hover { background-color: var(--rose-fonce); color: white; }
 
-nav a {
-    text-decoration: none;
-    color: var(--marron-texte);
-    font-weight: 600;
-    padding: 10px 20px;
-    border-radius: 25px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    background-color: var(--rose-fonce);
-    color: white;
-}
-
-/* --- STYLE ACCUEIL (CENTRAGE COMPLET) --- */
+/* --- ACCUEIL --- */
 .page-content-accueil {
     display: flex;
     flex-direction: column;
@@ -73,108 +76,44 @@ nav a:hover {
     text-align: center;
 }
 
-.titre-principal-accueil {
-    font-family: 'Pacifico', cursive;
-    font-size: 4rem;
-    margin-bottom: 10px;
-}
+.titre-principal-accueil { font-family: 'Pacifico', cursive; font-size: 3.5rem; margin-bottom: 10px; }
+.sous-titre-accueil { font-size: 1.2rem; opacity: 0.8; }
 
-.sous-titre-accueil {
-    font-size: 1.2rem;
-    color: #666;
-    margin-top: 0;
-}
-
-/* --- STYLE PROJETS (CÔTE À CÔTE) --- */
+/* --- GRILLE PROJETS --- */
 .projets-mini-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 40px 20px;
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 25px; padding: 40px 20px;
 }
 
 .mini-card {
-    background: var(--beige-clair); /* Beige au lieu de blanc */
-    width: 250px;
-    padding: 20px;
-    border-radius: 20px;
-    border: 2px solid var(--rose-clair);
-    text-align: center;
+    background: var(--beige-clair);
+    width: 230px; padding: 15px; border-radius: 15px;
+    border: 1.5px solid var(--rose-clair); text-align: center;
 }
 
 .mini-preview {
-    width: 100%;
-    height: 180px;
-    background: #ecece0; /* Un beige un peu plus soutenu pour l'aperçu */
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 15px;
+    width: 100%; height: 150px; background: rgba(0,0,0,0.05);
+    border-radius: 10px; overflow: hidden; margin-bottom: 10px;
 }
 
-.mini-preview embed { width: 100%; height: 100%; }
-
-/* --- BOUTONS PROJETS --- */
-.btn-mini {
-    padding: 8px 18px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.9rem;
-    transition: 0.3s ease;
-    border: none;
-}
-
+.btn-mini { padding: 7px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 0.8rem; transition: 0.3s; }
 .btn-voir { background: #e0e0d1; color: #666; }
 .btn-doc { background: var(--rose-clair); color: var(--marron-texte); }
+.btn-mini:hover { background-color: var(--rose-fonce) !important; color: white !important; }
 
-.btn-mini:hover {
-    background-color: var(--rose-fonce) !important;
-    color: white !important;
-}
-
-/* --- STYLE TABLEAUX BTS --- */
+/* --- TABLEAUX & FLIP CARDS --- */
 .bts-table {
-    width: 90%;
-    max-width: 900px;
-    margin: 40px auto;
-    background: var(--beige-clair); /* Beige au lieu de blanc */
-    border-radius: 20px;
-    overflow: hidden;
-    border-collapse: collapse;
+    width: 90%; max-width: 800px; margin: 20px auto;
+    background: var(--beige-clair); border-radius: 15px; overflow: hidden; border-collapse: collapse;
 }
+.bts-table th { background: var(--rose-clair); padding: 15px; }
+.bts-table td { padding: 20px; line-height: 1.6; }
 
-.bts-table th { background: var(--rose-clair); padding: 20px; font-size: 1.2rem; }
-.bts-table td { padding: 25px; line-height: 1.7; }
-
-/* --- COMPÉTENCES (CARTES FLIP) --- */
-.flip-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
-    padding: 40px;
-}
-
-.flip-card { width: 220px; height: 160px; perspective: 1000px; }
+.flip-card { width: 200px; height: 150px; perspective: 1000px; margin: 10px; }
 .flip-card-inner { position: relative; width: 100%; height: 100%; transition: 0.6s; transform-style: preserve-3d; }
 .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-
 .flip-card-front, .flip-card-back {
     position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-    border-radius: 20px; display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--rose-clair);
+    border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--rose-clair);
 }
-
-.flip-card-front { 
-    background: var(--beige-clair); /* Beige au lieu de blanc */
-    font-weight: bold; 
-    font-size: 1.1rem; 
-}
-
-.flip-card-back { 
-    background: var(--rose-clair); 
-    transform: rotateY(180deg); 
-    text-align: center; 
-    padding: 10px; 
-}
+.flip-card-front { background: var(--beige-clair); }
+.flip-card-back { background: var(--rose-clair); transform: rotateY(180deg); text-align: center; padding: 10px; }
