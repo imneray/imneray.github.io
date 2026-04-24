@@ -209,162 +209,125 @@ nav a:hover {
    STYLE SPÉCIFIQUE À LA PAGE VEILLE
    ============================================================ */
 
-/* --- Boîte de la problématique --- */
-.problematique-box {
-    background: var(--rose-clair);
+/* --- Conteneur de la problématique --- */
+.veille-problematique-box {
+    background-color: var(--rose-clair);
     border-radius: 20px;
-    padding: 25px;
+    padding: 30px;
     margin-bottom: 30px;
-    border-left: 8px solid var(--rose-fonce);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 10px solid var(--rose-fonce);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: center;
 }
 
-body.dark-mode .problematique-box {
-    background: #4a3537;
-    border-left-color: var(--rose-clair);
-}
-
-/* --- Système de recherche et suggestions --- */
-.search-container {
+/* --- Barre de Recherche & Suggestions --- */
+.veille-search-wrapper {
+    position: relative; /* Pour que les suggestions collent à l'input */
     display: flex;
-    gap: 10px;
     justify-content: center;
-    position: relative;
+    gap: 10px;
 }
 
-#veille-search {
+.veille-input-search {
     padding: 12px 20px;
     border-radius: 25px;
-    border: 2px solid var(--rose-clair);
+    border: 2px solid var(--rose-fonce);
     width: 70%;
     outline: none;
     background: var(--blanc);
     color: var(--marron-texte);
-    transition: 0.3s;
 }
 
-/* Liste qui apparaît quand on tape un mot */
-.suggestions-list {
+.veille-suggestions-list {
     position: absolute;
-    top: 55px; /* Juste sous la barre */
+    top: 55px;
     left: 50%;
     transform: translateX(-50%);
     width: 70%;
-    background: white;
+    background: var(--blanc);
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     z-index: 1000;
-    display: none; /* Caché par défaut */
-    border: 1px solid var(--rose-clair);
+    display: none; /* Masqué par défaut via JS */
+    border: 1px solid var(--rose-fonce);
     overflow: hidden;
 }
 
-body.dark-mode .suggestions-list {
-    background: #2d2d2d;
-    border-color: #444;
-}
-
-.suggestion-item {
+.veille-suggestion-item {
     padding: 12px 20px;
     cursor: pointer;
     text-align: left;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--rose-clair);
     font-size: 0.9rem;
-    transition: background 0.2s;
+    transition: 0.2s;
 }
 
-.suggestion-item:hover {
-    background: var(--rose-clair);
-    color: var(--marron-texte);
+.veille-suggestion-item:hover {
+    background-color: var(--rose-clair);
 }
 
-/* --- Animation de défilement (Loading) --- */
-.loading-bar {
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent 25%, var(--rose-fonce) 50%, transparent 75%);
-    background-size: 200% 100%;
-    animation: loading 1s infinite linear;
-    border-radius: 2px;
-    margin-top: 15px;
-}
-
-@keyframes loading {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* --- CALENDRIER : LA GRILLE CARRÉE --- */
-.calendar-wrapper {
-    max-width: 380px;
+/* --- Calendrier en Grille Carrée --- */
+.veille-calendar-container {
+    max-width: 350px;
     margin: 20px auto;
     background: var(--blanc);
     border-radius: 20px;
     padding: 20px;
-    border: 2px solid var(--rose-clair);
+    border: 2px solid var(--rose-fonce);
 }
 
-body.dark-mode .calendar-wrapper {
-    background: #2d2d2d;
-}
-
-.calendar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.btn-nav-cal {
-    background: var(--rose-clair);
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn-nav-cal:hover {
-    background: var(--rose-fonce);
-    color: white;
-}
-
-.calendar-days-header {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    font-weight: bold;
-    font-size: 0.75rem;
-    color: var(--rose-fonce);
-    margin-bottom: 10px;
-}
-
-.calendar-grid {
-    display: grid !important; /* Force la grille */
-    grid-template-columns: repeat(7, 1fr); /* 7 jours de la semaine */
+.veille-calendar-grid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr); /* 7 jours obligatoires */
     gap: 8px;
+    margin-top: 10px;
 }
 
-.calendar-day-cell {
-    aspect-ratio: 1 / 1; /* Force les cases à être carrées */
+.veille-calendar-day {
+    aspect-ratio: 1 / 1; /* Force le carré parfait */
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    background: rgba(252, 225, 228, 0.3);
+    background-color: var(--rose-clair);
     border-radius: 8px;
-    font-size: 0.9rem;
-    transition: 0.3s ease;
+    cursor: pointer;
+    font-weight: 600;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.calendar-day-cell:hover {
-    background: var(--rose-fonce);
+.veille-calendar-day:hover {
+    background-color: var(--rose-fonce);
     color: white;
-    transform: scale(1.15);
-    z-index: 10;
+    transform: scale(1.1);
 }
 
-.calendar-day-empty {
+.veille-day-empty {
     background: transparent;
+}
+
+/* --- Animation de chargement (Barre Go) --- */
+.veille-loading-bar {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--rose-fonce), transparent);
+    background-size: 200% 100%;
+    animation: veille-load-anim 1s infinite linear;
+    margin-top: 15px;
+    border-radius: 2px;
+}
+
+@keyframes veille-load-anim {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- Mode Sombre Spécifique --- */
+body.dark-mode .veille-suggestions-list {
+    background-color: #2d2d2d;
+    border-color: #555;
+}
+
+body.dark-mode .veille-suggestion-item {
+    color: #eee;
+    border-bottom-color: #444;
 }
