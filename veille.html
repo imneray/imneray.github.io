@@ -40,23 +40,23 @@
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; width: 100%;">
             <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0;">
                 <h3>📧 Automatisation</h3>
-                <p>Alertes configurées sur <strong>detpimane@gmail.com</strong> pour une réception en temps réel.</p>
-                <div class="btn-mini btn-doc" style="display:inline-block;">Google Alerts Actif</div>
+                <p>Alertes configurées sur <strong>detpimane@gmail.com</strong>.</p>
+                <div class="btn-mini btn-doc">Google Alerts Actif</div>
             </div>
 
-            <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0;">
+            <div class="bts-option-block" style="flex: 1; min-width: 300px; margin: 0; position: relative;">
                 <h3>🔎 Recherche Ciblée</h3>
                 <div class="search-container">
-                    <input type="text" id="veille-search" placeholder="Cloud Act, Souveraineté...">
+                    <input type="text" id="veille-search" placeholder="Tapez un mot ou cherchez..." oninput="showSuggestions(this.value)">
                     <button onclick="searchWithAnimation()" class="btn-mini btn-doc">Go</button>
                 </div>
+                <div id="suggestions-box" class="suggestions-list"></div>
                 <div id="search-status"></div>
             </div>
         </div>
 
         <div class="bts-option-block">
             <h3>📅 Archives de Veille Dynamiques</h3>
-            <p>Sélectionnez une date pour consulter les publications mondiales à ce moment précis.</p>
             <div class="calendar-wrapper">
                 <div class="calendar-header">
                     <button onclick="changeMonth(-1)" class="btn-nav-cal">❮</button>
@@ -69,34 +69,68 @@
                 <div id="calendarGrid" class="calendar-grid"></div>
             </div>
         </div>
-
-        <div class="bts-option-block">
-            <h3>⚖️ Juridique : Souveraineté des données</h3>
-            <p>Impact : Obligation pour les entreprises de choisir des hébergeurs souverains face au Cloud Act.</p>
-        </div>
     </main>
 
     <script>
-        // Mode Nuit
+        // --- GESTION THÈME ---
         const btn = document.getElementById('theme-toggle');
         btn.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         });
 
-        // Animation Recherche
+        // --- MOTEUR DE SUGGESTIONS ---
+        const sitesVeille = [
+            { name: "Le Monde Informatique - Cloud", url: "https://www.lemondeinformatique.fr/actualites/cloud-computing-128.html" },
+            { name: "ZDNet - Infrastructure & Data Centers", url: "https://www.zdnet.fr/actualites/infrastructure-et-data-center-3900000003.htm" },
+            { name: "ANSSI - Sécurité & Souveraineté", url: "https://www.ssi.gouv.fr/" },
+            { name: "L'Usine Digitale - Souveraineté numérique", url: "https://www.usine-digitale.fr/souverainete-numerique/" },
+            { name: "Data Center Magazine", url: "https://datacentermagazine.fr/" }
+        ];
+
+        function showSuggestions(val) {
+            const res = document.getElementById('suggestions-box');
+            res.innerHTML = '';
+            if (val.length < 2) { res.style.display = 'none'; return; }
+
+            let suggestions = sitesVeille.filter(site => site.name.toLowerCase().includes(val.toLowerCase()));
+
+            if (suggestions.length > 0) {
+                res.style.display = 'block';
+                suggestions.forEach(site => {
+                    let div = document.createElement('div');
+                    div.innerHTML = site.name;
+                    div.classList.add('suggestion-item');
+                    div.onclick = () => {
+                        window.open(site.url, '_blank');
+                        res.style.display = 'none';
+                    };
+                    res.appendChild(div);
+                });
+            } else { res.style.display = 'none'; }
+        }
+
+        // --- BOUTON GO (RECHERCHE GLOBALE) ---
         function searchWithAnimation() {
             const status = document.getElementById('search-status');
             const query = document.getElementById('veille-search').value;
             if(!query) return;
-            status.innerHTML = '<div class="loading-bar"></div><p style="font-size:0.8rem;">Analyse des sources...</p>';
+            
+            document.getElementById('suggestions-box').style.display = 'none';
+            status.innerHTML = '<div class="loading-bar"></div><p style="font-size:0.8rem;">Recherche globale en cours...</p>';
+            
             setTimeout(() => {
                 status.innerHTML = '';
                 window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}+datacenter+geopolitics`, '_blank');
             }, 1000);
         }
 
-        // Calendrier Dynamique
+        // Fermer suggestions si clic ailleurs
+        document.addEventListener('click', (e) => {
+            if (e.target.id !== 'veille-search') document.getElementById('suggestions-box').style.display = 'none';
+        });
+
+        // --- CALENDRIER ---
         const grid = document.getElementById('calendarGrid');
         const monthDisplay = document.getElementById('monthDisplay');
         let currentTopDate = new Date();
