@@ -2,7 +2,7 @@
 :root {
     --fond-creme: #fffaf0;
     --rose-clair: #fce1e4;
-    --rose-fonce: #f8c2c7; /* Celui que tu voulais pour le survol */
+    --rose-fonce: #f8c2c7; /* Rose plus prononcé pour le survol */
     --marron-texte: #5e4433;
 }
 
@@ -12,13 +12,41 @@ body {
     font-family: 'Quicksand', sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+}
+
+/* --- SIGNATURE LOGO I.M (Pour le haut de chaque page) --- */
+.header-top {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: white;
+}
+
+.logo-signature {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    color: var(--marron-texte);
+    border: 2px solid var(--rose-clair);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    margin-right: 12px;
+}
+
+.signature-texte {
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 /* --- NAVIGATION (ONGLETS) --- */
 nav {
     background: white;
-    padding: 15px 0;
+    padding: 10px 0;
     border-bottom: 2px dashed var(--rose-clair);
     position: sticky;
     top: 0;
@@ -40,7 +68,7 @@ nav a {
     font-weight: 600;
     padding: 10px 18px;
     border-radius: 20px;
-    transition: all 0.3s ease; /* Transition douce */
+    transition: all 0.3s ease;
 }
 
 /* EFFET ROSE FONCÉ AU TOUCHER/SURVOL */
@@ -50,11 +78,20 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* --- LOGO I.M (ECRITURE ATTACHÉE) --- */
-.logo-im {
+/* --- SECTION ACCUEIL --- */
+#accueil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+}
+
+/* Logo central uniquement pour l'accueil */
+.logo-im-accueil {
     font-family: 'Pacifico', cursive;
     font-size: 3.5rem;
-    color: var(--marron-texte);
     border: 4px solid var(--rose-clair);
     border-radius: 50%;
     width: 120px;
@@ -64,17 +101,6 @@ nav a:hover {
     justify-content: center;
     background: white;
     margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-/* --- SECTION ACCUEIL --- */
-#accueil {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    text-align: center;
 }
 
 .titre-principal {
@@ -83,26 +109,45 @@ nav a:hover {
     margin: 0;
 }
 
-.sous-titre {
-    font-size: 1.3rem;
-    margin-top: 10px;
-}
-
-/* --- PAGES DE CONTENU (BTS, PROJETS, STAGE) --- */
-.page-content {
-    padding: 50px 20px;
-    max-width: 1000px;
+/* --- TABLEAUX BTS (SLAM & SISR) --- */
+.tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 900px;
     margin: 0 auto;
-    text-align: center;
 }
 
-/* --- CARTES DE COMPÉTENCES (FLIP CARDS) --- */
+.bts-table {
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border-collapse: collapse;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.bts-table th {
+    background-color: var(--rose-clair);
+    padding: 18px;
+    font-size: 1.3rem;
+    color: var(--marron-texte);
+}
+
+.bts-table td {
+    padding: 25px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* --- CARTES COMPÉTENCES (FLIP CARDS) --- */
 .flip-container {
     display: flex;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
-    margin-top: 40px;
+    padding: 50px 20px;
 }
 
 .flip-card {
@@ -130,41 +175,22 @@ nav a:hover {
     height: 100%;
     backface-visibility: hidden;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-radius: 25px;
     padding: 20px;
     border: 2px solid var(--rose-clair);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.flip-card-front {
-    background: white;
-}
-
+.flip-card-front { background: white; font-weight: bold; font-size: 1.2rem; }
 .flip-card-back {
     background: var(--rose-clair);
-    color: var(--marron-texte);
     transform: rotateY(180deg);
     text-align: center;
+    font-size: 0.95rem;
 }
 
-/* --- BOUTONS TÉLÉCHARGEMENT (PROJETS) --- */
-.projets-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.projet-card {
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
-    border: 2px solid var(--rose-clair);
-}
-
+/* --- BOUTONS TÉLÉCHARGEMENT --- */
 .btn-download {
     display: inline-block;
     margin-top: 20px;
@@ -180,25 +206,4 @@ nav a:hover {
 .btn-download:hover {
     background-color: var(--rose-fonce);
     color: white;
-    transform: scale(1.05);
-}
-
-/* --- TABLEAUX (BTS SIO) --- */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-top: 30px;
-}
-
-th {
-    background: var(--rose-clair);
-    padding: 15px;
-}
-
-td {
-    padding: 20px;
-    border-bottom: 1px solid #eee;
 }
