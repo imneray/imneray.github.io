@@ -205,34 +205,44 @@ nav a:hover {
     padding: 15px; 
     font-size: 0.9rem;
 }
-
-Voici le code CSS complet pour ta page Veille. J'ai inclus les styles pour la barre de recherche, le calendrier interactif, et les encadrés "Impact Entreprise" pour que tout soit propre en mode jour comme en mode nuit.
-
-Ajoute ce bloc à la fin de ton fichier style.css existant :
-CSS
-
 /* ============================================================
    STYLE SPÉCIFIQUE À LA PAGE VEILLE
    ============================================================ */
 
-/* --- Barre de recherche de veille --- */
+/* --- BLOC PROBLÉMATIQUE --- */
+.problematique-box {
+    background: var(--rose-clair);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-left: 8px solid var(--rose-fonce);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+body.dark-mode .problematique-box {
+    background: #4a3537;
+    border-left-color: var(--rose-clair);
+    color: white;
+}
+
+/* --- RECHERCHE ET ANIMATION DE DÉFILEMENT --- */
 .search-container {
     display: flex;
     gap: 10px;
     justify-content: center;
-    margin: 20px 0;
+    margin-top: 15px;
 }
 
 #veille-search {
-    padding: 12px 20px;
+    padding: 10px 20px;
     border-radius: 25px;
     border: 2px solid var(--rose-clair);
-    width: 60%;
-    max-width: 400px;
+    width: 70%;
     outline: none;
     background: var(--blanc);
     color: var(--marron-texte);
-    font-family: 'Quicksand', sans-serif;
+    transition: 0.3s;
 }
 
 body.dark-mode #veille-search {
@@ -241,15 +251,31 @@ body.dark-mode #veille-search {
     border-color: #555;
 }
 
-/* --- Calendrier de Veille --- */
+/* Barre de chargement animée (effet défilement) */
+.loading-bar {
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--fond-creme) 25%, var(--rose-fonce) 50%, var(--fond-creme) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.2s infinite linear;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- CALENDRIER : LA GRILLE CARRÉE --- */
 .calendar-wrapper {
-    max-width: 350px;
+    max-width: 380px;
     margin: 20px auto;
     background: var(--blanc);
     border-radius: 20px;
     padding: 20px;
     border: 2px solid var(--rose-clair);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 body.dark-mode .calendar-wrapper {
@@ -261,32 +287,20 @@ body.dark-mode .calendar-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .calendar-header h4 {
     margin: 0;
     text-transform: capitalize;
-    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--marron-texte);
 }
 
-.calendar-header button {
-    background: var(--rose-clair);
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
+body.dark-mode .calendar-header h4 { color: white; }
 
-.calendar-header button:hover {
-    background: var(--rose-fonce);
-    color: white;
-}
-
-.calendar-days {
+/* En-tête des jours (Lun, Mar...) */
+.calendar-days-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     font-weight: bold;
@@ -296,68 +310,71 @@ body.dark-mode .calendar-wrapper {
     text-align: center;
 }
 
+/* Grille des numéros */
 .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr); /* 7 colonnes pour faire le carré */
     gap: 8px;
-    text-align: center;
 }
 
-.calendar-grid div {
-    padding: 10px 0;
-    font-size: 0.9rem;
+/* Chaque case du jour */
+.calendar-day-cell {
+    aspect-ratio: 1 / 1; /* Force le carré parfait */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    border-radius: 10px;
-    transition: 0.3s;
-    background: rgba(252, 225, 228, 0.2); /* Léger rose */
+    background: rgba(252, 225, 228, 0.3); /* Rose très léger */
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-.calendar-grid div:hover {
+.calendar-day-cell:hover {
     background: var(--rose-fonce);
     color: white;
     transform: scale(1.1);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-.calendar-grid .empty {
+/* Cases vides pour l'alignement */
+.calendar-day-empty {
     background: transparent;
     cursor: default;
 }
 
-/* --- Blocs d'impact et liens --- */
-.bts-option-block strong {
-    color: var(--rose-fonce);
-}
-
-body.dark-mode .bts-option-block strong {
-    color: #ffb1b8;
-}
-
-.news-link {
-    display: block;
-    padding: 10px;
-    margin: 5px 0;
-    color: var(--marron-texte);
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 10px;
+/* Boutons de navigation calendrier */
+.btn-nav-cal {
+    background: var(--rose-clair);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-weight: bold;
     transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.news-link:hover {
-    background: var(--rose-clair);
-    padding-left: 20px;
+.btn-nav-cal:hover {
+    background: var(--rose-fonce);
+    color: white;
 }
 
-/* Encadré spécial pour la problématique */
-.problematique-box {
-    background: var(--rose-clair);
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 30px;
-    border-left: 8px solid var(--rose-fonce);
+/* --- BLOCS D'INFO (AXES DE VEILLE) --- */
+.bts-option-block h3 {
+    border-bottom: 2px dashed var(--rose-clair);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: var(--marron-texte);
 }
 
-body.dark-mode .problematique-box {
-    background: #4a3537;
-    border-left-color: var(--rose-clair);
+body.dark-mode .bts-option-block h3 { color: white; }
+
+.bts-option-block p {
+    line-height: 1.6;
+    font-size: 1rem;
 }
