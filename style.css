@@ -43,39 +43,43 @@ body {
     text-transform: uppercase;
 }
 
-/* --- NAVIGATION (ONGLETS EN HAUT) --- */
-nav {
-    background: var(--blanc);
-    padding: 10px 0;
-    border-bottom: 2px dashed var(--rose-clair);
-    position: sticky;
+/* Barre de navigation */
+.navigation-onglets {
+    background-color: #ffffff; /* Fond blanc propre */
+    padding: 12px 0;
+    border-bottom: 2px dashed #fce1e4; /* Petite ligne rose en pointillés */
+    text-align: center;
+    position: sticky; /* Reste en haut quand on scrolle */
     top: 0;
     z-index: 1000;
 }
 
-nav ul {
+/* Liste des onglets */
+.navigation-onglets ul {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 20px; /* Espace entre les onglets */
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav a {
+/* Style des liens (boutons) */
+.navigation-onglets a {
     text-decoration: none;
-    color: var(--marron-texte);
+    color: #5e4433; /* Marron foncé */
     font-weight: 600;
-    padding: 8px 16px;
+    font-size: 0.95rem;
+    padding: 8px 18px;
     border-radius: 20px;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-nav a:hover {
-    background-color: var(--rose-fonce);
-    color: white;
+/* Effet au survol (devient rose foncé) */
+.navigation-onglets a:hover {
+    background-color: #f8c2c7; /* Rose foncé */
+    color: #ffffff; /* Texte blanc */
 }
-
 /* --- ACCUEIL (STRUCTURE CENTRÉE) --- */
 .page-content-accueil {
     display: flex;
