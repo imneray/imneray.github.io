@@ -342,3 +342,81 @@ nav a:hover {
     background: #f8c2c7;
     color: white;
 }
+
+/* --- SECTION STAGE & FLIP CARDS --- */
+
+.section-titre {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    color: var(--marron-texte);
+    margin-top: 40px;
+}
+
+.flip-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+/* La boîte de la carte */
+.flip-card {
+    background-color: transparent;
+    width: 280px;
+    height: 200px;
+    perspective: 1000px; /* Effet 3D */
+}
+
+/* Le conteneur interne pour l'animation */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Animation au survol */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Positionnement Face/Dos */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Cache le dos quand on voit la face */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Style de la FACE */
+.flip-card-front {
+    background-color: var(--rose-clair, #fce1e4);
+    color: var(--marron-texte);
+    border: 2px solid #f8c2c7;
+}
+
+/* Style du DOS */
+.flip-card-back {
+    background-color: #f8c2c7;
+    color: white;
+    transform: rotateY(180deg);
+    padding: 15px;
+}
+
+.flip-card-back ul {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.flip-card-back h3 { margin-bottom: 10px; }
