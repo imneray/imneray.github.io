@@ -646,9 +646,8 @@ body.dark-mode .bts-option-block {
 /* ============================================================
    PAGE MON PROFIL 
    ============================================================ */
-
 /* ============================================================
-   PAGE MON PROFIL -
+   PAGE MON PROFIL - DESIGN HAUTE VISIBILITÉ
    ============================================================ */
 
 .page-content-profil {
@@ -663,15 +662,15 @@ body.dark-mode .bts-option-block {
     gap: 40px;
 }
 
-/* Titre principal noir */
+/* Titre Noir Pur */
 .titre-mon-parcours {
-    color: #000000;
+    color: #000000 !important;
     font-family: 'Pacifico', cursive;
     font-size: 2.5em;
     margin-bottom: 30px;
 }
 
-/* La ligne de la frise (Timeline) */
+/* Ligne de la frise */
 .timeline {
     position: relative;
     border-left: 5px solid #ff0077;
@@ -699,10 +698,10 @@ body.dark-mode .bts-option-block {
 }
 
 .timeline-item.stage::before {
-    border-color: #0044ff; /* Bleu pour les stages */
+    border-color: #0044ff;
 }
 
-/* COULEURS DES TEXTES (NOIR PUR) */
+/* TEXTES EN NOIR PROFOND */
 .timeline-date {
     font-weight: 900;
     color: #ff0077;
@@ -716,14 +715,14 @@ body.dark-mode .bts-option-block {
 }
 
 .job-title {
-    color: #000000;
+    color: #000000 !important;
     font-size: 1.6em;
     font-weight: 800;
     margin: 0;
 }
 
 .company-name, .school-name {
-    color: #002266; /* Bleu marine foncé pour les lieux */
+    color: #002266 !important;
     font-weight: 700;
     font-size: 1.2em;
     margin: 5px 0;
@@ -736,21 +735,21 @@ body.dark-mode .bts-option-block {
 }
 
 .task-list li {
-    color: #000000; /* Texte des missions en noir */
+    color: #000000 !important;
     font-weight: 600;
     font-size: 1.05em;
     line-height: 1.5;
     margin-bottom: 5px;
 }
 
-/* --- SECTION DROITE (CARTES) --- */
+/* CARTES DE DROITE */
 .profil-card {
     background: #ffffff;
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 25px;
-    border: 3px solid #000000; /* Bordure noire pour le contraste */
-    box-shadow: 5px 5px 0px #000000; /* Ombre rétro solide */
+    border: 3px solid #000000;
+    box-shadow: 5px 5px 0px #000000;
 }
 
 .card-title {
@@ -763,7 +762,6 @@ body.dark-mode .bts-option-block {
     margin-bottom: 20px;
 }
 
-/* Tags en blanc sur fond noir */
 .skills-tags-dark {
     list-style: none;
     padding: 0;
@@ -799,8 +797,8 @@ body.dark-mode .bts-option-block {
 }
 
 .btn-download:hover {
-    transform: scale(1.02);
     background: #ff0077;
+    transform: scale(1.02);
 }
 
 .btn-goto-competences {
@@ -812,15 +810,9 @@ body.dark-mode .bts-option-block {
     border-radius: 6px;
     text-decoration: none;
     font-weight: 800;
-    transition: 0.3s;
 }
 
-.btn-goto-competences:hover {
-    background: #000000;
-    color: #ffffff;
-}
-
-.dark-text { color: #000000; font-weight: 600; }
+.dark-text { color: #000000; font-weight: 600; margin-bottom: 5px; }
 
 .btn-letterboxd {
     background: #00e730;
