@@ -490,133 +490,162 @@ body.dark-mode .bts-option-block {
 }
 
 /* --- STYLE PAGE CERTIFICATIONS AVEC CAPTURES --- */
-
 /* ============================================================
-   STYLE DE LA PAGE CERTIFICATIONS
+   STYLE GÉNÉRAL DE LA PAGE CERTIFICATIONS (3 COLONNES)
    ============================================================ */
 
-/* 1. Style des blocs de certifications majeures (Haut de page) */
-.block-certif {
+/* Conteneur principal qui contient les 3 colonnes */
+.certifications-columns {
     display: flex;
-    flex-direction: column;
-    padding: 0 !important;
-    overflow: hidden;
-    height: 100%;
-    background: white;
-    border: 2px solid #eee;
-    border-radius: 15px;
-    transition: all 0.3s ease;
-}
-
-.certif-image-container {
-    width: 100%;
-    height: 180px;
-    overflow: hidden;
-    border-bottom: 2px solid #f8c2c7;
-    background-color: #fdf2f3;
-}
-
-.certif-screenshot {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.block-certif:hover .certif-screenshot {
-    transform: scale(1.05);
-}
-
-.certif-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    flex-grow: 1;
-}
-
-.badge-certif {
-    display: inline-block;
-    align-self: center;
-    margin-top: 15px;
-    padding: 5px 15px;
-    background-color: #f8c2c7;
-    color: white;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-}
-
-/* 2. Grille spécifique pour les badges Microsoft Learn */
-.microsoft-badges-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    align-items: flex-start;
     gap: 20px;
-    margin-top: 25px;
-}
-
-.ms-badge-item {
-    background: white;
     padding: 20px;
-    border-radius: 15px;
-    border: 1px solid #eee;
+    flex-wrap: wrap; /* Pour que les colonnes s'empilent sur mobile */
+}
+
+/* Style commun pour chaque colonne */
+.certif-column {
+    flex: 1;
+    min-width: 300px; /* Largeur minimale pour éviter que ce soit trop serré */
+    background: rgba(255, 255, 255, 0.5); /* Fond légèrement transparent */
+    border-radius: 20px;
+    padding: 25px 15px;
+    border: 1px solid rgba(248, 194, 199, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Titres de chaque colonne (Diplômes, OpenClassrooms, Microsoft) */
+.column-title {
+    font-family: 'Pacifico', cursive;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-
-.ms-badge-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(248, 194, 199, 0.3);
-    border-color: #f8c2c7;
-}
-
-/* Style des images de badges ronds */
-.ms-badge-img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    margin-bottom: 12px;
-}
-
-.ms-badge-item h4 {
-    font-size: 0.85rem;
-    margin-bottom: 10px;
     color: #5e4433;
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+    border-bottom: 2px solid #f8c2c7;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+/* ============================================================
+   STYLE DES CARTES (À L'INTÉRIEUR DES COLONNES)
+   ============================================================ */
+
+.certif-card {
+    background: #ffffff;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Effet au survol d'une carte */
+.certif-card:hover {
+    transform: translateY(-8px);
+    border-color: #f8c2c7;
+    box-shadow: 0 12px 20px rgba(248, 194, 199, 0.2);
+}
+
+/* ============================================================
+   GESTION DES IMAGES (BADGES ET CAPTURES)
+   ============================================================ */
+
+/* Images pour la colonne État/Général (SecNum, Pix, Voltaire) */
+.img-badge-large {
+    width: 100%;
+    height: 140px;
+    object-fit: cover; /* Remplit le rectangle sans déformer */
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #f9f9f9;
+}
+
+/* Images pour la colonne OpenClassrooms (format paysage souvent) */
+.img-badge-oc {
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+    object-fit: contain; /* Garde toute l'image visible */
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Images pour la colonne Microsoft (Badges ronds) */
+.img-badge-ms {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* ============================================================
+   TEXTES ET BOUTONS PDF
+   ============================================================ */
+
+.certif-card h4 {
+    font-size: 1rem;
+    color: #5e4433;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
-/* Style des boutons "Voir le PDF" sous les badges */
-.btn-certif-link {
+.certif-card p {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+/* Bouton pour ouvrir les PDF Microsoft */
+.btn-pdf {
     display: inline-block;
-    font-size: 0.7rem;
+    margin-top: 10px;
+    font-size: 0.75rem;
     color: #f8c2c7;
     text-decoration: none;
     border: 1px solid #f8c2c7;
-    padding: 4px 10px;
-    border-radius: 5px;
+    padding: 5px 12px;
+    border-radius: 8px;
     font-weight: bold;
     transition: all 0.3s;
 }
 
-.btn-certif-link:hover {
+.btn-pdf:hover {
     background: #f8c2c7;
     color: white;
 }
 
-/* 3. Adaptation Mode Sombre (si actif sur ton site) */
-body.dark-mode .block-certif, 
-body.dark-mode .ms-badge-item {
-    background: #2a2a2a;
+/* ============================================================
+   ADAPTATION MODE SOMBRE
+   ============================================================ */
+
+body.dark-mode .certif-column {
+    background: rgba(45, 45, 45, 0.6);
     border-color: #444;
-    color: #eee;
 }
 
-body.dark-mode .ms-badge-item h4 {
+body.dark-mode .certif-card {
+    background: #333;
+    border-color: #444;
+}
+
+body.dark-mode .certif-card h4 {
     color: #f8c2c7;
 }
 
-body.dark-mode .certif-image-container {
-    background-color: #1a1a1a;
+body.dark-mode .certif-card p {
+    color: #bbb;
 }
+
+body.dark-mode .column-title {
+    color: #f8c2c7;
+}
+
