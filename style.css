@@ -208,126 +208,100 @@ nav a:hover {
 /* ============================================================
    STYLE SPÉCIFIQUE À LA PAGE VEILLE
    ============================================================ */
+/* --- STYLE SPÉCIFIQUE VEILLE --- */
 
-/* --- Conteneur de la problématique --- */
-.veille-problematique-box {
-    background-color: var(--rose-clair);
+.veille-grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Bloc de contenu */
+.bts-option-block {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
     border-radius: 20px;
-    padding: 30px;
-    margin-bottom: 30px;
-    border-left: 10px solid var(--rose-fonce);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #f8c2c7;
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 300px;
     text-align: center;
 }
 
-/* --- Barre de Recherche & Suggestions --- */
-.veille-search-wrapper {
-    position: relative; /* Pour que les suggestions collent à l'input */
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.veille-input-search {
-    padding: 12px 20px;
-    border-radius: 25px;
-    border: 2px solid var(--rose-fonce);
-    width: 70%;
-    outline: none;
-    background: var(--blanc);
-    color: var(--marron-texte);
-}
-
-.veille-suggestions-list {
-    position: absolute;
-    top: 55px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    background: var(--blanc);
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    z-index: 1000;
-    display: none; /* Masqué par défaut via JS */
-    border: 1px solid var(--rose-fonce);
-    overflow: hidden;
-}
-
-.veille-suggestion-item {
-    padding: 12px 20px;
-    cursor: pointer;
-    text-align: left;
-    border-bottom: 1px solid var(--rose-clair);
-    font-size: 0.9rem;
-    transition: 0.2s;
-}
-
-.veille-suggestion-item:hover {
-    background-color: var(--rose-clair);
-}
-
-/* --- Calendrier en Grille Carrée --- */
-.veille-calendar-container {
+/* LE CALENDRIER - FORCE LA GRILLE */
+.calendar-wrapper {
     max-width: 350px;
-    margin: 20px auto;
-    background: var(--blanc);
-    border-radius: 20px;
-    padding: 20px;
-    border: 2px solid var(--rose-fonce);
+    margin: 0 auto;
+    background: #fff;
+    padding: 15px;
+    border-radius: 15px;
+    border: 2px solid #fce1e4;
 }
 
-.veille-calendar-grid {
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* ICI : On force les 7 colonnes pour éviter l'effet "colonne verticale" */
+.calendar-days-header, .calendar-grid {
     display: grid !important;
-    grid-template-columns: repeat(7, 1fr); /* 7 jours obligatoires */
-    gap: 8px;
-    margin-top: 10px;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 5px;
 }
 
-.veille-calendar-day {
-    aspect-ratio: 1 / 1; /* Force le carré parfait */
+.calendar-days-header {
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: #f8c2c7;
+    margin-bottom: 10px;
+}
+
+.calendar-day-cell {
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--rose-clair);
-    border-radius: 8px;
+    background: #fce1e4;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: 600;
-    transition: transform 0.2s, background 0.2s;
+    font-size: 0.8rem;
+    transition: 0.3s;
 }
 
-.veille-calendar-day:hover {
-    background-color: var(--rose-fonce);
+.calendar-day-cell:hover {
+    background: #f8c2c7;
     color: white;
-    transform: scale(1.1);
 }
 
-.veille-day-empty {
+.calendar-day-empty {
     background: transparent;
 }
 
-/* --- Animation de chargement (Barre Go) --- */
-.veille-loading-bar {
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--rose-fonce), transparent);
-    background-size: 200% 100%;
-    animation: veille-load-anim 1s infinite linear;
-    margin-top: 15px;
-    border-radius: 2px;
+/* SUGGESTIONS */
+.suggestions-list {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background: white;
+    border: 1px solid #f8c2c7;
+    border-radius: 10px;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-@keyframes veille-load-anim {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
+.suggestion-item {
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
 }
 
-/* --- Mode Sombre Spécifique --- */
-body.dark-mode .veille-suggestions-list {
-    background-color: #2d2d2d;
-    border-color: #555;
-}
+.suggestion-item:hover { background: #fce1e4; }
 
-body.dark-mode .veille-suggestion-item {
-    color: #eee;
-    border-bottom-color: #444;
-}
