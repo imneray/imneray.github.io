@@ -490,91 +490,107 @@ body.dark-mode .bts-option-block {
 }
 
 /* ============================================================
-   PAGE CERTIFICATIONS - STYLE COMPLET
+   STYLE GÉNÉRAL - PAGE CERTIFICATIONS (3 COLONNES)
    ============================================================ */
 
-/* 1. Structure en 3 colonnes */
+/* Conteneur principal : aligne les 3 colonnes côte à côte */
 .certifications-columns {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
+    justify-content: center;
+    align-items: stretch; /* Force les colonnes à avoir la même hauteur */
+    gap: 30px; /* Espace entre les colonnes */
     padding: 20px;
-    flex-wrap: wrap; /* Permet l'adaptation sur mobile */
-    align-items: flex-start;
+    max-width: 1500px; /* Très large pour profiter de l'écran */
+    margin: 0 auto;
 }
 
-/* 2. Design des colonnes */
+/* Style de chaque colonne (État, OpenClassrooms, Cloud) */
 .certif-column {
     flex: 1;
-    min-width: 300px;
-    background: rgba(255, 255, 255, 0.4); /* Effet de transparence léger */
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    min-width: 350px;
+    background: rgba(255, 255, 255, 0.4); /* Fond léger */
+    border-radius: 25px;
+    padding: 30px 20px;
+    border: 1px solid rgba(248, 194, 199, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
 }
 
+/* Titres des colonnes */
 .column-title {
     font-family: 'Pacifico', cursive;
+    text-align: center;
     color: #5e4433;
-    margin-bottom: 25px;
-    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-size: 1.7rem;
     border-bottom: 2px solid #f8c2c7;
     padding-bottom: 10px;
 }
 
-/* 3. Style des cartes de certification */
+/* ============================================================
+   STYLE DES CARTES DE CERTIFICATION
+   ============================================================ */
+
 .certif-card {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
+    background: #ffffff;
     margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
 }
 
 .certif-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(248, 194, 199, 0.2);
+    transform: translateY(-8px);
+    border-color: #f8c2c7;
+    box-shadow: 0 12px 20px rgba(248, 194, 199, 0.2);
 }
 
-/* 4. Gestion de la visibilité des images */
-/* Pour les captures rectangulaires (État et OpenClassrooms) */
+/* ============================================================
+   SOUS-GRILLE POUR LA COLONNE CLOUD & IA (2 COLONNES)
+   ============================================================ */
+
+.microsoft-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Sépare la colonne en deux en interne */
+    gap: 15px;
+}
+
+/* Ajustement des cartes à l'intérieur de la sous-grille */
+.microsoft-subgrid .certif-card {
+    margin-bottom: 0;
+    padding: 15px 10px;
+}
+
+/* ============================================================
+   IMAGES ET BADGES
+   ============================================================ */
+
+/* Images larges (SecNum, Pix, Voltaire, OpenClassrooms) */
 .img-badge-large, .img-badge-oc {
     width: 100%;
-    max-height: 180px;
-    object-fit: contain; /* L'image est entièrement visible sans être déformée */
-    border-radius: 10px;
-    margin-bottom: 12px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
 }
 
-/* Pour les badges ronds (Microsoft) */
+/* Petits badges ronds Microsoft */
 .img-badge-ms {
-    width: 85px;
-    height: 85px;
+    width: 75px;
+    height: 75px;
     object-fit: contain;
-    margin-bottom: 12px;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
-}
-
-/* 5. Textes dans les cartes */
-.certif-card h4 {
-    margin: 5px 0;
-    font-size: 1.1rem;
-    color: #5e4433;
-    font-weight: 600;
-}
-
-.certif-card p {
-    font-size: 0.85rem;
-    color: #777;
     margin-bottom: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
-/* 6. Boutons "Voir le PDF" */
+/* ============================================================
+   BOUTONS PDF ET LIENS
+   ============================================================ */
+
 .btn-pdf {
     display: inline-block;
     margin-top: 10px;
@@ -585,7 +601,7 @@ body.dark-mode .bts-option-block {
     border-radius: 8px;
     font-size: 0.8rem;
     font-weight: bold;
-    transition: background 0.3s, color 0.3s;
+    transition: all 0.3s;
 }
 
 .btn-pdf:hover {
@@ -593,31 +609,46 @@ body.dark-mode .bts-option-block {
     color: white;
 }
 
-/* 7. Bouton Profil Microsoft (en bas de colonne) */
-.btn-mini.btn-doc {
-    background-color: #f8c2c7;
+/* Bloc lien profil Microsoft Learn en bas */
+.profile-link-box {
+    margin-top: auto; /* Pousse le bloc vers le bas de la colonne */
+    padding-top: 25px;
+    text-align: center;
+}
+
+.btn-profile {
+    display: block;
+    background: #f8c2c7;
     color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
     text-decoration: none;
+    padding: 12px;
+    border-radius: 15px;
     font-weight: bold;
-    font-size: 0.9rem;
-    display: inline-block;
     transition: 0.3s;
 }
 
-.btn-mini.btn-doc:hover {
-    background-color: #e0a1a7;
+.btn-profile:hover {
+    background: #e5b1b6;
+    transform: scale(1.02);
 }
 
-/* 8. Mode Sombre (Dark Mode) */
-body.dark-mode .certif-column {
-    background: rgba(0, 0, 0, 0.2);
+/* ============================================================
+   RESPONSIVE (POUR MOBILE)
+   ============================================================ */
+
+@media (max-width: 1150px) {
+    .certifications-columns {
+        flex-direction: column;
+        align-items: center;
+    }
+    .certif-column {
+        width: 100%;
+        max-width: 600px;
+    }
 }
 
-body.dark-mode .certif-card {
-    background: #333;
+@media (max-width: 600px) {
+    .microsoft-subgrid {
+        grid-template-columns: 1fr; /* Retour à une seule colonne sur petit mobile */
+    }
 }
-
-body.dark-mode .cert
-
