@@ -1,11 +1,12 @@
 /* --- VARIABLES ET THÈMES --- */
 :root {
-    --fond-creme: #fffaf0; 
-    --beige-clair: #f5f5dc; 
+    --fond-creme: #fffaf0;
+    --beige-clair: #f5f5dc;
     --rose-clair: #fce1e4;
     --rose-fonce: #f8c2c7;
     --marron-texte: #5e4433;
     --blanc: #ffffff;
+    --accent: #e91e8c;
 }
 
 /* --- MODE NUIT --- */
@@ -26,7 +27,7 @@ body {
     transition: background 0.3s, color 0.3s;
 }
 
-/* --- HEADER ET BOUTON NUIT --- */
+/* --- HEADER --- */
 .header-top {
     display: flex;
     align-items: center;
@@ -44,6 +45,11 @@ body {
     margin-right: 12px;
 }
 
+.signature-texte {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+}
+
 .theme-btn {
     margin-left: auto;
     background: var(--rose-clair);
@@ -55,7 +61,7 @@ body {
     display: flex; align-items: center; justify-content: center;
 }
 
-/* --- NAVIGATION (ONGLETS) --- */
+/* --- NAVIGATION --- */
 nav {
     background: var(--beige-clair);
     padding: 15px 0;
@@ -69,6 +75,7 @@ nav ul {
     gap: 20px;
     list-style: none;
     margin: 0; padding: 0;
+    flex-wrap: wrap;
 }
 
 nav a {
@@ -80,12 +87,29 @@ nav a {
     transition: 0.3s;
 }
 
-nav a:hover {
+nav a:hover, nav a.active {
     background-color: var(--rose-fonce);
     color: white;
 }
 
-/* --- CENTRAGE GÉNÉRAL DES TITRES ET CONTENUS --- */
+/* --- TITRES GÉNÉRAUX --- */
+.titre-principal-accueil {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    color: var(--marron-texte);
+}
+
+.sous-titre-accueil {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* --- CONTENEURS GÉNÉRAUX --- */
 .page-content-accueil, .page-content-bts, .projets-header {
     display: flex;
     flex-direction: column;
@@ -96,20 +120,6 @@ nav a:hover {
 .page-content-accueil {
     justify-content: center;
     min-height: 75vh;
-}
-
-.titre-principal-accueil {
-    font-family: 'Pacifico', cursive;
-    font-size: 4rem;
-    margin-bottom: 10px;
-    margin-top: 40px;
-}
-
-.sous-titre-accueil {
-    font-size: 1.2rem;
-    color: inherit;
-    opacity: 0.8;
-    margin-bottom: 30px;
 }
 
 /* --- TABLEAU BTS SIO --- */
@@ -137,48 +147,7 @@ nav a:hover {
     border-bottom: 1px solid var(--rose-clair);
 }
 
-/* --- GRILLE PROJETS (HORIZONTAL) --- */
-.projets-mini-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 20px;
-}
-
-.mini-card {
-    background: var(--beige-clair);
-    width: 250px;
-    padding: 20px;
-    border-radius: 20px;
-    border: 2px solid var(--rose-clair);
-    text-align: center;
-}
-
-.mini-preview {
-    width: 100%; height: 180px;
-    background: #ecece0;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-bottom: 15px;
-}
-
-.btn-mini {
-    padding: 8px 18px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.8rem;
-    transition: 0.3s;
-    border: none;
-    display: inline-block;
-}
-
-.btn-voir { background: #eee; color: #666; }
-.btn-doc { background: var(--rose-clair); color: var(--marron-texte); }
-.btn-mini:hover { background-color: var(--rose-fonce) !important; color: white !important; }
-
-/* --- CARTES COMPÉTENCES (HORIZONTAL + FLIP) --- */
+/* --- CARTES FLIP COMPÉTENCES --- */
 .flip-container {
     display: flex;
     flex-wrap: wrap;
@@ -187,43 +156,78 @@ nav a:hover {
     padding: 40px 20px;
 }
 
-.flip-card { width: 220px; height: 160px; perspective: 1000px; }
-.flip-card-inner { position: relative; width: 100%; height: 100%; transition: 0.6s; transform-style: preserve-3d; }
-.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card {
+    background-color: transparent;
+    width: 320px;
+    height: 240px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
 
 .flip-card-front, .flip-card-back {
-    position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
-    border-radius: 20px; display: flex; align-items: center; justify-content: center;
-    border: 2px solid var(--rose-clair);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.flip-card-front { background: var(--beige-clair); font-weight: bold; }
-.flip-card-back { 
-    background: var(--rose-clair); 
-    transform: rotateY(180deg); 
-    text-align: center; 
-    padding: 15px; 
-    font-size: 0.9rem;
+.flip-card-front {
+    background-color: var(--rose-clair);
+    color: var(--marron-texte);
+    border: 2px solid var(--rose-fonce);
 }
-/* ============================================================
-   STYLE SPÉCIFIQUE À LA PAGE VEILLE
-   ============================================================ */
-/* --- STYLE SPÉCIFIQUE VEILLE --- */
 
-/* --- LE CALENDRIER --- */
+.flip-card-front h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.flip-card-front p  { font-size: 0.8rem; opacity: 0.7; font-style: italic; }
 
-/* Conteneur principal */
+.flip-card-back {
+    background-color: var(--rose-fonce);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back ul { text-align: left; list-style: none; padding: 0; margin: 0; }
+.flip-card-back li { margin-bottom: 10px; font-size: 0.95rem; }
+
+body.dark-mode .flip-card-front {
+    background-color: #333;
+    color: #fce1e4;
+    border-color: #444;
+}
+
+/* --- CALENDRIER VEILLE --- */
 .calendar-wrapper {
     max-width: 350px;
     margin: 15px auto;
     background: #ffffff;
     padding: 20px;
     border-radius: 15px;
-    border: 2px solid #fce1e4;
+    border: 2px solid var(--rose-clair);
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* En-tête (Mois et flèches) */
 .calendar-header {
     display: flex;
     justify-content: space-between;
@@ -234,33 +238,30 @@ nav a:hover {
 .calendar-header h4 {
     margin: 0;
     text-transform: capitalize;
-    color: #5e4433; /* Ton marron texte */
+    color: var(--marron-texte);
 }
 
-/* FORCE LA GRILLE : C'est ici que l'on corrige l'effet colonne */
-.calendar-days-header, 
+.calendar-days-header,
 #calendarGrid {
     display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important; /* 7 colonnes égales */
+    grid-template-columns: repeat(7, 1fr) !important;
     gap: 8px;
     text-align: center;
 }
 
-/* Noms des jours (Lun, Mar...) */
 .calendar-days-header {
     font-weight: bold;
     font-size: 0.75rem;
-    color: #f8c2c7; /* Rose foncé */
+    color: var(--rose-fonce);
     margin-bottom: 10px;
 }
 
-/* Style des cases numérotées générées par ton JS */
 .calendar-day-cell {
-    aspect-ratio: 1 / 1; /* Force le carré parfait */
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fce1e4; /* Rose clair */
+    background: var(--rose-clair);
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.85rem;
@@ -269,18 +270,29 @@ nav a:hover {
 }
 
 .calendar-day-cell:hover {
-    background: #f8c2c7;
+    background: var(--rose-fonce);
     color: #ffffff;
     transform: scale(1.1);
 }
 
-/* Cases vides du début de mois */
-.calendar-day-empty {
-    background: transparent;
+.calendar-day-empty { background: transparent; }
+
+.btn-nav-cal {
+    background: var(--rose-clair);
+    border: none;
+    border-radius: 50%;
+    width: 30px; height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
 }
 
-/* --- RECHERCHE & SUGGESTIONS --- */
+.btn-nav-cal:hover { background: var(--rose-fonce); color: white; }
 
+/* --- RECHERCHE VEILLE --- */
 .search-container {
     display: flex;
     gap: 10px;
@@ -291,7 +303,7 @@ nav a:hover {
 #veille-search {
     padding: 10px 15px;
     border-radius: 20px;
-    border: 2px solid #fce1e4;
+    border: 2px solid var(--rose-clair);
     width: 75%;
     outline: none;
 }
@@ -303,10 +315,10 @@ nav a:hover {
     transform: translateX(-50%);
     width: 80%;
     background: #ffffff;
-    border: 1px solid #f8c2c7;
+    border: 1px solid var(--rose-fonce);
     border-radius: 12px;
     z-index: 1000;
-    display: none; /* Masqué par défaut */
+    display: none;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     overflow: hidden;
 }
@@ -319,230 +331,46 @@ nav a:hover {
     font-size: 0.9rem;
 }
 
-.suggestion-item:hover {
-    background: #fce1e4;
-}
+.suggestion-item:hover { background: var(--rose-clair); }
 
-/* --- BOUTONS DE NAVIGATION --- */
-.btn-nav-cal {
-    background: #fce1e4;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.btn-nav-cal:hover {
-    background: #f8c2c7;
-    color: white;
-}
-
-/* ============================================================
-   SECTION STAGE - DESIGN DES CARTES ET RAPPORTS
-   ============================================================ */
-
-/* Conteneur des cartes de compétences */
-.flip-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    margin: 40px 0;
-}
-
-/* Structure de la carte flip */
-.flip-card {
-    background-color: transparent;
-    width: 320px;
-    height: 240px;
-    perspective: 1000px; /* Important pour l'effet 3D */
-}
-
-/* Conteneur interne qui tourne */
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-/* Rotation au survol */
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-/* Styles communs Face et Dos */
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Pour Safari */
-    backface-visibility: hidden;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    padding: 20px;
-}
-
-/* STYLE DE LA FACE (Recto) */
-.flip-card-front {
-    background-color: #fce1e4; /* Rose clair */
-    color: #5e4433; /* Ton marron texte */
-    border: 2px solid #f8c2c7;
-}
-
-.flip-card-front h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.flip-card-front p {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    font-style: italic;
-}
-
-/* STYLE DU DOS (Verso) */
-.flip-card-back {
-    background-color: #f8c2c7; /* Rose plus foncé */
-    color: white;
-    transform: rotateY(180deg);
-}
-
-.flip-card-back ul {
-    text-align: left;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.flip-card-back li {
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-}
-
-/* --- GRILLE DES RAPPORTS PDF --- */
-
-.veille-grid-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-/* Adaptation de tes blocs existants pour les rapports */
-.bts-option-block {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 25px;
-    border-radius: 20px;
-    border: 1px solid #f8c2c7;
-    flex: 1;
-    min-width: 280px;
-    max-width: 450px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.bts-option-block:hover {
-    transform: translateY(-5px);
-}
-
-/* Boutons pour les documents */
-.btn-doc {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #f8c2c7;
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn-doc:hover {
-    background-color: #f2a6ad;
-}
-
-/* Adaptation pour le mode sombre si présent */
-body.dark-mode .flip-card-front {
-    background-color: #333;
-    color: #fce1e4;
-    border-color: #444;
-}
-
-body.dark-mode .bts-option-block {
-    background: rgba(45, 45, 45, 0.8);
-    color: #eee;
-}
-
-/* ============================================================
-   STYLE GÉNÉRAL - PAGE CERTIFICATIONS (3 COLONNES)
-   ============================================================ */
-/* --- CONFIGURATION GÉNÉRALE --- */
-
+/* --- CERTIFICATIONS --- */
 .page-content-bts {
     padding: 40px 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.titre-principal-accueil {
-    text-align: center;
-    font-family: 'Pacifico', cursive;
-    color: #5e4433;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-}
-
-/* --- SYSTÈME DES 3 COLONNES --- */
-
 .certifications-columns {
     display: flex;
-    flex-direction: row; /* Aligne les colonnes horizontalement */
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
-    align-items: stretch; /* FORCE LES 3 COLONNES À LA MÊME HAUTEUR */
+    align-items: stretch;
 }
 
 .certif-column {
     flex: 1;
     min-width: 320px;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255,255,255,0.6);
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(248, 194, 199, 0.3);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(248,194,199,0.3);
     display: flex;
-    flex-direction: column; /* Permet au contenu de remplir la hauteur */
+    flex-direction: column;
 }
 
 .column-title {
     text-align: center;
     font-family: 'Quicksand', sans-serif;
-    color: #f8c2c7;
-    border-bottom: 2px solid #f8c2c7;
+    color: var(--rose-fonce);
+    border-bottom: 2px solid var(--rose-fonce);
     padding-bottom: 10px;
     margin-bottom: 20px;
     font-size: 1.3rem;
     text-transform: uppercase;
 }
-
-/* --- CARTES DE CERTIFICATION (COMMUNES) --- */
 
 .certif-card {
     background: white;
@@ -556,27 +384,20 @@ body.dark-mode .bts-option-block {
 
 .certif-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(248, 194, 199, 0.2);
+    box-shadow: 0 5px 15px rgba(248,194,199,0.2);
 }
 
-/* Images pour OpenClassrooms */
-.img-badge-oc {
-    width: 50px;
-    height: 50px;
-    object-fit: contain;
-}
-
-/* --- GRILLE INTERNE MICROSOFT (DANS LA 3ème COLONNE) --- */
+.img-badge-oc { width: 50px; height: 50px; object-fit: contain; }
 
 .microsoft-subgrid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 colonnes de badges */
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    flex-grow: 1; /* Remplit l'espace pour aligner le bas */
+    flex-grow: 1;
 }
 
 .microsoft-subgrid .certif-card {
-    margin-bottom: 0; /* On utilise le gap de la grille à la place */
+    margin-bottom: 0;
     padding: 10px 5px;
     display: flex;
     flex-direction: column;
@@ -587,70 +408,40 @@ body.dark-mode .bts-option-block {
 .microsoft-subgrid h5 {
     font-size: 0.75rem;
     margin: 0 0 5px 0;
-    color: #5e4433;
+    color: var(--marron-texte);
     line-height: 1.1;
 }
-
-/* --- BOUTONS --- */
 
 .btn-pdf {
     display: inline-block;
     margin-top: 10px;
     padding: 6px 12px;
-    background-color: #f8c2c7;
+    background-color: var(--rose-fonce);
     color: white;
     text-decoration: none;
     border-radius: 20px;
     font-size: 0.8rem;
 }
 
-.btn-mini {
-    font-size: 0.65rem;
-    padding: 3px;
-    border: 1px solid #f8c2c7;
-    color: #f8c2c7;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.btn-mini:hover {
-    background: #f8c2c7;
-    color: white;
-}
-
-/* --- PROFIL MICROSOFT LEARN (BAS DE COLONNE) --- */
-
 .profile-link-box {
-    margin-top: auto; /* Pousse le lien tout en bas de la colonne */
+    margin-top: auto;
     padding-top: 20px;
     text-align: center;
 }
 
 .btn-profile {
     font-weight: 600;
-    color: #5e4433;
+    color: var(--marron-texte);
     text-decoration: none;
-    border-bottom: 2px solid #f8c2c7;
+    border-bottom: 2px solid var(--rose-fonce);
     font-size: 0.9rem;
 }
 
-/* --- RESPONSIVE --- */
-
 @media (max-width: 992px) {
-    .certifications-columns {
-        flex-direction: column; /* Passe en une colonne sur tablette/mobile */
-    }
+    .certifications-columns { flex-direction: column; }
 }
 
-/* ============================================================
-   PAGE MON PROFIL 
-   ============================================================ */
-/* ============================================================
-   PAGE MON PROFIL - DESIGN HARMONIEUX ET VISIBLE
-   ============================================================ */
-
-/* Structure principale */
+/* --- PROFIL --- */
 .page-content-profil {
     padding: 40px 5%;
     max-width: 1200px;
@@ -663,7 +454,6 @@ body.dark-mode .bts-option-block {
     gap: 40px;
 }
 
-/* Titre principal Noir */
 .titre-mon-parcours {
     color: #000000 !important;
     font-family: 'Pacifico', cursive;
@@ -671,10 +461,9 @@ body.dark-mode .bts-option-block {
     margin-bottom: 30px;
 }
 
-/* --- LA TIMELINE (FRISE) --- */
 .timeline {
     position: relative;
-    border-left: 5px solid #c2185b; /* Rose foncé */
+    border-left: 5px solid #c2185b;
     padding: 10px 0 10px 30px;
     margin-left: 20px;
 }
@@ -684,71 +473,42 @@ body.dark-mode .bts-option-block {
     margin-bottom: 45px;
 }
 
-/* Les points de la frise */
 .timeline-item::before {
     content: "";
     position: absolute;
     left: -40.5px;
     top: 8px;
-    width: 16px;
-    height: 16px;
+    width: 16px; height: 16px;
     background: #000000;
     border: 3px solid #c2185b;
     border-radius: 50%;
     z-index: 5;
 }
 
-/* Couleurs des textes de parcours */
-.timeline-date {
-    font-weight: 900;
-    color: #c2185b; /* Rose foncé */
-    font-size: 1.1em;
-    display: block;
-    margin-bottom: 5px;
-}
+.timeline-date { font-weight: 900; color: #c2185b; font-size: 1.1em; display: block; margin-bottom: 5px; }
+.job-title     { color: #000000 !important; font-size: 1.6em; font-weight: 800; margin: 0; }
+.company-name, .school-name { color: #002266 !important; font-weight: 700; font-size: 1.15em; margin: 5px 0; }
+.task-list li  { color: #000000 !important; font-weight: 600; line-height: 1.5; margin-bottom: 5px; }
 
-.job-title {
-    color: #000000 !important;
-    font-size: 1.6em;
-    font-weight: 800;
-    margin: 0;
-}
-
-.company-name, .school-name {
-    color: #002266 !important; /* Bleu marine pour le contraste */
-    font-weight: 700;
-    font-size: 1.15em;
-    margin: 5px 0;
-}
-
-.task-list li {
-    color: #000000 !important;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 5px;
-}
-
-/* --- LES CARTES (SIDEBAR) --- */
 .profil-card {
     background: #ffffff;
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 25px;
-    border: 3px solid #c2185b; /* Bordure Rose Foncé */
-    box-shadow: 5px 5px 0px #000000; /* Ombre noire solide */
+    border: 3px solid #c2185b;
+    box-shadow: 5px 5px 0px #000000;
 }
 
 .card-title {
     color: #000000;
     font-weight: 800;
     font-size: 1.4em;
-    border-bottom: 3px solid #c2185b; /* Souligné rose foncé */
+    border-bottom: 3px solid #c2185b;
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 20px;
 }
 
-/* Tags de compétences */
 .skills-tags-dark {
     list-style: none;
     padding: 0;
@@ -766,9 +526,6 @@ body.dark-mode .bts-option-block {
     font-size: 0.85em;
 }
 
-/* --- BOUTONS --- */
-
-/* Bouton Téléchargement CV (Rose Foncé) */
 .btn-download {
     background: #c2185b;
     color: #ffffff;
@@ -784,15 +541,10 @@ body.dark-mode .bts-option-block {
     transition: 0.3s;
 }
 
-.btn-download:hover {
-    background: #000000;
-    color: #ffffff;
-    transform: scale(1.02);
-}
+.btn-download:hover { background: #000000; color: #ffffff; transform: scale(1.02); }
 
-/* Bouton Letterboxd (Rose Bonbon) */
 .btn-letterboxd {
-    background: #ff69b4; /* Rose Bonbon */
+    background: #ff69b4;
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 8px;
@@ -804,11 +556,8 @@ body.dark-mode .bts-option-block {
     transition: 0.2s;
 }
 
-.btn-letterboxd:hover {
-    background: #ff1493; /* Un peu plus flashy au survol */
-}
+.btn-letterboxd:hover { background: #ff1493; }
 
-/* Bouton lien vers compétences */
 .btn-goto-competences {
     display: block;
     text-align: center;
@@ -822,28 +571,48 @@ body.dark-mode .bts-option-block {
     transition: 0.3s;
 }
 
-.btn-goto-competences:hover {
-    background: #c2185b;
-    color: #ffffff;
-}
+.btn-goto-competences:hover { background: #c2185b; color: #ffffff; }
 
-/* Utilitaires texte */
-.dark-text {
-    color: #000000;
-    font-weight: 600;
-}
+.dark-text { color: #000000; font-weight: 600; }
 
-/* Responsive tablette / mobile */
 @media (max-width: 900px) {
-    .profil-container {
-        grid-template-columns: 1fr;
-    }
+    .profil-container { grid-template-columns: 1fr; }
 }
+
+/* --- STAGE --- */
+.veille-grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.bts-option-block {
+    background: rgba(255,255,255,0.6);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid var(--rose-fonce);
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.bts-option-block:hover { transform: translateY(-5px); }
+
+body.dark-mode .bts-option-block { background: rgba(45,45,45,0.8); color: #eee; }
 
 /* ============================================================
-   PAGE PROJETS - DESIGN COMPLET ET HARMONISÉ
+   PAGE PROJETS
    ============================================================ */
-/* ===== PAGE PROJETS ===== */
+
+.page-projets {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 2rem 4rem;
+}
 
 .sous-titre-projets {
     text-align: center;
@@ -854,7 +623,7 @@ body.dark-mode .bts-option-block {
     letter-spacing: 0.05em;
 }
 
-/* ===== STATS ===== */
+/* STATS */
 .stats-bar {
     display: flex;
     gap: 2rem;
@@ -866,8 +635,8 @@ body.dark-mode .bts-option-block {
 .stat-item {
     text-align: center;
     font-family: 'Quicksand', sans-serif;
-    background: var(--card-bg, rgba(255,255,255,0.05));
-    border: 1px solid var(--accent, #e91e8c);
+    background: var(--beige-clair);
+    border: 2px solid var(--accent);
     border-radius: 16px;
     padding: 1.2rem 2rem;
     min-width: 100px;
@@ -876,10 +645,7 @@ body.dark-mode .bts-option-block {
 .stat-number {
     font-size: 2.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, var(--accent, #e91e8c), #ff6b6b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--accent);
     display: block;
     line-height: 1;
 }
@@ -893,7 +659,7 @@ body.dark-mode .bts-option-block {
     display: block;
 }
 
-/* ===== FILTRES ===== */
+/* FILTRES */
 .filter-bar {
     display: flex;
     flex-wrap: wrap;
@@ -908,9 +674,9 @@ body.dark-mode .bts-option-block {
     font-size: 0.9rem;
     padding: 0.5rem 1.3rem;
     border-radius: 999px;
-    border: 2px solid var(--accent, #e91e8c);
+    border: 2px solid var(--accent);
     background: transparent;
-    color: var(--accent, #e91e8c);
+    color: var(--accent);
     cursor: pointer;
     transition: all 0.2s ease;
     letter-spacing: 0.03em;
@@ -918,13 +684,13 @@ body.dark-mode .bts-option-block {
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: var(--accent, #e91e8c);
+    background: var(--accent);
     color: #fff;
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(233,30,140,0.35);
 }
 
-/* ===== CATÉGORIES ===== */
+/* CATÉGORIES */
 .categorie-section {
     margin-bottom: 3.5rem;
     animation: fadeUp 0.5s ease both;
@@ -936,24 +702,24 @@ body.dark-mode .bts-option-block {
     font-size: 1.35rem;
     margin-bottom: 1.4rem;
     padding-bottom: 0.6rem;
-    border-bottom: 3px solid;
-    border-image: linear-gradient(90deg, var(--accent, #e91e8c), transparent) 1;
+    border-bottom: 3px solid var(--accent);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: var(--marron-texte);
 }
 
-/* ===== GRILLE ===== */
+/* GRILLE */
 .projets-mini-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1.2rem;
 }
 
-/* ===== MINI CARD ===== */
+/* MINI CARD */
 .mini-card {
-    background: var(--card-bg, rgba(255,255,255,0.05));
-    border: 1px solid var(--border, rgba(255,255,255,0.1));
+    background: var(--beige-clair);
+    border: 2px solid var(--rose-clair);
     border-radius: 16px;
     overflow: hidden;
     display: flex;
@@ -965,10 +731,10 @@ body.dark-mode .bts-option-block {
 .mini-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 32px rgba(233,30,140,0.2);
-    border-color: var(--accent, #e91e8c);
+    border-color: var(--accent);
 }
 
-/* ===== BADGE ===== */
+/* BADGE */
 .mini-badge {
     position: absolute;
     top: 10px;
@@ -989,10 +755,10 @@ body.dark-mode .bts-option-block {
 .badge-dev    { background: rgba(246,173,85,0.2);  color: #f6ad55; border: 1px solid #f6ad55; }
 .badge-autre  { background: rgba(160,174,192,0.2); color: #a0aec0; border: 1px solid #a0aec0; }
 
-/* ===== PREVIEW ===== */
+/* PREVIEW */
 .mini-preview {
-    background: linear-gradient(135deg, rgba(233,30,140,0.08), rgba(255,107,107,0.06));
-    height: 120px;
+    background: linear-gradient(135deg, var(--rose-clair), #fff5f5);
+    height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1002,19 +768,10 @@ body.dark-mode .bts-option-block {
     font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', sans-serif;
 }
 
-.mini-preview::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(233,30,140,0.12), transparent 60%);
-}
-
 .mini-preview .pdf-icon {
     position: relative;
     z-index: 1;
-    filter: drop-shadow(0 4px 8px rgba(233,30,140,0.3));
     transition: transform 0.25s ease;
-    font-style: normal;
     line-height: 1;
 }
 
@@ -1022,7 +779,7 @@ body.dark-mode .bts-option-block {
     transform: scale(1.12) rotate(-3deg);
 }
 
-/* ===== TITRE CARTE ===== */
+/* TITRE CARTE */
 .mini-title {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
@@ -1031,9 +788,10 @@ body.dark-mode .bts-option-block {
     padding: 0.7rem 0.8rem 0.4rem;
     line-height: 1.3;
     flex: 1;
+    color: var(--marron-texte);
 }
 
-/* ===== BOUTONS ===== */
+/* BOUTONS PROJETS */
 .mini-actions {
     display: flex;
     gap: 0.5rem;
@@ -1045,39 +803,44 @@ body.dark-mode .bts-option-block {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     font-size: 0.78rem;
-    padding: 0.38rem 0.8rem;
+    padding: 0.4rem 0.9rem;
     border-radius: 8px;
     text-decoration: none;
     transition: all 0.18s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.3rem;
     letter-spacing: 0.02em;
+    border: none;
+    cursor: pointer;
 }
 
 .btn-voir {
-    background: linear-gradient(135deg, var(--accent, #e91e8c), #c2185b);
-    color: #fff;
+    background: var(--accent);
+    color: #fff !important;
     box-shadow: 0 2px 8px rgba(233,30,140,0.3);
 }
 
 .btn-voir:hover {
+    background: #c2185b;
     transform: translateY(-2px);
     box-shadow: 0 4px 14px rgba(233,30,140,0.45);
+    color: #fff !important;
 }
 
 .btn-doc {
-    background: var(--card-bg, rgba(255,255,255,0.07));
-    color: var(--text, inherit);
-    border: 1px solid var(--border, rgba(255,255,255,0.15));
+    background: var(--beige-clair);
+    color: var(--marron-texte) !important;
+    border: 1px solid var(--rose-fonce) !important;
 }
 
 .btn-doc:hover {
-    background: var(--border, rgba(255,255,255,0.12));
+    background: var(--rose-clair);
     transform: translateY(-2px);
+    color: var(--marron-texte) !important;
 }
 
-/* ===== ANIMATION ===== */
+/* ANIMATION */
 @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -1089,10 +852,227 @@ body.dark-mode .bts-option-block {
 .categorie-section:nth-child(4) { animation-delay: 0.20s; }
 .categorie-section:nth-child(5) { animation-delay: 0.25s; }
 
-/* ===== RESPONSIVE ===== */
+/* RESPONSIVE */
 @media (max-width: 600px) {
     .projets-mini-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
-    .mini-preview { height: 90px; font-size: 2.2rem; }
+    .mini-preview { height: 90px; font-size: 2.5rem; }
     .stats-bar { gap: 1rem; }
     .stat-item { padding: 0.8rem 1.2rem; }
+}
+
+/* ============================================================
+   RESPONSIVE - MOBILE & TABLETTE
+   ============================================================ */
+
+/* --- TABLETTE (max 992px) --- */
+@media (max-width: 992px) {
+
+    /* Navigation */
+    nav ul {
+        gap: 8px;
+        padding: 0 10px;
+    }
+
+    nav a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Profil */
+    .profil-container {
+        grid-template-columns: 1fr;
+    }
+
+    /* Certifications */
+    .certifications-columns {
+        flex-direction: column;
+    }
+
+    /* Projets grille */
+    .projets-mini-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- MOBILE (max 768px) --- */
+@media (max-width: 768px) {
+
+    /* Header */
+    .header-top {
+        padding: 8px 15px;
+    }
+
+    .signature-texte {
+        font-size: 0.85rem;
+    }
+
+    /* Navigation : scroll horizontal */
+    nav {
+        overflow-x: auto;
+        padding: 10px 0;
+    }
+
+    nav ul {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 6px;
+        padding: 0 15px;
+        width: max-content;
+        min-width: 100%;
+    }
+
+    nav a {
+        padding: 7px 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    /* Titres */
+    .titre-principal-accueil {
+        font-size: 1.8rem;
+    }
+
+    .titre-mon-parcours {
+        font-size: 2rem;
+    }
+
+    /* Stats projets */
+    .stats-bar {
+        gap: 0.8rem;
+    }
+
+    .stat-item {
+        padding: 0.8rem 1rem;
+        min-width: 80px;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    /* Filtres */
+    .filter-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.9rem;
+    }
+
+    /* Projets grille */
+    .projets-mini-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .mini-preview {
+        height: 90px;
+        font-size: 2.5rem;
+    }
+
+    .mini-title {
+        font-size: 0.82rem;
+    }
+
+    /* Cartes flip */
+    .flip-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    /* Tableau BTS */
+    .bts-table {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .bts-table td {
+        padding: 15px;
+    }
+
+    /* Page profil */
+    .page-content-profil {
+        padding: 20px 4%;
+    }
+
+    .profil-card {
+        padding: 15px;
+    }
+
+    /* Timeline */
+    .timeline {
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+
+    .job-title { font-size: 1.2em; }
+    .company-name, .school-name { font-size: 1em; }
+
+    /* Certifications */
+    .certif-column {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .microsoft-subgrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Stage */
+    .bts-option-block {
+        min-width: unset;
+        width: 100%;
+    }
+
+    /* Page projets padding */
+    .page-projets {
+        padding: 1rem 1rem 3rem;
+    }
+}
+
+/* --- PETIT MOBILE (max 480px) --- */
+@media (max-width: 480px) {
+
+    .titre-principal-accueil {
+        font-size: 1.5rem;
+    }
+
+    .projets-mini-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+
+    .mini-preview {
+        height: 80px;
+        font-size: 2rem;
+    }
+
+    .btn-mini {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.6rem;
+    }
+
+    .stats-bar {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .stat-number { font-size: 1.5rem; }
+
+    .filter-bar {
+        gap: 0.4rem;
+    }
+
+    .filter-btn {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    /* Calendrier veille */
+    .calendar-wrapper {
+        max-width: 100%;
+        padding: 12px;
+    }
+
+    /* Cartes certif microsoft */
+    .microsoft-subgrid {
+        grid-template-columns: 1fr;
+    }
 }
