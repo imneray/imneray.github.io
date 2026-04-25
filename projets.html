@@ -29,44 +29,485 @@
     </nav>
 
     <main class="page-projets">
+
         <h1 class="titre-principal-accueil">Toutes mes Documentations</h1>
-        <p class="sous-titre-projets">Accès complet à mes travaux techniques</p>
+        <p class="sous-titre-projets">Accès complet à mes travaux techniques — BTS SIO SISR</p>
 
-        <h2 class="categorie-titre">🖥️ Systèmes & Virtualisation</h2>
-        <div class="projets-mini-grid">
-            <div class="mini-card"><div class="mini-preview"><embed src="serveur_ad.pdf"></div><h3 class="mini-title">Serveur AD 2022</h3><div class="mini-actions"><a href="serveur_ad.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="serveur_ad.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="Proxmox.pdf"></div><h3 class="mini-title">Proxmox</h3><div class="mini-actions"><a href="Proxmox.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Proxmox.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="cockpit.pdf"></div><h3 class="mini-title">Cockpit</h3><div class="mini-actions"><a href="cockpit.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="cockpit.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="debian_12.pdf"></div><h3 class="mini-title">Debian 12</h3><div class="mini-actions"><a href="debian_12.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="debian_12.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="Windows_Server_2022.pdf"></div><h3 class="mini-title">Windows Server 2022</h3><div class="mini-actions"><a href="Windows_Server_2022.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Windows_Server_2022.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="Ubuntu_Server.pdf"></div><h3 class="mini-title">Ubuntu Server</h3><div class="mini-actions"><a href="Ubuntu_Server.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Ubuntu_Server.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
+        <!-- STATS -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">29</span>
+                <span class="stat-label">Documents</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Catégories</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2</span>
+                <span class="stat-label">Ans de BTS</span>
+            </div>
         </div>
 
-        <h2 class="categorie-titre">🌐 Réseaux & Services</h2>
-        <div class="projets-mini-grid">
-            <div class="mini-card"><div class="mini-preview"><embed src="configuration_d'un_switc....pdf"></div><h3 class="mini-title">Config Switch</h3><div class="mini-actions"><a href="configuration_d'un_switc....pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="configuration_d'un_switc....pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="DHCP FAILOVER.pdf"></div><h3 class="mini-title">DHCP Failover</h3><div class="mini-actions"><a href="DHCP FAILOVER.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="DHCP FAILOVER.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="DNS.pdf"></div><h3 class="mini-title">DNS</h3><div class="mini-actions"><a href="DNS.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="DNS.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="SNMP.pdf"></div><h3 class="mini-title">SNMP</h3><div class="mini-actions"><a href="SNMP.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="SNMP.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="VPN.pdf"></div><h3 class="mini-title">VPN</h3><div class="mini-actions"><a href="VPN.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="VPN.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="VLANS.pdf"></div><h3 class="mini-title">VLANs</h3><div class="mini-actions"><a href="VLANS.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="VLANS.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
+        <!-- FILTRES -->
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterCat('all', this)">🗂️ Tous</button>
+            <button class="filter-btn" onclick="filterCat('sys', this)">🖥️ Systèmes</button>
+            <button class="filter-btn" onclick="filterCat('reseau', this)">🌐 Réseaux</button>
+            <button class="filter-btn" onclick="filterCat('secu', this)">🛡️ Sécurité</button>
+            <button class="filter-btn" onclick="filterCat('dev', this)">💻 Dev & Outils</button>
+            <button class="filter-btn" onclick="filterCat('autre', this)">📝 Autres</button>
         </div>
 
-        <h2 class="categorie-titre">🛡️ Sécurité & Supervision</h2>
-        <div class="projets-mini-grid">
-            <div class="mini-card"><div class="mini-preview"><embed src="wazuh.pdf"></div><h3 class="mini-title">Wazuh</h3><div class="mini-actions"><a href="wazuh.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="wazuh.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="Stormdhield.pdf"></div><h3 class="mini-title">Stormshield</h3><div class="mini-actions"><a href="Stormdhield.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Stormdhield.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="Zabbix.pdf"></div><h3 class="mini-title">Zabbix</h3><div class="mini-actions"><a href="Zabbix.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Zabbix.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="GLPI.pdf"></div><h3 class="mini-title">GLPI</h3><div class="mini-actions"><a href="GLPI.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="GLPI.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-            <div class="mini-card"><div class="mini-preview"><embed src="GPO.pdf"></div><h3 class="mini-title">GPO Sécurité</h3><div class="mini-actions"><a href="GPO.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="GPO.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
+        <!-- ===== SYSTÈMES & VIRTUALISATION ===== -->
+        <div class="categorie-section" data-cat="sys">
+            <h2 class="categorie-titre">🖥️ Systèmes &amp; Virtualisation</h2>
+            <div class="projets-mini-grid">
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Serveur AD 2022</h3>
+                    <div class="mini-actions">
+                        <a href="SERVEUR AD.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="SERVEUR AD.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Proxmox</h3>
+                    <div class="mini-actions">
+                        <a href="Proxmox.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Proxmox.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Cockpit</h3>
+                    <div class="mini-actions">
+                        <a href="cockpit.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="cockpit.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Windows Server 2022</h3>
+                    <div class="mini-actions">
+                        <a href="Windows_Server_2022.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Windows_Server_2022.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Ubuntu Server</h3>
+                    <div class="mini-actions">
+                        <a href="Ubuntu_Server.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Ubuntu_Server.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Configuration du RAID 1</h3>
+                    <div class="mini-actions">
+                        <a href="Configuration du RAID 1.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Configuration du RAID 1.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Serveur Impression</h3>
+                    <div class="mini-actions">
+                        <a href="Serveur impression.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Serveur impression.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">FTP sous IIS</h3>
+                    <div class="mini-actions">
+                        <a href="Ftps sous iis.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Ftps sous iis.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Gestion de parc</h3>
+                    <div class="mini-actions">
+                        <a href="gestion de parc.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="gestion de parc.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Installation Nextcloud</h3>
+                    <div class="mini-actions">
+                        <a href="Installation de Next...e.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Installation de Next...e.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Installation FOG</h3>
+                    <div class="mini-actions">
+                        <a href="Installation FOG.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Installation FOG.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-sys">Système</span>
+                    <div class="mini-preview"><span class="pdf-icon">📋</span></div>
+                    <h3 class="mini-title">Kopia</h3>
+                    <div class="mini-actions">
+                        <a href="Kopia.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Kopia.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
-        <h2 class="categorie-titre">📝 Autres Travaux</h2>
-        <div class="projets-mini-grid">
-             <div class="mini-card"><div class="mini-preview"><embed src="Veille_Technologique.pdf"></div><h3 class="mini-title">Veille Techno</h3><div class="mini-actions"><a href="Veille_Technologique.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Veille_Technologique.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
-             <div class="mini-card"><div class="mini-preview"><embed src="Rapport_Stage.pdf"></div><h3 class="mini-title">Rapport Stage</h3><div class="mini-actions"><a href="Rapport_Stage.pdf" class="btn-mini btn-voir">👁️ Voir</a><a href="Rapport_Stage.pdf" download class="btn-mini btn-doc">📄 Doc</a></div></div>
+        <!-- ===== RÉSEAUX & SERVICES ===== -->
+        <div class="categorie-section" data-cat="reseau">
+            <h2 class="categorie-titre">🌐 Réseaux &amp; Services</h2>
+            <div class="projets-mini-grid">
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">Config Switch</h3>
+                    <div class="mini-actions">
+                        <a href="configuration d'un switc....pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="configuration d'un switc....pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">DHCP Failover</h3>
+                    <div class="mini-actions">
+                        <a href="DHCP FAILOVER.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="DHCP FAILOVER.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">DNS</h3>
+                    <div class="mini-actions">
+                        <a href="DNS.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="DNS.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">SNMP</h3>
+                    <div class="mini-actions">
+                        <a href="SNMP.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="SNMP.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">VPN</h3>
+                    <div class="mini-actions">
+                        <a href="VPN.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="VPN.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">VLANs</h3>
+                    <div class="mini-actions">
+                        <a href="VLANS.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="VLANS.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">Connectivité BEG</h3>
+                    <div class="mini-actions">
+                        <a href="Connectivité BEG.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Connectivité BEG.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">Déploiement Poste FOG V2</h3>
+                    <div class="mini-actions">
+                        <a href="Deploiement_Poste_FOGV2.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Deploiement_Poste_FOGV2.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">Déploiement Poste FOG V2-1</h3>
+                    <div class="mini-actions">
+                        <a href="Deploiement_Poste_FOGV2-1.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Deploiement_Poste_FOGV2-1.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-reseau">Réseau</span>
+                    <div class="mini-preview"><span class="pdf-icon">🌐</span></div>
+                    <h3 class="mini-title">PHP IPAM</h3>
+                    <div class="mini-actions">
+                        <a href="PHP IPAM.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="PHP IPAM.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== SÉCURITÉ & SUPERVISION ===== -->
+        <div class="categorie-section" data-cat="secu">
+            <h2 class="categorie-titre">🛡️ Sécurité &amp; Supervision</h2>
+            <div class="projets-mini-grid">
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Wazuh</h3>
+                    <div class="mini-actions">
+                        <a href="wazuh.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="wazuh.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Installation Wazuh (Ubuntu)</h3>
+                    <div class="mini-actions">
+                        <a href="Installation de Wazuh (Ubu...).pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Installation de Wazuh (Ubu...).pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Installation Wazuh via GPO</h3>
+                    <div class="mini-actions">
+                        <a href="Installation de Wazuh via GPO.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Installation de Wazuh via GPO.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Stormshield</h3>
+                    <div class="mini-actions">
+                        <a href="Stormdhield.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Stormdhield.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Zabbix</h3>
+                    <div class="mini-actions">
+                        <a href="Zabbix.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Zabbix.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">GLPI</h3>
+                    <div class="mini-actions">
+                        <a href="GLPI.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="GLPI.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">GPO Sécurité</h3>
+                    <div class="mini-actions">
+                        <a href="GPO.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="GPO.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Prometheus</h3>
+                    <div class="mini-actions">
+                        <a href="Prometheus.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Prometheus.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Doc. Proxy Squid</h3>
+                    <div class="mini-actions">
+                        <a href="Documentation_Proxy_Squid...O.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Documentation_Proxy_Squid...O.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Doc. Loki Grafana</h3>
+                    <div class="mini-actions">
+                        <a href="Documentation_Loki_Gr...a.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Documentation_Loki_Gr...a.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-secu">Sécurité</span>
+                    <div class="mini-preview"><span class="pdf-icon">🛡️</span></div>
+                    <h3 class="mini-title">Doc. iRedMail</h3>
+                    <div class="mini-actions">
+                        <a href="Documentation_iRedMail_Co...e.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Documentation_iRedMail_Co...e.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== DEV & OUTILS ===== -->
+        <div class="categorie-section" data-cat="dev">
+            <h2 class="categorie-titre">💻 Dev &amp; Outils</h2>
+            <div class="projets-mini-grid">
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-dev">Dev</span>
+                    <div class="mini-preview"><span class="pdf-icon">💻</span></div>
+                    <h3 class="mini-title">Ansible Alloy</h3>
+                    <div class="mini-actions">
+                        <a href="Documentation_Ansible_Alloy.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Documentation_Ansible_Alloy.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-dev">Dev</span>
+                    <div class="mini-preview"><span class="pdf-icon">💻</span></div>
+                    <h3 class="mini-title">Mastérisation avec Ivanti</h3>
+                    <div class="mini-actions">
+                        <a href="Masterisation avec Ivanti.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Masterisation avec Ivanti.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-dev">Dev</span>
+                    <div class="mini-preview"><span class="pdf-icon">💻</span></div>
+                    <h3 class="mini-title">Projet 1 — Installation d'env.</h3>
+                    <div class="mini-actions">
+                        <a href="Projet 1 - installation d'env...l.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Projet 1 - installation d'env...l.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== AUTRES TRAVAUX ===== -->
+        <div class="categorie-section" data-cat="autre">
+            <h2 class="categorie-titre">📝 Autres Travaux</h2>
+            <div class="projets-mini-grid">
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-autre">Autre</span>
+                    <div class="mini-preview"><span class="pdf-icon">📝</span></div>
+                    <h3 class="mini-title">Veille Technologique</h3>
+                    <div class="mini-actions">
+                        <a href="Veille_Technologique.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Veille_Technologique.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-autre">Autre</span>
+                    <div class="mini-preview"><span class="pdf-icon">📝</span></div>
+                    <h3 class="mini-title">Rapport de Stage</h3>
+                    <div class="mini-actions">
+                        <a href="Rapport_Stage.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Rapport_Stage.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <span class="mini-badge badge-autre">Autre</span>
+                    <div class="mini-preview"><span class="pdf-icon">📝</span></div>
+                    <h3 class="mini-title">Oral SEO (diapo)</h3>
+                    <div class="mini-actions">
+                        <a href="Oral SEO diapo.pdf" class="btn-mini btn-voir">👁️ Voir</a>
+                        <a href="Oral SEO diapo.pdf" download class="btn-mini btn-doc">📄 Doc</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </main>
+
+    <script>
+        function filterCat(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.categorie-section').forEach(section => {
+                section.style.display = (cat === 'all' || section.dataset.cat === cat) ? '' : 'none';
+            });
+        }
+
+        const toggleBtn = document.getElementById('theme-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                toggleBtn.textContent = document.body.classList.contains('light-mode') ? '🌞' : '🌙';
+            });
+        }
+    </script>
+
 </body>
 </html>
