@@ -343,80 +343,148 @@ nav a:hover {
     color: white;
 }
 
-/* --- SECTION STAGE & FLIP CARDS --- */
+/* ============================================================
+   SECTION STAGE - DESIGN DES CARTES ET RAPPORTS
+   ============================================================ */
 
-.section-titre {
-    text-align: center;
-    font-family: 'Pacifico', cursive;
-    color: var(--marron-texte);
-    margin-top: 40px;
-}
-
+/* Conteneur des cartes de compétences */
 .flip-container {
     display: flex;
     justify-content: center;
     gap: 30px;
     flex-wrap: wrap;
-    margin: 30px 0;
+    margin: 40px 0;
 }
 
-/* La boîte de la carte */
+/* Structure de la carte flip */
 .flip-card {
     background-color: transparent;
-    width: 280px;
-    height: 200px;
-    perspective: 1000px; /* Effet 3D */
+    width: 320px;
+    height: 240px;
+    perspective: 1000px; /* Important pour l'effet 3D */
 }
 
-/* Le conteneur interne pour l'animation */
+/* Conteneur interne qui tourne */
 .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
-/* Animation au survol */
+/* Rotation au survol */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-/* Positionnement Face/Dos */
+/* Styles communs Face et Dos */
 .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Cache le dos quand on voit la face */
+    -webkit-backface-visibility: hidden; /* Pour Safari */
+    backface-visibility: hidden;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 20px;
 }
 
-/* Style de la FACE */
+/* STYLE DE LA FACE (Recto) */
 .flip-card-front {
-    background-color: var(--rose-clair, #fce1e4);
-    color: var(--marron-texte);
+    background-color: #fce1e4; /* Rose clair */
+    color: #5e4433; /* Ton marron texte */
     border: 2px solid #f8c2c7;
 }
 
-/* Style du DOS */
+.flip-card-front h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.flip-card-front p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* STYLE DU DOS (Verso) */
 .flip-card-back {
-    background-color: #f8c2c7;
+    background-color: #f8c2c7; /* Rose plus foncé */
     color: white;
     transform: rotateY(180deg);
-    padding: 15px;
 }
 
 .flip-card-back ul {
+    text-align: left;
     list-style: none;
     padding: 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
+    margin: 0;
 }
 
-.flip-card-back h3 { margin-bottom: 10px; }
+.flip-card-back li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+/* --- GRILLE DES RAPPORTS PDF --- */
+
+.veille-grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+/* Adaptation de tes blocs existants pour les rapports */
+.bts-option-block {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 25px;
+    border-radius: 20px;
+    border: 1px solid #f8c2c7;
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.bts-option-block:hover {
+    transform: translateY(-5px);
+}
+
+/* Boutons pour les documents */
+.btn-doc {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #f8c2c7;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-doc:hover {
+    background-color: #f2a6ad;
+}
+
+/* Adaptation pour le mode sombre si présent */
+body.dark-mode .flip-card-front {
+    background-color: #333;
+    color: #fce1e4;
+    border-color: #444;
+}
+
+body.dark-mode .bts-option-block {
+    background: rgba(45, 45, 45, 0.8);
+    color: #eee;
+}
