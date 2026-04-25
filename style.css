@@ -644,50 +644,197 @@ body.dark-mode .bts-option-block {
 }
 
 /* ============================================================
-   PAGE MON PROFIL - STRUCTURE ET TIMELINE
+   PAGE MON PROFIL 
    ============================================================ */
 
-/* --- STRUCTURE PROFIL --- */
-.page-content-profil { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
-.profil-container { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; }
+/* Conteneur principal */
+.page-content-profil {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-/* --- TIMELINE --- */
-.timeline { position: relative; border-left: 3px solid #ff7eb9; padding: 20px 0 20px 30px; margin-left: 20px; }
-.timeline-item { position: relative; margin-bottom: 40px; }
+.profil-container {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* --- FRISE CHRONOLOGIQUE (TIMELINE) --- */
+.timeline {
+    position: relative;
+    border-left: 4px solid #ff0066; /* Ligne rose plus épaisse et vive */
+    padding: 20px 0 20px 40px;
+    margin-left: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* Les points sur la frise */
 .timeline-item::before {
-    content: ""; position: absolute; left: -38.5px; top: 5px; width: 14px; height: 14px;
-    background: #1a1a1a; border: 3px solid #ff7eb9; border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: -49px; /* Ajusté pour la nouvelle épaisseur */
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    border: 4px solid #ff0066;
+    border-radius: 50%;
+    z-index: 2;
 }
-.timeline-item.stage::before { border-color: #7ebfff; }
-.timeline-date { font-weight: bold; color: #ff7eb9; display: block; margin-bottom: 5px; }
-.timeline-item.stage .timeline-date { color: #7ebfff; }
-.timeline-content h3 { margin: 0; color: white; font-size: 1.2em; }
-.timeline-content ul { font-size: 0.9em; color: #ccc; margin-top: 8px; }
 
-/* --- CARDS & BOUTONS --- */
-.profil-card {
-    background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px;
-    margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
+/* Couleur bleue pour les stages */
+.timeline-item.stage::before {
+    border-color: #0056b3;
 }
-.skills-tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
-.skills-tags li { background: rgba(255, 255, 255, 0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.85em; color: #eee; }
 
-/* Bouton vers Compétences */
-.btn-goto-competences {
-    display: block; text-align: center; background: transparent; color: #ff7eb9;
-    border: 1px solid #ff7eb9; padding: 10px; border-radius: 8px;
-    text-decoration: none; font-size: 0.9em; font-weight: bold; transition: 0.3s;
+/* Dates - Rose flash ou Bleu foncé pour être lisible */
+.timeline-date {
+    font-weight: 800;
+    color: #ff0066;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: block;
+    text-transform: uppercase;
 }
-.btn-goto-competences:hover { background: #ff7eb9; color: white; }
 
-/* Téléchargement CV */
+.timeline-item.stage .timeline-date {
+    color: #0056b3;
+}
+
+/* Titres et textes - Noir profond pour le contraste */
+.timeline-content h3 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #1a1a1a; /* Presque noir */
+    font-weight: 700;
+}
+
+.company-name, .school-name {
+    font-weight: 600;
+    color: #333333;
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+.timeline-content ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 1rem;
+    color: #222222; /* Texte des listes bien sombre */
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* --- COLONNE DE DROITE (SIDEBAR) --- */
+
+/* Bouton Téléchargement CV */
+.cv-download-box {
+    margin-bottom: 30px;
+}
+
 .btn-download {
-    display: flex; align-items: center; justify-content: center; gap: 10px;
-    background: linear-gradient(135deg, #ff7eb9, #ff758c); color: white;
-    text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #ff0066; /* Couleur pleine pour plus de visibilité */
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1.2rem;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 0, 102, 0.3);
 }
-.btn-download:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 126, 185, 0.4); }
 
-.btn-letterboxd { background: #00e730; color: #14181c; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.8em; }
+.btn-download:hover {
+    transform: translateY(-5px);
+    background: #e6005c;
+}
 
-@media (max-width: 900px) { .profil-container { grid-template-columns: 1fr; } }
+/* Cartes d'information */
+.profil-card {
+    background: #ffffff; /* Fond blanc pur pour le contraste */
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    border: 2px solid #eeeeee;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card-title {
+    color: #1a1a1a;
+    font-size: 1.3em;
+    border-bottom: 3px solid #ff0066;
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+/* Tags de compétences (Hard & Soft) */
+.skills-tags {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-tags li {
+    background: #f0f0f0;
+    color: #1a1a1a;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 0.95em;
+    font-weight: 600;
+    border: 1px solid #cccccc;
+}
+
+/* Bouton vers la page Compétences */
+.btn-goto-competences {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background: transparent;
+    color: #ff0066;
+    border: 2px solid #ff0066;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.btn-goto-competences:hover {
+    background: #ff0066;
+    color: white;
+}
+
+/* Bouton Letterboxd */
+.btn-letterboxd {
+    display: inline-block;
+    margin-top: 15px;
+    background: #00e730;
+    color: #14181c;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .profil-container {
+        grid-template-columns: 1fr;
+    }
+    .timeline {
+        margin-left: 10px;
+    }
+}
