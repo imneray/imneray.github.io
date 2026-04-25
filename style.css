@@ -489,15 +489,64 @@ body.dark-mode .bts-option-block {
     color: #eee;
 }
 
-/* --- STYLE PAGE CERTIFICATIONS --- */
+/* --- STYLE PAGE CERTIFICATIONS AVEC CAPTURES --- */
 
-.certif-icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
+/* On utilise flex pour bien organiser l'image et le texte */
+.block-certif {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important; /* On enlève le padding du bloc pour que l'image colle aux bords */
+    overflow: hidden; /* Pour que l'image ne dépasse pas des bords arrondis */
+    height: 100%; /* Pour que tous les blocs aient la même hauteur */
+}
+
+/* Conteneur de l'image pour la recadrer proprement */
+.certif-image-container {
+    width: 100%;
+    height: 180px; /* Hauteur fixe pour l'image */
+    overflow: hidden;
+    border-bottom: 2px solid #f8c2c7;
+}
+
+/* Style de la capture d'écran */
+.certif-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recadre l'image pour remplir le conteneur sans la déformer */
+    object-position: center; /* Centre l'image */
+    transition: transform 0.3s ease;
+}
+
+/* Zoom léger au survol */
+.bts-option-block:hover .certif-screenshot {
+    transform: scale(1.1);
+}
+
+/* Conteneur pour le texte sous l'image */
+.certif-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Le texte prend la place restante */
+}
+
+.bts-option-block h3 {
+    color: #5e4433;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.bts-option-block p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: auto; /* Pousse le badge vers le bas */
 }
 
 .badge-certif {
     display: inline-block;
+    align-self: center;
     margin-top: 15px;
     padding: 5px 15px;
     background-color: #f8c2c7;
@@ -509,21 +558,10 @@ body.dark-mode .bts-option-block {
     letter-spacing: 1px;
 }
 
-.bts-option-block h3 {
-    color: #5e4433;
-    margin-bottom: 10px;
-}
-
-.bts-option-block p {
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.4;
-}
-
-/* Effet au survol pour les certifs */
+/* Effet au survol du bloc complet */
 .bts-option-block:hover {
-    transform: scale(1.03);
+    transform: translateY(-5px);
     border-color: #f8c2c7;
     background: #fff;
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(248, 194, 199, 0.2);
 }
