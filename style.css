@@ -839,3 +839,144 @@ body.dark-mode .bts-option-block {
         grid-template-columns: 1fr;
     }
 }
+
+/* ============================================================
+   PAGE PROJETS - DESIGN COMPLET ET HARMONISÉ
+   ============================================================ */
+
+/* Conteneur de la page */
+.page-projets {
+    padding: 40px 5%;
+    max-width: 1300px; /* Légèrement plus large pour les 30 docs */
+    margin: 0 auto;
+}
+
+/* Titres de catégories (Systèmes, Réseaux, Sécurité) */
+.categorie-titre {
+    color: #000000 !important;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    font-size: 1.8em;
+    margin: 60px 0 25px 0;
+    text-align: left;
+    border-left: 8px solid #c2185b; /* Rose Foncé */
+    padding-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Sous-titre d'introduction */
+.sous-titre-projets {
+    color: #000000;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1.2em;
+}
+
+/* Grille adaptative pour les 30 cartes */
+.projets-mini-grid {
+    display: grid;
+    /* On utilise auto-fill pour que les cartes se serrent bien */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Style de la Carte de Projet */
+.mini-card {
+    background: #ffffff;
+    border: 3px solid #c2185b; /* Bordure Rose Foncé */
+    border-radius: 15px;
+    padding: 18px;
+    box-shadow: 6px 6px 0px #000000; /* Ombre noire solide */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.mini-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 10px 10px 0px #c2185b; /* L'ombre change de couleur au survol */
+}
+
+/* Zone d'aperçu du PDF (Embed) */
+.mini-preview {
+    width: 100%;
+    height: 180px; /* Taille optimisée pour la grille */
+    background: #f4f4f4;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.mini-preview embed {
+    width: 100%;
+    height: 100%;
+}
+
+/* Titre du document (Noir profond) */
+.mini-title {
+    color: #000000 !important;
+    font-weight: 800;
+    font-size: 1.15em;
+    margin-bottom: 18px;
+    text-align: center;
+    min-height: 45px; /* Garde l'alignement des boutons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.3;
+}
+
+/* Zone des boutons */
+.mini-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Aligne les boutons en bas de carte */
+}
+
+/* Style des boutons Mini */
+.btn-mini {
+    flex: 1;
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.9em;
+    border-radius: 8px;
+    border: 2px solid #000000;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bouton VOIR (Rose Bonbon flashy) */
+.btn-voir {
+    background: #ff69b4;
+    color: #ffffff;
+}
+
+/* Bouton DOC / DOWNLOAD (Noir) */
+.btn-doc {
+    background: #000000;
+    color: #ffffff;
+}
+
+.btn-mini:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+/* Responsive : ajustement pour mobiles */
+@media (max-width: 768px) {
+    .projets-mini-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur petit écran */
+    }
+    
+    .categorie-titre {
+        font-size: 1.5em;
+    }
+}
