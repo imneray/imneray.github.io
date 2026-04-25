@@ -647,173 +647,47 @@ body.dark-mode .bts-option-block {
    PAGE MON PROFIL - STRUCTURE ET TIMELINE
    ============================================================ */
 
-/* Conteneur principal en deux colonnes */
-.page-content-profil {
-    padding: 40px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+/* --- STRUCTURE PROFIL --- */
+.page-content-profil { padding: 40px 5%; max-width: 1200px; margin: 0 auto; }
+.profil-container { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; }
 
-.profil-container {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr; /* La frise prend plus de place */
-    gap: 50px;
-    align-items: start;
-}
-
-/* --- LA FRISE CHRONOLOGIQUE (TIMELINE) --- */
-.timeline {
-    position: relative;
-    border-left: 3px solid #ff7eb9; /* Ligne rose verticale */
-    padding: 20px 0 20px 30px;
-    margin-left: 20px;
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 50px;
-}
-
-/* Les points sur la frise */
+/* --- TIMELINE --- */
+.timeline { position: relative; border-left: 3px solid #ff7eb9; padding: 20px 0 20px 30px; margin-left: 20px; }
+.timeline-item { position: relative; margin-bottom: 40px; }
 .timeline-item::before {
-    content: "";
-    position: absolute;
-    left: -38.5px;
-    top: 5px;
-    width: 14px;
-    height: 14px;
-    background: #1a1a1a; /* Couleur du fond pour l'effet creux */
-    border: 3px solid #ff7eb9;
-    border-radius: 50%;
-    z-index: 2;
+    content: ""; position: absolute; left: -38.5px; top: 5px; width: 14px; height: 14px;
+    background: #1a1a1a; border: 3px solid #ff7eb9; border-radius: 50%;
 }
+.timeline-item.stage::before { border-color: #7ebfff; }
+.timeline-date { font-weight: bold; color: #ff7eb9; display: block; margin-bottom: 5px; }
+.timeline-item.stage .timeline-date { color: #7ebfff; }
+.timeline-content h3 { margin: 0; color: white; font-size: 1.2em; }
+.timeline-content ul { font-size: 0.9em; color: #ccc; margin-top: 8px; }
 
-/* Couleur bleue pour les expériences professionnelles (Stages) */
-.timeline-item.stage::before {
-    border-color: #7ebfff;
-}
-
-.timeline-item.stage .timeline-date {
-    color: #7ebfff;
-}
-
-.timeline-date {
-    font-weight: bold;
-    color: #ff7eb9;
-    font-size: 1rem;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.timeline-content h3 {
-    margin: 0;
-    font-size: 1.3em;
-    color: var(--text-color, #ffffff);
-}
-
-.timeline-content p {
-    margin: 5px 0;
-    font-weight: 600;
-    color: #eee;
-}
-
-.timeline-content ul {
-    margin-top: 10px;
-    padding-left: 20px;
-    font-size: 0.95em;
-    color: #bbb;
-    line-height: 1.6;
-}
-
-/* --- COLONNE DE DROITE (SIDEBAR) --- */
-
-/* Bloc de téléchargement CV */
-.cv-download-box {
-    margin-bottom: 30px;
-}
-
-.btn-download {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    background: linear-gradient(135deg, #ff7eb9, #ff758c);
-    color: white;
-    text-decoration: none;
-    padding: 18px;
-    border-radius: 12px;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(255, 117, 140, 0.3);
-}
-
-.btn-download:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(255, 117, 140, 0.5);
-}
-
-/* Cartes de contenu (Soft Skills & Passions) */
+/* --- CARDS & BOUTONS --- */
 .profil-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 15px;
+    margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
 }
+.skills-tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+.skills-tags li { background: rgba(255, 255, 255, 0.1); padding: 5px 12px; border-radius: 20px; font-size: 0.85em; color: #eee; }
 
-.profil-card h3 {
-    margin-top: 0;
-    border-bottom: 2px solid #ff7eb9;
-    display: inline-block;
-    padding-bottom: 5px;
-    margin-bottom: 20px;
+/* Bouton vers Compétences */
+.btn-goto-competences {
+    display: block; text-align: center; background: transparent; color: #ff7eb9;
+    border: 1px solid #ff7eb9; padding: 10px; border-radius: 8px;
+    text-decoration: none; font-size: 0.9em; font-weight: bold; transition: 0.3s;
 }
+.btn-goto-competences:hover { background: #ff7eb9; color: white; }
 
-/* Tags de compétences */
-.skills-tags {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* Téléchargement CV */
+.btn-download {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(135deg, #ff7eb9, #ff758c); color: white;
+    text-decoration: none; padding: 15px; border-radius: 10px; font-weight: bold; transition: 0.3s;
 }
+.btn-download:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 126, 185, 0.4); }
 
-.skills-tags li {
-    background: rgba(255, 126, 185, 0.15);
-    color: #ff7eb9;
-    padding: 8px 15px;
-    border-radius: 25px;
-    font-size: 0.9em;
-    border: 1px solid rgba(255, 126, 185, 0.3);
-}
+.btn-letterboxd { background: #00e730; color: #14181c; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.8em; }
 
-/* Bouton spécial Letterboxd */
-.btn-letterboxd {
-    display: inline-block;
-    margin-top: 15px;
-    background: #00e730; /* Couleur iconique de Letterboxd */
-    color: #14181c;
-    padding: 8px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: opacity 0.2s;
-}
-
-.btn-letterboxd:hover {
-    opacity: 0.85;
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 992px) {
-    .profil-container {
-        grid-template-columns: 1fr; /* Tout passe sur une seule colonne sur tablette/mobile */
-        gap: 30px;
-    }
-    
-    .timeline {
-        margin-left: 10px;
-    }
-}
+@media (max-width: 900px) { .profil-container { grid-template-columns: 1fr; } }
