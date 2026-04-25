@@ -210,98 +210,135 @@ nav a:hover {
    ============================================================ */
 /* --- STYLE SPÉCIFIQUE VEILLE --- */
 
-.veille-grid-layout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
+/* --- LE CALENDRIER --- */
 
-/* Bloc de contenu */
-.bts-option-block {
-    background: rgba(255, 255, 255, 0.6);
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid #f8c2c7;
-    margin-bottom: 20px;
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-}
-
-/* LE CALENDRIER - FORCE LA GRILLE */
+/* Conteneur principal */
 .calendar-wrapper {
     max-width: 350px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 15px;
+    margin: 15px auto;
+    background: #ffffff;
+    padding: 20px;
     border-radius: 15px;
     border: 2px solid #fce1e4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+/* En-tête (Mois et flèches) */
 .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
-/* ICI : On force les 7 colonnes pour éviter l'effet "colonne verticale" */
-.calendar-days-header, .calendar-grid {
+.calendar-header h4 {
+    margin: 0;
+    text-transform: capitalize;
+    color: #5e4433; /* Ton marron texte */
+}
+
+/* FORCE LA GRILLE : C'est ici que l'on corrige l'effet colonne */
+.calendar-days-header, 
+#calendarGrid {
     display: grid !important;
-    grid-template-columns: repeat(7, 1fr) !important;
-    gap: 5px;
+    grid-template-columns: repeat(7, 1fr) !important; /* 7 colonnes égales */
+    gap: 8px;
+    text-align: center;
 }
 
+/* Noms des jours (Lun, Mar...) */
 .calendar-days-header {
     font-weight: bold;
     font-size: 0.75rem;
-    color: #f8c2c7;
+    color: #f8c2c7; /* Rose foncé */
     margin-bottom: 10px;
 }
 
+/* Style des cases numérotées générées par ton JS */
 .calendar-day-cell {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1; /* Force le carré parfait */
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fce1e4;
-    border-radius: 5px;
+    background: #fce1e4; /* Rose clair */
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.8rem;
-    transition: 0.3s;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .calendar-day-cell:hover {
     background: #f8c2c7;
-    color: white;
+    color: #ffffff;
+    transform: scale(1.1);
 }
 
+/* Cases vides du début de mois */
 .calendar-day-empty {
     background: transparent;
 }
 
-/* SUGGESTIONS */
+/* --- RECHERCHE & SUGGESTIONS --- */
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#veille-search {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid #fce1e4;
+    width: 75%;
+    outline: none;
+}
+
 .suggestions-list {
     position: absolute;
     top: 65px;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
-    background: white;
+    background: #ffffff;
     border: 1px solid #f8c2c7;
-    border-radius: 10px;
+    border-radius: 12px;
     z-index: 1000;
-    display: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: none; /* Masqué par défaut */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .suggestion-item {
-    padding: 10px;
+    padding: 12px;
     text-align: left;
     cursor: pointer;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #fef1f2;
+    font-size: 0.9rem;
 }
 
-.suggestion-item:hover { background: #fce1e4; }
+.suggestion-item:hover {
+    background: #fce1e4;
+}
 
+/* --- BOUTONS DE NAVIGATION --- */
+.btn-nav-cal {
+    background: #fce1e4;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.btn-nav-cal:hover {
+    background: #f8c2c7;
+    color: white;
+}
