@@ -1,1 +1,94 @@
-body 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Stage - Imane</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="header-top">
+        <div class="logo-signature">I.M</div>
+        <span class="signature-texte">PORTFOLIO D'IMANE</span>
+        <button id="theme-toggle" class="theme-btn">🌙</button>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="bts.html">BTS SIO</a></li>
+            <li><a href="veille.html">Veille Informatique</a></li>
+            <li><a href="stage.html">Mon Stage</a></li>
+        </ul>
+    </nav>
+
+    <main class="page-content-bts">
+        <h1 class="titre-principal-accueil">Mon Expérience en Stage</h1>
+
+        <div class="problematique-box">
+            <h2 style="font-family: 'Pacifico', cursive; margin-top: 0;">Immersion Professionnelle</h2>
+            <p>
+                J'ai effectué mon stage en tant que <strong>Technicienne de proximité</strong>. 
+                Cette expérience m'a permis de plonger au cœur du support informatique, de la gestion de parc et de la résolution d'incidents en direct auprès des utilisateurs.
+            </p>
+        </div>
+
+        <h2 class="section-titre">Mes Compétences Clés</h2>
+        
+        <div class="flip-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>🛠️ Compétences Techniques</h3>
+                        <p>Survolez pour voir</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li>Support & Dépannage</li>
+                            <li>Installation Logicielle</li>
+                            <li>Gestion de Parc (GLPI)</li>
+                            <li>Configuration Réseau</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>🤝 Compétences Humaines</h3>
+                        <p>Survolez pour voir</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li>Écoute active</li>
+                            <li>Pédagogie</li>
+                            <li>Gestion du stress</li>
+                            <li>Travail en équipe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-titre">Documents & Rapports</h2>
+        <div class="veille-grid-layout">
+            <div class="bts-option-block">
+                <h3>Rapport de Stage 1</h3>
+                <p>Analyse de la structure et missions de base.</p>
+                <a href="rapport-stage-1.pdf" target="_blank" class="btn-mini btn-doc">Ouvrir le PDF</a>
+            </div>
+
+            <div class="bts-option-block">
+                <h3>Rapport de Stage 2</h3>
+                <p>Technicienne proximité et approfondissement technique.</p>
+                <a href="Technicienne proximité - rapport de stage 2.pdf" target="_blank" class="btn-mini btn-doc">Ouvrir le PDF</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script-veille.js"></script>
+</body>
+</html>
