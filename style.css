@@ -492,163 +492,153 @@ body.dark-mode .bts-option-block {
 /* ============================================================
    STYLE GÉNÉRAL - PAGE CERTIFICATIONS (3 COLONNES)
    ============================================================ */
+/* --- CONFIGURATION GÉNÉRALE --- */
 
-/* Conteneur principal : aligne les 3 colonnes côte à côte */
-.certifications-columns {
-    display: flex;
-    justify-content: center;
-    align-items: stretch; /* Force les colonnes à avoir la même hauteur */
-    gap: 30px; /* Espace entre les colonnes */
-    padding: 20px;
-    max-width: 1500px; /* Très large pour profiter de l'écran */
+.page-content-bts {
+    padding: 40px 5%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Style de chaque colonne (État, OpenClassrooms, Cloud) */
+.titre-principal-accueil {
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+    color: #5e4433;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+/* --- SYSTÈME DES 3 COLONNES --- */
+
+.certifications-columns {
+    display: flex;
+    flex-direction: row; /* Aligne les colonnes horizontalement */
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    align-items: stretch; /* FORCE LES 3 COLONNES À LA MÊME HAUTEUR */
+}
+
 .certif-column {
     flex: 1;
-    min-width: 350px;
-    background: rgba(255, 255, 255, 0.4); /* Fond léger */
-    border-radius: 25px;
-    padding: 30px 20px;
+    min-width: 320px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(248, 194, 199, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Permet au contenu de remplir la hauteur */
 }
 
-/* Titres des colonnes */
 .column-title {
-    font-family: 'Pacifico', cursive;
     text-align: center;
-    color: #5e4433;
-    margin-bottom: 30px;
-    font-size: 1.7rem;
+    font-family: 'Quicksand', sans-serif;
+    color: #f8c2c7;
     border-bottom: 2px solid #f8c2c7;
     padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
 }
 
-/* ============================================================
-   STYLE DES CARTES DE CERTIFICATION
-   ============================================================ */
+/* --- CARTES DE CERTIFICATION (COMMUNES) --- */
 
 .certif-card {
-    background: #ffffff;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
     text-align: center;
-    border: 1px solid #f0f0f0;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f1f1f1;
+    transition: transform 0.3s ease;
 }
 
 .certif-card:hover {
-    transform: translateY(-8px);
-    border-color: #f8c2c7;
-    box-shadow: 0 12px 20px rgba(248, 194, 199, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(248, 194, 199, 0.2);
 }
 
-/* ============================================================
-   SOUS-GRILLE POUR LA COLONNE CLOUD & IA (2 COLONNES)
-   ============================================================ */
+/* Images pour OpenClassrooms */
+.img-badge-oc {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* --- GRILLE INTERNE MICROSOFT (DANS LA 3ème COLONNE) --- */
 
 .microsoft-subgrid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Sépare la colonne en deux en interne */
-    gap: 15px;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes de badges */
+    gap: 10px;
+    flex-grow: 1; /* Remplit l'espace pour aligner le bas */
 }
 
-/* Ajustement des cartes à l'intérieur de la sous-grille */
 .microsoft-subgrid .certif-card {
-    margin-bottom: 0;
-    padding: 15px 10px;
+    margin-bottom: 0; /* On utilise le gap de la grille à la place */
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80px;
 }
 
-/* ============================================================
-   IMAGES ET BADGES
-   ============================================================ */
-
-/* Images larges (SecNum, Pix, Voltaire, OpenClassrooms) */
-.img-badge-large, .img-badge-oc {
-    width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #eee;
+.microsoft-subgrid h5 {
+    font-size: 0.75rem;
+    margin: 0 0 5px 0;
+    color: #5e4433;
+    line-height: 1.1;
 }
 
-/* Petits badges ronds Microsoft */
-.img-badge-ms {
-    width: 75px;
-    height: 75px;
-    object-fit: contain;
-    margin-bottom: 10px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-/* ============================================================
-   BOUTONS PDF ET LIENS
-   ============================================================ */
+/* --- BOUTONS --- */
 
 .btn-pdf {
     display: inline-block;
     margin-top: 10px;
-    padding: 6px 15px;
+    padding: 6px 12px;
+    background-color: #f8c2c7;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.btn-mini {
+    font-size: 0.65rem;
+    padding: 3px;
     border: 1px solid #f8c2c7;
     color: #f8c2c7;
     text-decoration: none;
-    border-radius: 8px;
-    font-size: 0.8rem;
+    border-radius: 4px;
     font-weight: bold;
-    transition: all 0.3s;
 }
 
-.btn-pdf:hover {
+.btn-mini:hover {
     background: #f8c2c7;
     color: white;
 }
 
-/* Bloc lien profil Microsoft Learn en bas */
+/* --- PROFIL MICROSOFT LEARN (BAS DE COLONNE) --- */
+
 .profile-link-box {
-    margin-top: auto; /* Pousse le bloc vers le bas de la colonne */
-    padding-top: 25px;
+    margin-top: auto; /* Pousse le lien tout en bas de la colonne */
+    padding-top: 20px;
     text-align: center;
 }
 
 .btn-profile {
-    display: block;
-    background: #f8c2c7;
-    color: white;
+    font-weight: 600;
+    color: #5e4433;
     text-decoration: none;
-    padding: 12px;
-    border-radius: 15px;
-    font-weight: bold;
-    transition: 0.3s;
+    border-bottom: 2px solid #f8c2c7;
+    font-size: 0.9rem;
 }
 
-.btn-profile:hover {
-    background: #e5b1b6;
-    transform: scale(1.02);
-}
+/* --- RESPONSIVE --- */
 
-/* ============================================================
-   RESPONSIVE (POUR MOBILE)
-   ============================================================ */
-
-@media (max-width: 1150px) {
+@media (max-width: 992px) {
     .certifications-columns {
-        flex-direction: column;
-        align-items: center;
-    }
-    .certif-column {
-        width: 100%;
-        max-width: 600px;
-    }
-}
-
-@media (max-width: 600px) {
-    .microsoft-subgrid {
-        grid-template-columns: 1fr; /* Retour à une seule colonne sur petit mobile */
+        flex-direction: column; /* Passe en une colonne sur tablette/mobile */
     }
 }
