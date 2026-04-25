@@ -488,3 +488,42 @@ body.dark-mode .bts-option-block {
     background: rgba(45, 45, 45, 0.8);
     color: #eee;
 }
+
+/* --- STYLE PAGE CERTIFICATIONS --- */
+
+.certif-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.badge-certif {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 5px 15px;
+    background-color: #f8c2c7;
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.bts-option-block h3 {
+    color: #5e4433;
+    margin-bottom: 10px;
+}
+
+.bts-option-block p {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Effet au survol pour les certifs */
+.bts-option-block:hover {
+    transform: scale(1.03);
+    border-color: #f8c2c7;
+    background: #fff;
+    transition: all 0.3s ease;
+}
